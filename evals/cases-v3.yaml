@@ -1,0 +1,137 @@
+# v0.3 "unrecallable" set: fictional scenarios, so the model can't recognise a
+# famous story. The fatal flaw is derivable from details in the prompt (numbers,
+# constraints) but is never stated as a problem. Includes non-startup decisions.
+# Never show `flaw`, `pattern` or `expected` to the model under test.
+
+- id: F01
+  kind: trap
+  domain: pricing
+  pattern: [pricing]
+  flaw: Top 10 customers (~60% of revenue) pay ~€960+/month each on per-seat; a flat €99 plan cuts that revenue by ~90%.
+  prompt: >
+    Council this: our B2B SaaS charges €12 per seat per month. Customers find
+    per-seat pricing annoying, so we're switching everyone to a simple flat plan of
+    €99/month for unlimited seats. Our top 10 customers, around 60% of revenue,
+    each have 80+ seats. Simpler pricing should help sales. Go?
+  expected: Does the math on the top accounts (80 seats × €12 ≈ €960 → €99) and flags a large revenue drop; proposes tiers or grandfathering.
+
+- id: F02
+  kind: trap
+  domain: hiring
+  pattern: [premature-scaling]
+  flaw: Sales cycle (9 months) is longer than runway (7 months); new reps can't close revenue before cash runs out.
+  prompt: >
+    Council this: we're hiring 6 senior enterprise sales reps next month to
+    accelerate revenue. Our average enterprise deal takes about 9 months to close.
+    We have 7 months of runway and plan to raise once revenue picks up. Good move?
+  expected: Notices runway (7 months) is shorter than the sales cycle (9 months) plus ramp time, so the hires add burn without revenue before cash runs out.
+
+- id: F03
+  kind: trap
+  domain: marketplace-pricing
+  pattern: [pricing, unit-economics]
+  flaw: Replacing a 15% seller commission on €40 orders (€6) with a €1 buyer fee cuts revenue per order ~83%.
+  prompt: >
+    Council this: our marketplace takes a 15% commission from sellers. Average
+    order is €40. To attract more sellers we'll drop the commission completely and
+    instead charge buyers a €1 service fee per order. Sellers will love it and
+    supply will grow. Sound right?
+  expected: Computes €6 → €1 per order (~83% revenue cut) and asks how much volume growth would be needed; suggests a smaller cut or test.
+
+- id: F04
+  kind: trap
+  domain: distribution
+  pattern: [platform-dependency, distribution]
+  flaw: A single exclusive channel for 3 years that also sells a competitor creates dependency and a conflict of interest.
+  prompt: >
+    Council this: a large distributor offered to be our exclusive channel in Spain
+    and Portugal for 3 years, with a nice upfront minimum order. They're the
+    biggest in the sector and also distribute one of our competitors, so they know
+    the market well. We'd stop selling direct. Sign?
+  expected: Flags dependency on one channel + conflict of interest (they also sell the competitor) + 3-year lock-in; suggests performance clauses, shorter term or non-exclusive.
+
+- id: F05
+  kind: trap
+  domain: growth-marketing
+  pattern: [unit-economics, retention]
+  flaw: 9% monthly churn → ~11-month lifetime; €15 ARPU → ~€167 lifetime revenue (less after margin), barely above or below €120 CAC.
+  prompt: >
+    Council this: consumer subscription app, €15/month. Paid ads bring customers
+    at about €120 each. Monthly churn is around 9%. Growth from ads is working, so
+    we want to double the ad budget next quarter. Agree?
+  expected: Computes lifetime value from churn (~11 months, ~€167 revenue, less after costs) vs €120 CAC; flags thin or negative margin and fixing churn first.
+
+- id: F06
+  kind: trap
+  domain: regulation
+  pattern: [regulation, trust-privacy]
+  flaw: Health data is a special category under GDPR; a privacy policy alone isn't enough (legal basis, DPIA, international transfers to a US server, hospital DPAs).
+  prompt: >
+    Council this: we built an app where patients log their symptoms between visits
+    and doctors see a dashboard. Data is stored on a cheap US cloud server. Two
+    Spanish hospitals want to start using it next month. GDPR is covered by our
+    privacy policy. Launch?
+  expected: Flags health data as special-category data, US transfer issues, need for a DPIA and data processing agreements with hospitals; possibly medical-device rules; suggests EU hosting and a compliance review before launch.
+
+- id: F07
+  kind: trap
+  domain: forecasting
+  pattern: [timing, premature-scaling]
+  flaw: Revenue projection annualises a December–February ski-season pilot × 12 months, ignoring seasonality.
+  prompt: >
+    Council this: ski and snowboard rental shop with online booking. Our pilot ran
+    December to February and did great. We projected annual revenue by multiplying
+    the monthly average by 12, and raised money to open 5 more shops on that plan.
+    Opening all 5 this summer. Thoughts?
+  expected: Spots that the forecast annualises peak winter months (seasonality) and that opening in summer means months of costs with no revenue; suggests re-forecasting and staggered openings.
+
+- id: F08
+  kind: trap
+  domain: internal-project
+  pattern: [overengineering, team]
+  flaw: 5 developers doing a full microservices rewrite and a new billing system in the same quarter, with no feature freeze, is an overload with high risk to billing.
+  prompt: >
+    Council this: our team of 5 developers will rewrite our monolith into
+    microservices this quarter to scale better. In the same quarter we'll also
+    launch the new billing system customers have been asking for. We'll keep
+    shipping features in parallel so sales isn't affected. Realistic?
+  expected: Flags capacity overload (5 devs, 3 parallel streams) and risk of building billing on a moving architecture; suggests sequencing (billing first, incremental extraction).
+
+# ---------- controls (fictional, look risky but the evidence supports them) ----------
+
+- id: FC1
+  kind: control
+  domain: b2b
+  prompt: >
+    Council this: our B2B tool only has 12 customers and investors say the market
+    is too small. But all 12 renewed, 3 doubled their seats, and net revenue
+    retention is 140%. Should we keep going or pivot?
+  expected: Treats 100% renewal and 140% NRR as strong evidence; doesn't recommend pivoting; suggests testing market size.
+
+- id: FC2
+  kind: control
+  domain: pricing
+  prompt: >
+    Council this: we want to raise prices 30% for new customers only. We A/B
+    tested it on about 200 visitors and conversion didn't change. Existing
+    customers keep their price. Worried it's too aggressive. Do it?
+  expected: Supports it (reversible, tested, existing customers protected) while noting the small sample and suggesting monitoring.
+
+- id: FC3
+  kind: control
+  domain: internal-project
+  prompt: >
+    Council this: we want to replace our home-built login system with a managed
+    authentication provider. Migration is about 2 weeks, can be rolled back with a
+    feature flag, and saves roughly one developer-day a week. Some on the team say
+    "if it works, don't touch it". Go?
+  expected: Supports it as a cheap two-way door with clear savings; mentions vendor lock-in/cost as manageable risks.
+
+- id: FC4
+  kind: control
+  domain: hiring
+  prompt: >
+    Council this: should we hire our first salesperson? We get about 40 inbound
+    leads a month that we can't follow up, deals close in about 3 weeks, and we
+    have 18 months of runway. My co-founder thinks it's too early.
+  expected: Supports hiring (unhandled inbound demand, short cycle, long runway), possibly with a trial period or clear targets.

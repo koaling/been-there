@@ -1,0 +1,50 @@
+{
+ "F01": {
+  "X": {"mechanism":2,"verdict":2,"grounding":1,"actionable":1,"total":6,"length_words":584,"flags":"","why":"Does 80x12=960 -> 99 math, ~€8.6k/mo loss, notes small accounts get price rises; tiers, grandfathering and a test on new signups only."},
+  "Y": {"mechanism":2,"verdict":2,"grounding":1,"actionable":1,"total":6,"length_words":529,"flags":"","why":"Same correct math (≥54% MRR loss, 87+ new customers to break even); 48h seat-band model plus a kill criterion; precedents loosely fit but are labelled."},
+  "better":"tie"},
+ "F02": {
+  "X": {"mechanism":2,"verdict":2,"grounding":1,"actionable":1,"total":6,"length_words":698,"flags":"","why":"Puts the 9-month cycle vs 7-month runway at the centre, adds ramp time (first revenue around month 11-12); says raise now and hire 1-2."},
+  "Y": {"mechanism":2,"verdict":2,"grounding":1,"actionable":1,"total":6,"length_words":624,"flags":"","why":"Same core timeline with real dates (closes Oct 2027, cash out Jun 2027); month-by-month cash model and a dated kill criterion."},
+  "better":"tie"},
+ "F03": {
+  "X": {"mechanism":2,"verdict":2,"grounding":1,"actionable":1,"total":6,"length_words":543,"flags":"Payment fee estimate (€0.80-1.20) is at the high end for EU cards, but plausible.","why":"€6 -> €1, 83% cut, 6x volume needed; asks whether supply is really the bottleneck; suggests a time-boxed or category test."},
+  "Y": {"mechanism":2,"verdict":2,"grounding":1,"actionable":1,"total":6,"length_words":551,"flags":"","why":"Same math, plus the point that a flat fee doesn't grow with basket size (Vinted's fixed + % fee) and the Etsy strike as a warning that the move is hard to undo; concrete diagnostic checks."},
+  "better":"Y"},
+ "F04": {
+  "X": {"mechanism":2,"verdict":2,"grounding":1,"actionable":1,"total":6,"length_words":550,"flags":"","why":"Flags the competitor conflict, ending direct sales, and the one-off order vs a 3-year lock-in; conditional exclusivity and a cheap test (ask for annual minimums)."},
+  "Y": {"mechanism":2,"verdict":2,"grounding":1,"actionable":1,"total":6,"length_words":707,"flags":"","why":"Same core risks plus the 'buy to bury' risk, the EU block-exemption 30% market-share threshold, customer-data rights, and reading their reaction to minimums as the signal."},
+  "better":"Y"},
+ "F05": {
+  "X": {"mechanism":2,"verdict":2,"grounding":1,"actionable":1,"total":6,"length_words":596,"flags":"","why":"Correct LTV (~€167 gross, €97-117 net after VAT and store fees) vs €120 CAC, payback ~13.5 months, marginal CAC; +25% spend test with thresholds."},
+  "Y": {"mechanism":2,"verdict":2,"grounding":1,"actionable":1,"total":6,"length_words":734,"flags":"Ignores VAT (X includes it); all arithmetic checks out.","why":"Payback/LTV table is all correct (20-month payback, never at 30% fee); shows how much churn reduction is worth; cohort curves plus incremental spend test."},
+  "better":"tie"},
+ "F06": {
+  "X": {"mechanism":2,"verdict":2,"grounding":1,"actionable":1,"total":6,"length_words":929,"flags":"","why":"Covers Art. 9, DPA, DPIA, US transfers (DPF/SCC), ENS, MDR Rule 11, Ley 41/2002 accurately; phased 6-8 week path to a compliant pilot."},
+  "Y": {"mechanism":2,"verdict":2,"grounding":1,"actionable":1,"total":6,"length_words":582,"flags":"","why":"Same core legal gaps in less space; good cheap test (send data-flow summary to hospital DPOs) and a kill criterion against 'temporary' US hosting."},
+  "better":"X"},
+ "F07": {
+  "X": {"mechanism":2,"verdict":2,"grounding":1,"actionable":1,"total":6,"length_words":627,"flags":"","why":"Central point is annualising peak months; costs while closed in summer; month-by-month rebuild, per-shop break-even, staged openings, tell investors."},
+  "Y": {"mechanism":2,"verdict":2,"grounding":1,"actionable":1,"total":6,"length_words":847,"flags":"","why":"Puts a number on it (3.5-5 pilot-equivalent months = 30-40% of plan); inventory sitting idle, bad snow years, summer revenue lines; concrete reforecast and phasing."},
+  "better":"Y"},
+ "F08": {
+  "X": {"mechanism":2,"verdict":2,"grounding":1,"actionable":1,"total":6,"length_words":570,"flags":"","why":"Capacity overload and billing risk; billing first as a module inside the monolith, profiling to justify any extraction; accurate precedents (Netscape, Segment, Shopify)."},
+  "Y": {"mechanism":2,"verdict":2,"grounding":1,"actionable":1,"total":6,"length_words":687,"flags":"","why":"Explicit capacity math (55-110 dev-weeks of work vs ~40 available); sequencing, buy-not-build for billing, strangler-fig extraction."},
+  "better":"tie"},
+ "FC1": {
+  "X": {"mechanism":2,"verdict":2,"grounding":1,"actionable":1,"total":6,"length_words":734,"flags":"","why":"Treats 100% renewal and 140% NRR as strong pull; separates good business from VC fit; bottom-up TAM and an acquisition test."},
+  "Y": {"mechanism":2,"verdict":2,"grounding":1,"actionable":1,"total":6,"length_words":544,"flags":"","why":"Same verdict, plus a sharp check that 3 doublings across 12 equal accounts give only ~125% NRR, so the 140% leans on big accounts; outside-network pitch test with a deadline."},
+  "better":"Y"},
+ "FC2": {
+  "X": {"mechanism":2,"verdict":2,"grounding":1,"actionable":1,"total":6,"length_words":661,"flags":"","why":"Ship as a monitored rollout; correct 23% break-even and sample-size math (~8.5k per arm); watch revenue per visitor and downstream metrics."},
+  "Y": {"mechanism":2,"verdict":2,"grounding":1,"actionable":1,"total":6,"length_words":509,"flags":"","why":"Same verdict and correct math, treats the change as reversible, Netflix 2011 contrast; clear baseline step and a numeric kill criterion."},
+  "better":"tie"},
+ "FC3": {
+  "X": {"mechanism":2,"verdict":2,"grounding":1,"actionable":1,"total":6,"length_words":480,"flags":"","why":"Go with conditions; ~10-week payback; sharp point that the flag reverts code but not data; 100-user hash-import spike as the cheap test."},
+  "Y": {"mechanism":2,"verdict":2,"grounding":0,"actionable":1,"total":5,"length_words":588,"flags":"Refers to 'the healthcare client's environment' and the 'client's ISO scope', which appear nowhere in the prompt (unsupported context; possibly a personalization leak).","why":"Solid go-with-conditions answer (ROI, rollback data caveat, staged rollout), but adds a compliance blocker based on facts the user never gave."},
+  "better":"X"},
+ "FC4": {
+  "X": {"mechanism":2,"verdict":2,"grounding":1,"actionable":1,"total":6,"length_words":583,"flags":"","why":"Backs hiring given unanswered inbound, short cycle and runway; one-week founder baseline plus a 90-day trial, search starting in parallel; break-even formula."},
+  "Y": {"mechanism":2,"verdict":2,"grounding":1,"actionable":1,"total":6,"length_words":883,"flags":"'One hire costs 2-3 months of runway' is a guess, since burn isn't given; marked 'probably'.","why":"Supports hiring with a useful worked revenue formula; delays the hire about 30 days for a founder sprint, slower but well argued."},
+  "better":"X"}
+}
