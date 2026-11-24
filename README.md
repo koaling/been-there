@@ -18,7 +18,7 @@
 | **Precedent Council** | **8** | **72** | **6** | **~590 words** |
 | LLM Council | – | – | – | – |
 
-(5 ties.) Honest read: detection is close; the skill wins on real precedents (12/12 vs 8/12), cheap next steps and not being pessimistic on good ideas, while being shorter. Raw answers, grades and caveats: [`evals/results/`](evals/results/).
+(5 ties.) On a third set of 12 **fictional** cases (the flaw is hidden in the numbers, nothing to recall), both found 8/8 flaws and it was a tie (72 vs 71). Honest read: detection is close; the skill wins on real precedents (12/12 vs 8/12), cheap next steps and not being pessimistic on good ideas, while being shorter. Raw answers, grades and caveats: [`evals/results/`](evals/results/).
 
 ## What makes it different
 
