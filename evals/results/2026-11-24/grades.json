@@ -1,0 +1,301 @@
+{
+  "C01": {
+    "X": {
+      "mechanism": 2,
+      "verdict": 2,
+      "grounding": 1,
+      "actionable": 1,
+      "total": 6,
+      "flags": "",
+      "why": "Keeps going; paying users beat opinion; adds trust/regulation basics, 2026 Airbnb-competition angle, 3-question survey and dated kill criterion.",
+      "length_words": 2012
+    },
+    "Y": {
+      "mechanism": 2,
+      "verdict": 2,
+      "grounding": 1,
+      "actionable": 1,
+      "total": 6,
+      "flags": "",
+      "why": "Clear 'keep going'; trust-plus-convenience framing, Couchsurfing precedent, one-event hands-on test; ignores incumbent competition.",
+      "length_words": 616
+    },
+    "better": "X"
+  },
+  "C02": {
+    "X": {
+      "mechanism": 2,
+      "verdict": 2,
+      "grounding": 1,
+      "actionable": 1,
+      "total": 6,
+      "flags": "",
+      "why": "Not too late; Dropbox precedent accurate; wedge segment + closed beta with retention kill criterion; somewhat hedged by Quibi analogy.",
+      "length_words": 2130
+    },
+    "Y": {
+      "mechanism": 2,
+      "verdict": 2,
+      "grounding": 1,
+      "actionable": 1,
+      "total": 6,
+      "flags": "",
+      "why": "Not too late; Dropbox story accurate; strong niche/positioning and non-GB business model advice; paid founding offer tests willingness to pay.",
+      "length_words": 928
+    },
+    "better": "Y"
+  },
+  "C03": {
+    "X": {
+      "mechanism": 1,
+      "verdict": 2,
+      "grounding": 1,
+      "actionable": 1,
+      "total": 5,
+      "flags": "",
+      "why": "Freeze game and test chat with outside teams; Slack/Discord accurate, but frames internal love mainly as weak evidence rather than a real pull signal.",
+      "length_words": 1984
+    },
+    "Y": {
+      "mechanism": 2,
+      "verdict": 2,
+      "grounding": 1,
+      "actionable": 1,
+      "total": 6,
+      "flags": "",
+      "why": "Leans to pivot, calls unprompted usage the rarest signal; Slack/Discord accurate; 4-6 week outside-team test with kill criteria.",
+      "length_words": 947
+    },
+    "better": "Y"
+  },
+  "T01": {
+    "X": {
+      "mechanism": 2,
+      "verdict": 2,
+      "grounding": 1,
+      "actionable": 1,
+      "total": 6,
+      "flags": "",
+      "why": "Variable vs fixed cost split of the EUR4, Webvan/Getir/Ocado precedents accurate, per-order waterfall and dated kill criterion.",
+      "length_words": 2017
+    },
+    "Y": {
+      "mechanism": 2,
+      "verdict": 2,
+      "grounding": 1,
+      "actionable": 1,
+      "total": 6,
+      "flags": "",
+      "why": "Same mechanism, Webvan and q-commerce wave, staged gated rollout; more concise with equivalent substance.",
+      "length_words": 775
+    },
+    "better": "tie"
+  },
+  "T02": {
+    "X": {
+      "mechanism": 2,
+      "verdict": 2,
+      "grounding": 1,
+      "actionable": 1,
+      "total": 6,
+      "flags": "",
+      "why": "Adverse selection and per-visit cost; MoviePass/AMC A-List detail accurate; break-even sheet plus emails to cinemas for wholesale rate.",
+      "length_words": 2097
+    },
+    "Y": {
+      "mechanism": 2,
+      "verdict": 2,
+      "grounding": 1,
+      "actionable": 1,
+      "total": 6,
+      "flags": "",
+      "why": "VAT-adjusted break-even table, gym-analogy rebuttal, adverse selection, MoviePass; concrete capped tiers, wholesale target and one-city cohort test.",
+      "length_words": 859
+    },
+    "better": "Y"
+  },
+  "T03": {
+    "X": {
+      "mechanism": 2,
+      "verdict": 2,
+      "grounding": 1,
+      "actionable": 1,
+      "total": 6,
+      "flags": "",
+      "why": "Concise; nails Juicero 1:1, packs are the product; side-by-side yield test and tell investors now.",
+      "length_words": 660
+    },
+    "Y": {
+      "mechanism": 2,
+      "verdict": 2,
+      "grounding": 1,
+      "actionable": 1,
+      "total": 6,
+      "flags": "",
+      "why": "Juicero plus Keurig 2.0 (QR as DRM risk) and Nespresso contrast; blind 20-30 person test with quantified kill threshold.",
+      "length_words": 1744
+    },
+    "better": "Y"
+  },
+  "T04": {
+    "X": {
+      "mechanism": 2,
+      "verdict": 2,
+      "grounding": 1,
+      "actionable": 1,
+      "total": 6,
+      "flags": "",
+      "why": "Quibi founders' own post-mortem, WTP vs free, paid-paywall pilot with non-famous control arm and pre-set thresholds.",
+      "length_words": 2155
+    },
+    "Y": {
+      "mechanism": 2,
+      "verdict": 2,
+      "grounding": 1,
+      "actionable": 1,
+      "total": 6,
+      "flags": "",
+      "why": "Quibi accurate, distribution/sharing insight; staged plan but Phase 1 releases free, so it tests interest more than willingness to pay.",
+      "length_words": 639
+    },
+    "better": "X"
+  },
+  "T05": {
+    "X": {
+      "mechanism": 2,
+      "verdict": 2,
+      "grounding": 1,
+      "actionable": 1,
+      "total": 6,
+      "flags": "",
+      "why": "Leakage, discount economics and EU platform-work risk; Homejoy accurate; cohort query plus A/B of recurrence-tied discount.",
+      "length_words": 2385
+    },
+    "Y": {
+      "mechanism": 2,
+      "verdict": 2,
+      "grounding": 1,
+      "actionable": 1,
+      "total": 6,
+      "flags": "Suggests non-solicitation clauses/buy-out fees, which sits uneasily with its own worker-classification warning.",
+      "why": "Disintermediation, deal-seeker cohorts, Homejoy, Ley Rider/Directive; good recurrence-tied offer; cohort metrics as the test.",
+      "length_words": 914
+    },
+    "better": "X"
+  },
+  "T06": {
+    "X": {
+      "mechanism": 2,
+      "verdict": 2,
+      "grounding": 1,
+      "actionable": 1,
+      "total": 6,
+      "flags": "",
+      "why": "Waste and delivery are per-kitchen/per-route costs scale copies; Webvan and Munchery accurate; pre-order cutoff pilot vs control zone.",
+      "length_words": 2003
+    },
+    "Y": {
+      "mechanism": 2,
+      "verdict": 2,
+      "grounding": 0,
+      "actionable": 1,
+      "total": 5,
+      "flags": "No real-world precedent cited at all.",
+      "why": "Correct mechanism and strong operational levers and target table, but no precedent and the test is a 3-6 month fix rather than a sharp experiment.",
+      "length_words": 775
+    },
+    "better": "X"
+  },
+  "T07": {
+    "X": {
+      "mechanism": 2,
+      "verdict": 2,
+      "grounding": 1,
+      "actionable": 1,
+      "total": 6,
+      "flags": "",
+      "why": "Volume fixes fixed not variable cost; Pets.com and Chewy accurate; carrier quotes at 1x/10x and per-basket contribution sheet.",
+      "length_words": 2284
+    },
+    "Y": {
+      "mechanism": 2,
+      "verdict": 2,
+      "grounding": 1,
+      "actionable": 1,
+      "total": 6,
+      "flags": "",
+      "why": "Same mechanism with illustrative per-bag table, Pets.com (IPO-to-liquidation ~9 months) accurate; free-shipping threshold, one-region start, delay TV.",
+      "length_words": 783
+    },
+    "better": "tie"
+  },
+  "T08": {
+    "X": {
+      "mechanism": 2,
+      "verdict": 2,
+      "grounding": 1,
+      "actionable": 1,
+      "total": 6,
+      "flags": "",
+      "why": "Rdio, Ping and Deezer-Orange accurate; distribution and switching cost; 4-week friend-group prototype test with invite-rate kill criterion.",
+      "length_words": 2129
+    },
+    "Y": {
+      "mechanism": 2,
+      "verdict": 2,
+      "grounding": 1,
+      "actionable": 0,
+      "total": 5,
+      "flags": "",
+      "why": "Rdio and Apple Music accurate, cold-start and distribution well explained; ends with questions rather than a concrete test.",
+      "length_words": 846
+    },
+    "better": "X"
+  },
+  "T09": {
+    "X": {
+      "mechanism": 2,
+      "verdict": 2,
+      "grounding": 1,
+      "actionable": 1,
+      "total": 6,
+      "flags": "Actionable credit is borderline: gated launch plus bystander surveys/ban tracking, no specific cheap experiment.",
+      "why": "Bystander social licence as the blocker, Google Glass, solid GDPR/Rynes/LO 1/1982 points; gated launch and hardware privacy fixes.",
+      "length_words": 1096
+    },
+    "Y": {
+      "mechanism": 2,
+      "verdict": 2,
+      "grounding": 1,
+      "actionable": 1,
+      "total": 6,
+      "flags": "",
+      "why": "Glass Explorer/Enterprise, Spectacles, Ray-Ban Meta, Garante inquiry all accurate; bystander-survey pilot and show a 'bystander promise' to bar owners.",
+      "length_words": 1995
+    },
+    "better": "Y"
+  },
+  "T10": {
+    "X": {
+      "mechanism": 2,
+      "verdict": 2,
+      "grounding": 1,
+      "actionable": 1,
+      "total": 6,
+      "flags": "",
+      "why": "Katerra near-exact match; integration only pays with repetition; root-cause review as cheapest test; one product/region kill criterion.",
+      "length_words": 1664
+    },
+    "Y": {
+      "mechanism": 2,
+      "verdict": 2,
+      "grounding": 1,
+      "actionable": 1,
+      "total": 6,
+      "flags": "",
+      "why": "Katerra accurate, factory fixed-cost and diagnosability points; post-mortem, narrow product, integrate only the bottleneck; more concise.",
+      "length_words": 757
+    },
+    "better": "tie"
+  }
+}

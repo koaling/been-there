@@ -10,13 +10,13 @@
 
 ## Benchmark
 
-| | Traps caught (of 10) | False alarms (of 3) | Avg score (of 6) |
+| | Traps caught (of 10) | False alarms (of 3) | Judged better (blind) |
 |---|---|---|---|
-| Plain Claude | – | – | – |
+| Plain Claude | 10 | 0 | 3 |
 | LLM Council | – | – | – |
-| **Precedent Council** | – | – | – |
+| **Precedent Council** | 10 | 0 | **7** |
 
-10 real startup failures rewritten as "my idea" + 3 real successes that looked risky. Method and raw answers in [`evals/`](evals/).
+10 real startup failures rewritten as "my idea" + 3 real successes that looked risky, graded blind. v0.1 test set turned out too easy (both catch every trap); harder cases are coming. Method, raw answers and caveats in [`evals/results/2026-11-24`](evals/results/2026-11-24/).
 
 ## What makes it different
 
