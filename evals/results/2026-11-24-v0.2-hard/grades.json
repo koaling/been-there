@@ -1,0 +1,278 @@
+{
+ "H01": {
+  "X": {
+   "mechanism": 1,
+   "verdict": 2,
+   "grounding": 1,
+   "actionable": 1,
+   "total": 5,
+   "length_words": 841,
+   "flags": "",
+   "why": "Covers lifespan well in one of five seats, but names regulation as the biggest risk; staged rollout with lifespan gate."
+  },
+  "Y": {
+   "mechanism": 2,
+   "verdict": 2,
+   "grounding": 1,
+   "actionable": 1,
+   "total": 6,
+   "length_words": 618,
+   "flags": "",
+   "why": "Makes lifespan x true net the central assumption; cohort survival test (60/120/180 days) on pilot data; Bird/Lime/Webvan precedents."
+  },
+  "better": "Y"
+ },
+ "H02": {
+  "X": {
+   "mechanism": 2,
+   "verdict": 2,
+   "grounding": 1,
+   "actionable": 1,
+   "total": 6,
+   "length_words": 579,
+   "flags": "",
+   "why": "Empty-room density problem is central; Color precedent; closed campus/event pilot measuring sessions with nearby photos."
+  },
+  "Y": {
+   "mechanism": 2,
+   "verdict": 2,
+   "grounding": 1,
+   "actionable": 1,
+   "total": 6,
+   "length_words": 929,
+   "flags": "",
+   "why": "Cold-start density front and centre with Color; adds consent/safety and event reframing; dense pilot with retention gates."
+  },
+  "better": "tie"
+ },
+ "H03": {
+  "X": {
+   "mechanism": 2,
+   "verdict": 2,
+   "grounding": 0,
+   "actionable": 1,
+   "total": 5,
+   "length_words": 841,
+   "flags": "",
+   "why": "Loaded employment cost + idle time with flat prices is the CFO's lead point; build model first; no real precedent cited."
+  },
+  "Y": {
+   "mechanism": 2,
+   "verdict": 2,
+   "grounding": 1,
+   "actionable": 1,
+   "total": 6,
+   "length_words": 625,
+   "flags": "",
+   "why": "Loaded cost and utilisation central; 1-day spreadsheet test; Zirtual (correct, hedged) and MoviePass precedents."
+  },
+  "better": "Y"
+ },
+ "H04": {
+  "X": {
+   "mechanism": 2,
+   "verdict": 2,
+   "grounding": 1,
+   "actionable": 1,
+   "total": 6,
+   "length_words": 521,
+   "flags": "",
+   "why": "Two one-way doors at once is the core point; Fab.com exact precedent; cohort table and 20-50 SKU inventory pilot."
+  },
+  "Y": {
+   "mechanism": 2,
+   "verdict": 2,
+   "grounding": 1,
+   "actionable": 1,
+   "total": 6,
+   "length_words": 792,
+   "flags": "",
+   "why": "Stacked working capital/ops/integration risk; Fab.com; pilot inventory, one country, prove core first."
+  },
+  "better": "X"
+ },
+ "H05": {
+  "X": {
+   "mechanism": 2,
+   "verdict": 2,
+   "grounding": 1,
+   "actionable": 1,
+   "total": 6,
+   "length_words": 636,
+   "flags": "",
+   "why": "Estimates courier cost vs EUR5 fee as the deciding issue; Shyp; per-order margin by cohort plus B2B seller test."
+  },
+  "Y": {
+   "mechanism": 2,
+   "verdict": 2,
+   "grounding": 1,
+   "actionable": 1,
+   "total": 6,
+   "length_words": 999,
+   "flags": "",
+   "why": "Cost-per-pickup table shows loss per order; Shyp; price tests, batching, density curve and B2B options."
+  },
+  "better": "Y"
+ },
+ "H06": {
+  "X": {
+   "mechanism": 2,
+   "verdict": 2,
+   "grounding": 1,
+   "actionable": 1,
+   "total": 6,
+   "length_words": 568,
+   "flags": "",
+   "why": "Signed vs live/GMV and 400-person burn central; Fast precedent; activation funnel and runway this week."
+  },
+  "Y": {
+   "mechanism": 2,
+   "verdict": 2,
+   "grounding": 1,
+   "actionable": 1,
+   "total": 6,
+   "length_words": 662,
+   "flags": "",
+   "why": "Opens with Fast; vanity metric and burn multiple; cut burn, measure live merchants and GMV."
+  },
+  "better": "tie"
+ },
+ "H07": {
+  "X": {
+   "mechanism": 2,
+   "verdict": 2,
+   "grounding": 1,
+   "actionable": 1,
+   "total": 6,
+   "length_words": 809,
+   "flags": "",
+   "why": "Truck capex in low-margin pizza; Zume; one-city contribution margin incl. depreciation before expansion."
+  },
+  "Y": {
+   "mechanism": 2,
+   "verdict": 2,
+   "grounding": 1,
+   "actionable": 1,
+   "total": 6,
+   "length_words": 533,
+   "flags": "",
+   "why": "Customers won't pay premium to cover trucks; Zume/Webvan/Juicero; per-order cost sheet and break-even orders per truck-hour."
+  },
+  "better": "tie"
+ },
+ "H08": {
+  "X": {
+   "mechanism": 2,
+   "verdict": 2,
+   "grounding": 1,
+   "actionable": 1,
+   "total": 6,
+   "length_words": 496,
+   "flags": "",
+   "why": "Creator pay reframed as supply retention; Vine $1.2M ask; top-20 creator calls and watch-time concentration metric."
+  },
+  "Y": {
+   "mechanism": 2,
+   "verdict": 2,
+   "grounding": 1,
+   "actionable": 1,
+   "total": 6,
+   "length_words": 690,
+   "flags": "",
+   "why": "Top creators drive growth and will leave; Vine; light manual pilot plus minors/compliance planning."
+  },
+  "better": "tie"
+ },
+ "HC1": {
+  "X": {
+   "mechanism": 2,
+   "verdict": 2,
+   "grounding": 1,
+   "actionable": 1,
+   "total": 6,
+   "length_words": 530,
+   "flags": "",
+   "why": "Paid conversion beats investor opinion; Zoom origin precedent with timing caveat; cohort retention and ask 10 paid users; flags non-compete."
+  },
+  "Y": {
+   "mechanism": 2,
+   "verdict": 2,
+   "grounding": 0,
+   "actionable": 1,
+   "total": 5,
+   "length_words": 754,
+   "flags": "Precedent alluded to (unnamed), so no grounding credit.",
+   "why": "Strong reasoning on conversion/viral loop as key evidence; keep going with metrics; precedent only alluded to, never named."
+  },
+  "better": "X"
+ },
+ "HC2": {
+  "X": {
+   "mechanism": 2,
+   "verdict": 2,
+   "grounding": 1,
+   "actionable": 1,
+   "total": 6,
+   "length_words": 590,
+   "flags": "",
+   "why": "Retention + invites outweigh rejections; Canva and Figma precedents; ask 20 top users to pay this week."
+  },
+  "Y": {
+   "mechanism": 2,
+   "verdict": 2,
+   "grounding": 0,
+   "actionable": 1,
+   "total": 5,
+   "length_words": 745,
+   "flags": "Unnamed precedent; uses emojis.",
+   "why": "Same correct read of the signal; charge for a team plan; precedent only alluded to ('a well-known design platform')."
+  },
+  "better": "X"
+ },
+ "HC3": {
+  "X": {
+   "mechanism": 2,
+   "verdict": 2,
+   "grounding": 1,
+   "actionable": 1,
+   "total": 6,
+   "length_words": 673,
+   "flags": "",
+   "why": "Follow gaming growth with full-company focus, same backend; Twitch/Mixer/FB Gaming; revenue per watch-hour sheet + call 5 streamers."
+  },
+  "Y": {
+   "mechanism": 2,
+   "verdict": 2,
+   "grounding": 1,
+   "actionable": 1,
+   "total": 6,
+   "length_words": 797,
+   "flags": "",
+   "why": "Focus on gaming but skin not fork, explains team-split and network costs; Twitch; 60-90 day experiment with criteria."
+  },
+  "better": "tie"
+ },
+ "HC4": {
+  "X": {
+   "mechanism": 2,
+   "verdict": 2,
+   "grounding": 0,
+   "actionable": 0,
+   "total": 4,
+   "length_words": 921,
+   "flags": "",
+   "why": "Supports self-cannibalisation and flags licensing/price-shock risks, but cites no precedent and gives a strategy plan rather than a cheap test."
+  },
+  "Y": {
+   "mechanism": 2,
+   "verdict": 2,
+   "grounding": 1,
+   "actionable": 1,
+   "total": 6,
+   "length_words": 575,
+   "flags": "",
+   "why": "Cannibalise gradually; Netflix/Qwikster, Blockbuster, Kodak correct; streamer vs non-streamer churn comparison and rights pricing test; 2026 caveat."
+  },
+  "better": "Y"
+ }
+}

@@ -25,7 +25,11 @@ Restate the decision in one sentence: "Decide whether X or Y, given Z". Then cla
 
 If critical context is missing (numbers, constraints, what happens if nothing is decided), ask at most 3 short questions in one message and wait. If the user says "go with what you have", state the assumptions and continue.
 
-**Quick mode** ("quick council:" or a low-stakes two-way door): skip Steps 3 and 4 and give a short verdict.
+**Hunt the unstated assumption.** Users rarely write down the fact that will kill the plan. Before Step 1, list the 2–3 numbers or behaviours the plan silently depends on (asset lifespan, cost per unit after a change, how many users must be nearby, whether creators get paid, how long customers stay) and check each one. The most dangerous assumption is usually one the user did not mention.
+
+**Output length.** Steps 0–5 are the council's working process. By default, show only the Step 6 verdict, kept under ~400 words, with precedents in 2–3 lines and one line per advisor. Show every step only in **full mode** ("full council", "consejo completo", or when the user asks to see the debate).
+
+**Quick mode** ("quick council:" or a low-stakes two-way door): skip Steps 3 and 4 and give an even shorter verdict.
 
 ## Step 1 · Precedents (the core of this skill)
 
@@ -77,7 +81,7 @@ If at least two advisors take opposite positions with medium/high confidence, ru
 
 ## Step 6 · Chair's verdict
 
-The chair weighs arguments, not votes. Arguments backed by precedents or user data outweigh opinions. Output:
+The chair weighs arguments, not votes. Arguments backed by precedents or user data outweigh opinions. Lead with the strongest evidence, whichever way it points: when there is genuine user pull (paying users, a waitlist, people using it without being asked), say so first, and present risks as things to manage rather than reasons to stop. Output:
 
 ```
 **Decision**: <one sentence>

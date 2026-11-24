@@ -10,13 +10,15 @@
 
 ## Benchmark
 
-| | Traps caught (of 10) | False alarms (of 3) | Judged better (blind) |
-|---|---|---|---|
-| Plain Claude | 10 | 0 | 3 |
-| LLM Council | – | – | – |
-| **Precedent Council** | 10 | 0 | **7** |
+**Hard set** (v0.2): 8 real failures where the fatal fact is *not* in the prompt + 4 real successes that looked risky. Graded blind.
 
-10 real startup failures rewritten as "my idea" + 3 real successes that looked risky, graded blind. v0.1 test set turned out too easy (both catch every trap); harder cases are coming. Method, raw answers and caveats in [`evals/results/2026-11-24`](evals/results/2026-11-24/).
+| | Hidden flaw found (of 8) | Rubric score (of 72) | Judged better | Avg length |
+|---|---|---|---|---|
+| Plain Claude | 7 | 66 | 1 | ~815 words |
+| **Precedent Council** | **8** | **72** | **6** | **~590 words** |
+| LLM Council | – | – | – | – |
+
+(5 ties.) Honest read: detection is close; the skill wins on real precedents (12/12 vs 8/12), cheap next steps and not being pessimistic on good ideas, while being shorter. Raw answers, grades and caveats: [`evals/results/`](evals/results/).
 
 ## What makes it different
 
@@ -52,6 +54,8 @@ The precedent library is the heart of the project. Add a company in one YAML fil
 ## Roadmap
 
 - [x] v0.1 — council, precedent schema, 10+3 evals, HTML report
+- [x] v0.2 — short default output, "hunt the unstated assumption", hard eval set (8+4)
+- [ ] Eval cases the model can't recall (fictional/recent failures, non-startup decisions)
 - [ ] 30 verified precedents (failures + survivors)
 - [ ] Publish benchmark results
 - [ ] Regulatory pack (GDPR, health, fintech, AI Act)

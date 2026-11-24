@@ -1,0 +1,134 @@
+# v0.2 "hard" set: the fatal fact is NOT stated in the prompt. Prompts are
+# framed optimistically, the way founders actually describe their plans.
+# None of these companies are in precedents/ (no leakage).
+# Never show `based_on`, `pattern` or `expected` to the model under test.
+
+- id: H01
+  kind: trap
+  based_on: bird-early-scooter-economics
+  pattern: [unit-economics]
+  prompt: >
+    Council this: dockless e-scooter rental. Each scooter costs us about €500 and
+    nets around €8 a day in rides, so it pays for itself in roughly two months.
+    Demand in our pilot city is great. We want to order 50,000 scooters and
+    launch in 40 cities this year. Go?
+  expected: Questions the hidden assumption of scooter lifespan (vandalism, theft, wear, charging costs) that breaks the payback math; suggests measuring real lifespan first.
+
+- id: H02
+  kind: trap
+  based_on: color-labs
+  pattern: [no-market-need, distribution]
+  prompt: >
+    Council this: we raised €40M before launch for a photo app with no friends
+    list: photos are shared automatically with whoever is physically near you.
+    The tech is great and the team is world-class. We plan a big national launch
+    next month. Anything we should change?
+  expected: Spots that the product needs local density of users to be useful (empty at launch), suggests seeding dense communities/events instead of a broad launch.
+
+- id: H03
+  kind: trap
+  based_on: zirtual
+  pattern: [unit-economics, labor-model, pricing]
+  prompt: >
+    Council this: we run a subscription virtual-assistant service with about 400
+    remote assistants who are freelancers today. To improve quality and stay
+    compliant we're converting them all to full-time employees next quarter.
+    Prices stay the same so we don't lose customers. Growth is strong. Sound good?
+  expected: Flags that employment costs (taxes, benefits, idle time) change the unit economics while prices stay flat; asks for a cost model/cash runway before converting.
+
+- id: H04
+  kind: trap
+  based_on: fab-com
+  pattern: [premature-scaling, unit-economics]
+  prompt: >
+    Council this: our design-products flash-sale site grew very fast. To improve
+    margins and delivery times we'll switch to buying and holding our own
+    inventory, and we're expanding into 5 European countries this year through
+    acquisitions. Investors are excited. Is this the right next step?
+  expected: Flags that two big simultaneous shifts (inventory risk + multi-country acquisitions) multiply burn before the new model is proven; suggests sequencing.
+
+- id: H05
+  kind: trap
+  based_on: shyp
+  pattern: [unit-economics, pricing]
+  prompt: >
+    Council this: on-demand shipping. A courier picks up anything from your home
+    within 20 minutes, packs it and ships it, for a flat €5 pickup fee on top of
+    carrier rates. Customers love it (NPS 80) and orders grow 20% month over
+    month. We want to raise to expand to 10 cities. Thoughts?
+  expected: Questions whether €5 covers courier time + packing per pickup (labor-heavy unit economics); asks for contribution margin per pickup before expanding.
+
+- id: H06
+  kind: trap
+  based_on: fast-checkout
+  pattern: [premature-scaling, distribution]
+  prompt: >
+    Council this: our one-click checkout startup has signed hundreds of merchants.
+    We've grown the team to 400 people so we're ready for scale. Revenue is still
+    small because merchants take a while to integrate, but that's normal. Plan:
+    raise the next round on merchant count. Good plan?
+  expected: Flags headcount/burn far ahead of revenue and merchant count as a vanity metric vs. live transaction volume; suggests cutting burn and measuring active GMV.
+
+- id: H07
+  kind: trap
+  based_on: zume-pizza
+  pattern: [overengineering, unit-economics, premature-scaling]
+  prompt: >
+    Council this: robot-assisted pizza made in our kitchens and baked in ovens
+    inside our delivery trucks on the way to the customer, so it arrives fresh.
+    We've raised a large round and the tech works. Next step: build a fleet of
+    trucks and launch in several new cities. Go big?
+  expected: Questions whether heavy capex/complexity pays off in a low-margin, commoditised product; suggests proving per-pizza economics in one city first.
+
+- id: H08
+  kind: trap
+  based_on: vine
+  pattern: [competition, retention]
+  prompt: >
+    Council this: our short-video app is the most popular among top creators and
+    teens. We're focused on growth, so monetisation and creator payouts can wait
+    until we're bigger. Some of our biggest creators keep asking for a revenue
+    share, but we don't want to distract the team. Right priorities?
+  expected: Flags that unpaid top creators will leave for platforms that pay, taking audiences with them; suggests a creator monetisation path now.
+
+# ---------- controls (real successes that looked risky; negatives included) ----------
+
+- id: HC1
+  kind: control
+  based_on: zoom
+  prompt: >
+    Council this: video conferencing for businesses. The market is dominated by
+    big, established players and investors say it's a solved problem. We're
+    engineers who built one of those products; ours connects in one click and
+    rarely drops. Freemium with a 40-minute limit, and early users are converting
+    to paid. Should we keep going?
+  expected: Does not kill it; weighs the conversion and reliability edge over "crowded market"; suggests focused growth tests.
+
+- id: HC2
+  kind: control
+  based_on: canva
+  prompt: >
+    Council this: a simple online graphic-design tool for non-designers. We
+    compete with a giant software company and dozens of investors have rejected
+    us. Our beta users come back every week and invite colleagues. Should we
+    give up?
+  expected: Does not tell them to give up; treats weekly retention + organic invites as strong signal over investor rejections.
+
+- id: HC3
+  kind: control
+  based_on: twitch
+  prompt: >
+    Council this: our general live-streaming site is stagnating, but the gaming
+    category grows every month and viewers watch for hours. We're thinking of
+    spinning gaming into its own separate site, even though it splits our small
+    team. Good idea?
+  expected: Supports focusing on the growing segment (possibly with a test), acknowledging the team-split cost.
+
+- id: HC4
+  kind: control
+  based_on: netflix-streaming
+  prompt: >
+    Council this: our DVD-by-mail subscription is profitable. Streaming is still a
+    small part of usage but growing. Should we push streaming hard, even if it
+    eats into our DVD business?
+  expected: Supports moving to streaming (self-cannibalisation before others do it), while flagging execution risks such as pricing changes and customer trust.
