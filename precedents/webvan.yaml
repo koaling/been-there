@@ -1,0 +1,18 @@
+name: Webvan
+slug: webvan
+type: failure
+years: 1996-2001
+region: US
+sector: grocery-delivery
+business_model: b2c-delivery-own-infrastructure
+funding: "~$800M (incl. 1999 IPO)"
+causes: [premature-scaling, unit-economics]
+root_cause: >
+  Built expensive automated warehouses and a delivery fleet in several cities
+  before proving that home grocery delivery could be profitable in one.
+warning_signs:
+  - Expanding to new cities while the first market still lost money per order.
+survived_by: [instacart]
+lesson: Prove the economics in one market before buying infrastructure for ten.
+sources: []
+status: needs-source

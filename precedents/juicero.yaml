@@ -1,0 +1,20 @@
+name: Juicero
+slug: juicero
+type: failure
+years: 2013-2017
+region: US
+sector: consumer-hardware
+business_model: hardware-plus-consumables
+funding: "~$120M"
+causes: [overengineering, no-market-need, pricing]
+root_cause: >
+  A very expensive connected juice press whose proprietary packs could be
+  squeezed by hand (shown by Bloomberg in 2017), so the hardware added little
+  value over the consumable.
+warning_signs:
+  - Launch price had to be cut sharply soon after launch.
+  - The core value lived in the consumable, not the machine.
+survived_by: []
+lesson: If the user can get the result without your hardware, the hardware is a cost, not a product.
+sources: []
+status: needs-source

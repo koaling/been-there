@@ -1,0 +1,148 @@
+# Disguised cases: real histories rewritten as "my idea", so the model can't
+# just recognise the company name. 10 traps + 3 controls.
+#
+# - trap:    the real company failed for `pattern`. A good council should
+#            identify the mechanism and NOT give an unconditional "go".
+# - control: the real company succeeded despite looking risky. A good council
+#            should not kill it outright (catches blanket pessimism).
+#
+# Never show `based_on`, `pattern` or `expected` to the model under test.
+
+- id: T01
+  kind: trap
+  based_on: webvan
+  pattern: [premature-scaling, unit-economics]
+  prompt: >
+    Council this: I'm launching same-day grocery delivery. We just raised a big
+    round, so instead of testing in one city we want to build our own automated
+    warehouses in 8 cities at once to get ahead of competitors. Our first city
+    loses about €4 per order right now but volume should fix that. Go big?
+  expected: Flags scaling before unit economics are proven; suggests proving one city first.
+
+- id: T02
+  kind: trap
+  based_on: moviepass
+  pattern: [pricing, unit-economics]
+  prompt: >
+    Council this: a cinema subscription for €9.99/month with unlimited films.
+    We pay cinemas the full ticket price (~€9) per visit. Most gym-style
+    subscribers don't use the product much, so we'll make money on the light
+    users. Should we launch at this price to grab the market?
+  expected: Identifies that heavy users destroy margin and adverse selection; requires caps or cost control.
+
+- id: T03
+  kind: trap
+  based_on: juicero
+  pattern: [overengineering, no-market-need]
+  prompt: >
+    Council this: a €600 Wi-Fi kitchen device that presses our sealed fresh-juice
+    packs, with QR verification for freshness. Investors love the hardware.
+    In tests, some users noticed you can squeeze the packs by hand and get almost
+    the same juice. Is that a problem or should we just ship?
+  expected: Recognises the hardware adds little value over the consumable; questions the device itself.
+
+- id: T04
+  kind: trap
+  based_on: quibi
+  pattern: [no-market-need, competition]
+  prompt: >
+    Council this: a paid app (€5/month) of premium 7-minute episodes made by
+    famous directors, designed for watching on the phone while commuting. We have
+    a large budget for content. Short free video is everywhere, but ours is
+    premium. Should we bet the budget on launch content?
+  expected: Challenges willingness to pay vs free alternatives and the unvalidated usage moment; suggests cheap validation.
+
+- id: T05
+  kind: trap
+  based_on: homejoy
+  pattern: [labor-model, retention, pricing]
+  prompt: >
+    Council this: an app for booking home cleaners. To grow fast we offer a €19
+    first cleaning (normal price €80), and cleaners are freelancers paid per job.
+    Many customers book once and then hire the cleaner directly. Should we double
+    the discount budget to accelerate growth?
+  expected: Flags retention leakage (disintermediation), discount-driven growth and worker-model risk.
+
+- id: T06
+  kind: trap
+  based_on: munchery
+  pattern: [unit-economics, premature-scaling]
+  prompt: >
+    Council this: chef-cooked meals delivered daily from our own central kitchens.
+    Food waste is about 20% because we cook before knowing demand, and delivery
+    costs eat most of the margin. We want to open kitchens in 3 more cities to
+    reach scale. Good plan?
+  expected: Identifies negative unit economics (waste + delivery) that scale amplifies.
+
+- id: T07
+  kind: trap
+  based_on: pets-com
+  pattern: [unit-economics, pricing, distribution]
+  prompt: >
+    Council this: an online pet store selling big bags of dog food and cat litter
+    with free shipping, priced below supermarkets to win customers, plus a large
+    TV ad campaign. Shipping a 15 kg bag costs us more than our margin. Volume
+    will fix it, right?
+  expected: Flags heavy low-margin goods + free shipping + below-cost pricing; ad spend amplifies losses.
+
+- id: T08
+  kind: trap
+  based_on: rdio
+  pattern: [competition, distribution]
+  prompt: >
+    Council this: a music streaming app with a much nicer design and better social
+    features than the market leader, same catalogue and same price. Our marketing
+    budget is a fraction of theirs. Is better design enough to win?
+  expected: Explains that a better UX alone rarely beats a leader with same catalogue/price and far bigger distribution.
+
+- id: T09
+  kind: trap
+  based_on: google-glass-consumer
+  pattern: [trust-privacy, no-market-need]
+  prompt: >
+    Council this: consumer smart glasses with an always-available camera, sold to
+    the general public at €1,400. Early testers love it, but people around them
+    feel uncomfortable being recorded, and some bars have banned them. Launch to
+    consumers now?
+  expected: Flags social acceptance/privacy as a market-level blocker; suggests narrower (e.g. enterprise) use.
+
+- id: T10
+  kind: trap
+  based_on: katerra
+  pattern: [premature-scaling, overengineering]
+  prompt: >
+    Council this: we want to "fix construction" by doing everything ourselves:
+    design, factory-built components, materials supply and on-site building, in
+    many projects at once. We have large funding. Our first projects ran late and
+    over budget but we think owning the whole chain will fix it. Proceed?
+  expected: Flags vertical integration across too many hard problems at once before any piece works.
+
+# ---------- controls (real successes that looked risky) ----------
+
+- id: C01
+  kind: control
+  based_on: airbnb
+  prompt: >
+    Council this: a website where people rent a spare room or air mattress in
+    their home to strangers for a few nights, starting with events where hotels
+    are sold out. Everyone says nobody will sleep in a stranger's home. Should
+    we keep going? We have a few paying hosts and guests already.
+  expected: Does not kill it; sees real early paying usage and suggests trust mechanisms / focused tests.
+
+- id: C02
+  kind: control
+  based_on: dropbox
+  prompt: >
+    Council this: a file-sync tool that "just works" across computers. The market
+    is crowded with backup and sync products. Our demo video got a huge waitlist
+    in a few days. Is it too late to enter?
+  expected: Does not dismiss due to crowded market; weights strong demand signal and simplicity advantage.
+
+- id: C03
+  kind: control
+  based_on: slack
+  prompt: >
+    Council this: our online game is failing, but the internal chat tool we built
+    for our own team is loved by everyone who tries it. Should we shut the game
+    and turn the chat tool into the product?
+  expected: Supports the pivot (or a fast test of it) based on genuine pull from users.

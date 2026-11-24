@@ -1,0 +1,16 @@
+name: Instacart
+slug: instacart
+type: survivor
+years: 2012-
+region: US
+sector: grocery-delivery
+business_model: marketplace-asset-light
+causes: [premature-scaling, unit-economics]
+root_cause: >
+  Faced the same grocery-delivery economics as Webvan but avoided owning
+  warehouses or inventory: shoppers picked orders inside existing stores and
+  retailers became partners instead of competitors.
+survived_by: []
+lesson: Rent the infrastructure that already exists until demand forces you to own it.
+sources: []
+status: needs-source

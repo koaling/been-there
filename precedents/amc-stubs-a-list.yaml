@@ -1,0 +1,16 @@
+name: AMC Stubs A-List
+slug: amc-stubs-a-list
+type: survivor
+years: 2018-
+region: US
+sector: entertainment-subscription
+business_model: b2c-subscription
+causes: [pricing, unit-economics]
+root_cause: >
+  A movie subscription run by the cinema owner itself, with a usage cap
+  (a few films per week) and revenue from concessions, so it didn't pay a
+  third party full price for every ticket.
+survived_by: []
+lesson: Subscriptions work when you control the cost of what you resell, or cap it.
+sources: []
+status: needs-source

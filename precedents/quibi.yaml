@@ -1,0 +1,20 @@
+name: Quibi
+slug: quibi
+type: failure
+years: 2018-2020
+region: US
+sector: streaming-media
+business_model: b2c-subscription
+funding: "~$1.75B"
+causes: [no-market-need, competition, timing]
+root_cause: >
+  Paid premium short-form video for phones, competing with free short video
+  (YouTube, TikTok) and launching in April 2020, when commutes, its main use
+  case, disappeared. It shut down about six months after launch.
+warning_signs:
+  - Product thesis relied on a usage moment (commuting) nobody had validated with paying users.
+  - Early limits on sharing and watching on TV in a social, multi-screen market.
+survived_by: []
+lesson: Money can't buy a habit; test willingness to pay against the free alternative first.
+sources: []
+status: needs-source

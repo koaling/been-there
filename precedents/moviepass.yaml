@@ -1,0 +1,20 @@
+name: MoviePass
+slug: moviepass
+type: failure
+years: 2011-2020
+region: US
+sector: entertainment-subscription
+business_model: b2c-subscription
+funding: "Acquired by Helios and Matheson (2017-2018)"
+causes: [pricing, unit-economics]
+root_cause: >
+  Cut the subscription to about $10/month for (nearly) unlimited movie tickets
+  while paying cinemas close to full price for each ticket, so every heavy user
+  increased losses.
+warning_signs:
+  - Subscriber growth celebrated while cost per subscriber exceeded the fee.
+  - Emergency restrictions on usage shortly after the price cut.
+survived_by: [amc-stubs-a-list]
+lesson: A price that only works if customers don't use the product is not a business model.
+sources: []
+status: needs-source
