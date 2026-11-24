@@ -7,10 +7,22 @@ sector: entertainment-subscription
 business_model: b2c-subscription
 causes: [pricing, unit-economics]
 root_cause: >
-  A movie subscription run by the cinema owner itself, with a usage cap
-  (a few films per week) and revenue from concessions, so it didn't pay a
-  third party full price for every ticket.
+  Launched in June 2018 as a rival to MoviePass at about twice the price
+  ($19.95/month) with a cap of three films per week. Because AMC owns the
+  cinemas, it was "essentially paying itself" for tickets, kept the concession
+  revenue, and priced the plan from its own data on how often subscribers go.
+warning_signs:
+  - AMC estimated subscribers needed to average about 2.5-3 visits a month for the plan to stay profitable, so usage had to be monitored.
 survived_by: []
-lesson: Subscriptions work when you control the cost of what you resell, or cap it.
-sources: []
-status: needs-source
+lesson: Subscriptions work when you control the cost of what you resell, cap usage, and price from real usage data.
+sources:
+  - type: news
+    title: "AMC Theatres CEO on why A-List will be profitable, unlike MoviePass (TheWrap, 2018)"
+    url: https://www.thewrap.com/amc-theatres-ceo-on-why-new-monthly-subscription-plan-will-be-profitable-unlike-moviepass
+  - type: analysis
+    title: "Here's why AMC Entertainment's A-List service is succeeding (The Motley Fool, 2019)"
+    url: https://www.fool.com/investing/2019/01/06/heres-why-amc-entertainments-a-list-service-is-suc.aspx
+  - type: news
+    title: "AMC Theaters' movie subscription hits 800,000 members (MediaPost)"
+    url: https://www.mediapost.com/publications/article/336093/amc-theaters-movie-subscription-hits-800000-memb.html
+status: verified

@@ -25,6 +25,7 @@ sources:
   - type: founder-postmortem | news | analysis | ai-generated
     title: ...
     url: ...
+notes: Optional context (e.g. the brand was relaunched later).
 status: needs-source     # needs-source | verified
 ```
 

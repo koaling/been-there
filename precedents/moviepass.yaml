@@ -1,20 +1,34 @@
 name: MoviePass
 slug: moviepass
 type: failure
-years: 2011-2020
+years: 2011-2019
 region: US
 sector: entertainment-subscription
 business_model: b2c-subscription
-funding: "Acquired by Helios and Matheson (2017-2018)"
+funding: "Majority-owned by Helios and Matheson Analytics from 2017 (parent filed Chapter 7 in 2020)"
 causes: [pricing, unit-economics]
 root_cause: >
-  Cut the subscription to about $10/month for (nearly) unlimited movie tickets
-  while paying cinemas close to full price for each ticket, so every heavy user
-  increased losses.
+  In August 2017 it cut the price to $9.95/month for one film per day while
+  paying cinemas the full ticket price, so it lost money as soon as a
+  subscriber went twice a month. The most frequent moviegoers signed up first,
+  and theatre chains refused to share concession revenue.
 warning_signs:
-  - Subscriber growth celebrated while cost per subscriber exceeded the fee.
-  - Emergency restrictions on usage shortly after the price cut.
+  - Losses rose with every new subscriber; the parent said monthly losses would grow as the service became more popular.
+  - Repeated emergency changes in 2018 (price rise to $14.95, blackouts of new releases, then 3 films a month).
 survived_by: [amc-stubs-a-list]
 lesson: A price that only works if customers don't use the product is not a business model.
-sources: []
-status: needs-source
+sources:
+  - type: news
+    title: "MoviePass drops price to $9.95 and pays theaters full price (Fortune, 2017)"
+    url: https://fortune.com/2017/08/15/moviepass-movie-ticket-subscriptions-10/
+  - type: news
+    title: "MoviePass: See it before it leaves theatres (The Economist, 2018)"
+    url: https://econ.st/2KQz06d
+  - type: news
+    title: "MoviePass shuts down for good (Fortune, 2019)"
+    url: https://fortune.com/2019/09/13/moviepass-shuts-down-for-good/
+  - type: news
+    title: "MoviePass parent company files for liquidation (Fortune, 2020)"
+    url: https://fortune.com/2020/01/29/moviepass-parent-company-liquidation-bankruptcy/
+notes: The brand was later relaunched under different ownership; this entry covers the 2017-2019 model.
+status: verified

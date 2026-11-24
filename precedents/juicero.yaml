@@ -5,16 +5,27 @@ years: 2013-2017
 region: US
 sector: consumer-hardware
 business_model: hardware-plus-consumables
-funding: "~$120M"
+funding: "~$120M (Google Ventures, Kleiner Perkins, Campbell Soup, others)"
 causes: [overengineering, no-market-need, pricing]
 root_cause: >
-  A very expensive connected juice press whose proprietary packs could be
-  squeezed by hand (shown by Bloomberg in 2017), so the hardware added little
-  value over the consumable.
+  An internet-connected juice press (launched in 2016 at $699, cut to $400) that
+  only worked with its own $5-8 produce packs. In April 2017 Bloomberg showed the
+  packs could be squeezed by hand with nearly the same result, so the expensive
+  hardware added little over the consumable. It shut down in September 2017.
 warning_signs:
-  - Launch price had to be cut sharply soon after launch.
-  - The core value lived in the consumable, not the machine.
+  - Price cut from $699 to $400 within months, with plans to go lower.
+  - Founder replaced as CEO before the Bloomberg story.
+  - The value lived in the consumable, not in the machine.
 survived_by: []
-lesson: If the user can get the result without your hardware, the hardware is a cost, not a product.
-sources: []
-status: needs-source
+lesson: If customers can get the result without your hardware, the hardware is a cost, not a product.
+sources:
+  - type: news
+    title: "Juicero closes, seeks a buyer as high-priced machine falters (Bloomberg, 2017)"
+    url: https://www.bloombergquint.com/technology/2017/09/01/startup-juicero-shutters-operations-and-plans-to-seek-a-buyer
+  - type: news
+    title: "RIP Juicero, the $400 venture-backed juice machine (TechCrunch, 2017)"
+    url: https://techcrunch.com/2017/09/01/rip-juicero-the-400-venture-backed-juice-machine
+  - type: news
+    title: "Juicero is shutting down, draining VCs of $120 million (Axios, 2017)"
+    url: https://www.axios.com/wi-fi-juice-maker-juicero-is-shutting-down-2480399093.html
+status: verified

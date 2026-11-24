@@ -5,14 +5,30 @@ years: 1996-2001
 region: US
 sector: grocery-delivery
 business_model: b2c-delivery-own-infrastructure
-funding: "~$800M (incl. 1999 IPO)"
+funding: "Raised and lost over $800M (VC + 1999 IPO)"
 causes: [premature-scaling, unit-economics]
 root_cause: >
-  Built expensive automated warehouses and a delivery fleet in several cities
-  before proving that home grocery delivery could be profitable in one.
+  Signed a ~$1B contract to build automated warehouses (~$30-35M each) for a
+  26-city plan and expanded to new cities while the first market (San Francisco)
+  was still unprofitable. Warehouses were sized for far more orders than it got,
+  and delivery density per route never became high enough.
 warning_signs:
-  - Expanding to new cities while the first market still lost money per order.
+  - Expanding to Atlanta and other cities while San Francisco was still "wobbly".
+  - Warehouses built for capacity well above actual daily orders.
+  - Acquired HomeGrocer, another loss-making grocery delivery company, in 2000.
 survived_by: [instacart]
-lesson: Prove the economics in one market before buying infrastructure for ten.
-sources: []
-status: needs-source
+lesson: Prove delivery density and per-order economics in one market before building infrastructure for many.
+sources:
+  - type: founder-postmortem
+    title: "Where Webvan Failed And How Home Delivery 2.0 Could Succeed (Peter Relan, TechCrunch, 2013)"
+    url: https://techcrunch.com/2013/09/27/why-Webvan-failed-and-how-home-delivery-2-0-is-addressing-the-problems
+  - type: news
+    title: "From the ashes of a startup, Amazon builds grocery business (NBC News) — interviews with former Webvan executives"
+    url: https://www.nbcnews.com/tech/tech-news/ashes-start-amazon-builds-grocery-business-flna6c10339299
+  - type: analysis
+    title: "Where Webvan Went Wrong (TidBITS, 2001)"
+    url: https://tidbits.com/2001/07/16/where-webvan-went-wrong/
+  - type: analysis
+    title: "Webvan (Wikipedia)"
+    url: https://en.wikipedia.org/wiki/Webvan
+status: verified

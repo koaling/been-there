@@ -5,16 +5,31 @@ years: 2018-2020
 region: US
 sector: streaming-media
 business_model: b2c-subscription
-funding: "~$1.75B"
+funding: "$1.75B raised (about $350M reportedly returned to investors)"
 causes: [no-market-need, competition, timing]
 root_cause: >
-  Paid premium short-form video for phones, competing with free short video
-  (YouTube, TikTok) and launching in April 2020, when commutes, its main use
-  case, disappeared. It shut down about six months after launch.
+  Paid premium short-form video (episodes under 10 minutes) designed for phones
+  and on-the-go moments, launched in April 2020 when people were at home
+  watching TV, without TV casting at launch, in a crowded streaming market and
+  against free short video. Its founders' own shutdown letter named two
+  possible causes: the idea wasn't strong enough to justify a standalone
+  service, or the timing. It announced its shutdown about six months after launch.
 warning_signs:
-  - Product thesis relied on a usage moment (commuting) nobody had validated with paying users.
-  - Early limits on sharing and watching on TV in a social, multi-screen market.
+  - Core usage moment (commuting, waiting in line) never validated with paying users.
+  - Low conversion from the 90-day free trial to paid subscriptions.
 survived_by: []
-lesson: Money can't buy a habit; test willingness to pay against the free alternative first.
-sources: []
-status: needs-source
+lesson: Money can't buy a habit; test willingness to pay against the free alternative before funding the content.
+sources:
+  - type: founder-postmortem
+    title: "Quibi shutdown letter by Jeffrey Katzenberg and Meg Whitman, as reported by Entrepreneur/PCMag (2020)"
+    url: https://entrepreneur.com/business-news/quibi-is-shutting-down-after-6-disappointing-months/358243
+  - type: news
+    title: "Short-video app Quibi shutting down just months after launch (AP via PBS, 2020)"
+    url: https://www.pbs.org/newshour/arts/short-video-app-quibi-shutting-down-just-months-after-launch
+  - type: news
+    title: "Quibi is shutting down just months after launching (NBC News, 2020)"
+    url: https://www.nbcnews.com/news/all/quibi-shutting-down-just-months-after-launching-n1244215
+  - type: analysis
+    title: "Quibi shuts down: Why the $1.75 billion streaming app failed (Yahoo Finance, 2020)"
+    url: https://au.news.yahoo.com/quibi-shuts-down-why-the-175-billion-streaming-app-failed-104534579.html
+status: verified

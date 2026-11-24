@@ -7,10 +7,23 @@ sector: grocery-delivery
 business_model: marketplace-asset-light
 causes: [premature-scaling, unit-economics]
 root_cause: >
-  Faced the same grocery-delivery economics as Webvan but avoided owning
-  warehouses or inventory: shoppers picked orders inside existing stores and
-  retailers became partners instead of competitors.
+  Faced the same grocery-delivery economics that sank Webvan, but owned no
+  warehouses, trucks or inventory: shoppers picked orders from existing
+  supermarkets and delivered them in their own vehicles. Entering a new city
+  meant digitising local stores' inventory and recruiting shoppers, not building
+  infrastructure, and retailers became paying partners.
+warning_signs:
+  - Still had to fight thin grocery margins (fees and shopper pay were cut at times).
 survived_by: []
-lesson: Rent the infrastructure that already exists until demand forces you to own it.
-sources: []
-status: needs-source
+lesson: Use existing infrastructure as your "warehouse" until demand forces you to own it.
+sources:
+  - type: analysis
+    title: "Unpacking the grocery stack (a16z, investor in Instacart)"
+    url: https://a16z.com/announcement/unpacking-the-grocery-stack/
+  - type: news
+    title: "This ex-Amazon engineer wants to outsmart Jeff Bezos (Fortune, 2013)"
+    url: https://fortune.com/2013/06/18/this-ex-amazon-engineer-wants-to-outsmart-jeff-bezos/
+  - type: analysis
+    title: "Grocery Delivery: 2nd Time's the Charm? Instacart vs. Webvan (Harvard Digital Initiative)"
+    url: https://d3.harvard.edu/platform-rctom/submission/grocery-delivery-2nd-times-the-charm-instacart-vs-webvan
+status: verified
