@@ -82,10 +82,12 @@ Keys:
   .m{display:grid;grid-template-columns:92px 1fr;gap:12px;align-items:start;border-radius:20px;padding:14px;background:var(--mc-soft);border:1.5px solid var(--mc-line)}
   .m .av{display:flex;flex-direction:column;align-items:center}
   .m .nick{font-weight:800;font-size:15px;font-family:ui-rounded,"SF Pro Rounded",sans-serif}
-  .m .role{font-size:12px;font-weight:600;color:var(--muted);line-height:1.25;text-align:center}
+  .m .head{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;margin-bottom:8px}
+  .m .role{font-family:ui-rounded,"SF Pro Rounded","Nunito",sans-serif;font-size:16px;font-weight:800;color:var(--mc-ink);line-height:1.2}
+  .m .who-says{font-size:12.5px;color:var(--muted);margin:-4px 0 8px}
   .m .bubble{background:#fff;border-radius:16px;padding:10px 12px;font-size:14.5px;position:relative;box-shadow:0 2px 8px -4px rgba(35,28,58,.2)}
   .m .bubble::before{content:"";position:absolute;left:-7px;top:18px;border:7px solid transparent;border-right-color:#fff;border-left:0}
-  .pos{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;border-radius:999px;padding:3px 10px;margin-bottom:8px}
+  .pos{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;border-radius:999px;padding:3px 10px}
   .pos.for{background:var(--go-soft);color:var(--go)} .pos.against{background:var(--stop-soft);color:var(--stop)} .pos.depends{background:var(--test-soft);color:#B67A00}
   .op{display:inline-block;font-size:11px;font-weight:700;color:var(--muted);background:#F2F0F6;border-radius:999px;padding:1px 8px;margin-left:4px}
   .mascot{display:block;overflow:visible}
@@ -252,13 +254,15 @@ function mascot(key, size=120){
         todo:'What to do now',test:'Assumption to test',next:'Next 48 h',kill:'Kill criterion',conf:'confidence',verdict:'Verdict',
         for:'For',against:'Against',depends:'Depends',op:'opinion',chairs:'chairs the crew',
         roles:{devil:"Devil's advocate",first:'First principles',expansion:'Expansionist',outsider:'Outsider',executor:'Executor',chair:'Chair',finance:'Finance',risk:'Risk & compliance',customer:'Customer',technical:'Technical',investor:'Investor / partner',people:'People'},
-        tone:{go:'Go',stop:"Don't",test:'Test first'},foot:'Precedents are evidence, not predictions'},
+        tone:{go:'Go',stop:"Don't",test:'Test first'},
+        persona:{devil:'Looks for how it dies',first:'Asks what problem you really solve',expansion:'Sees the upside others miss',outsider:'Asks what a newcomer would ask',executor:'What happens tomorrow at 9:00',chair:'Weighs arguments, not votes',finance:'Follows the money',risk:'Reads the small print',customer:'Speaks for the buyer',technical:'Checks it can be built',investor:'Thinks like whoever funds it',people:'Thinks about the team'},foot:'Precedents are evidence, not predictions'},
     es:{crew:'La Pandilla',agree:'En qué coinciden',dis:'Desacuerdo real',prec:'Quién ya pasó por aquí',fell:'Cayó',surv:'Sobrevivió',
         none:'Ningún precedente se parece lo suficiente. Mejor ninguno que uno forzado.',pm:'Pre-mortem · han pasado 12 meses y fracasó porque…',
         todo:'Qué hacer ahora',test:'Supuesto a comprobar',next:'Próximas 48 h',kill:'Criterio de abandono',conf:'confianza',verdict:'Veredicto',
         for:'A favor',against:'En contra',depends:'Depende',op:'opinión',chairs:'preside la pandilla',
         roles:{devil:'Abogado del diablo',first:'Primeros principios',expansion:'Expansionista',outsider:'Forastero',executor:'Ejecutor',chair:'Presidencia',finance:'Finanzas',risk:'Riesgo y cumplimiento',customer:'Cliente',technical:'Técnico',investor:'Inversor / socio',people:'Personas'},
-        tone:{go:'Adelante',stop:'No lo hagas',test:'Primero, prueba'},foot:'Los precedentes son evidencias, no predicciones'}
+        tone:{go:'Adelante',stop:'No lo hagas',test:'Primero, prueba'},
+        persona:{devil:'Busca cómo puede morir el plan',first:'Pregunta qué problema resuelves de verdad',expansion:'Ve el potencial que otros no ven',outsider:'Pregunta lo que preguntaría alguien de fuera',executor:'Qué pasa mañana a las 9:00',chair:'Pesa argumentos, no votos',finance:'Sigue el dinero',risk:'Lee la letra pequeña',customer:'Habla por el cliente',technical:'Comprueba que se puede construir',investor:'Piensa como quien pone el dinero',people:'Piensa en el equipo'},foot:'Los precedentes son evidencias, no predicciones'}
   };
   const t = T[d.lang] || T.en;
   const tones = {go:['var(--go)','var(--go-soft)','🚀'],stop:['var(--stop)','var(--stop-soft)','✋'],test:['var(--test)','var(--test-soft)','🧪']};
@@ -308,9 +312,10 @@ function mascot(key, size=120){
       <div class="tally">${['for','depends','against'].map(k=>`<i style="width:${cnt[k]/tot*100}%;background:var(--${k==='for'?'go':k==='against'?'stop':'test'})"></i>`).join('')}</div>
       <div class="tally-legend">${['for','depends','against'].map(k=>`<span><b style="background:var(--${k==='for'?'go':k==='against'?'stop':'test'})"></b>${esc(t[k])} · ${cnt[k]}</span>`).join('')}</div>
       <div class="crew">${adv.map(a => {const c = CREW[a.key]; return `
-        <article class="m" style="--mc-soft:${soft(c.c[1])};--mc-line:${line(c.c[1])}">
-          <div class="av">${mascot(a.key,84)}<div class="nick">${esc(c.nick)}</div><div class="role">${esc(t.roles[a.key]||a.name)}</div></div>
-          <div><span class="pos ${esc(a.position)}">${esc(t[a.position]||a.position)}</span>
+        <article class="m" style="--mc-soft:${soft(c.c[1])};--mc-line:${line(c.c[1])};--mc-ink:${c.c[2]}">
+          <div class="av">${mascot(a.key,84)}<div class="nick">${esc(c.nick)}</div></div>
+          <div><div class="head"><span class="role">${esc(t.roles[a.key]||a.name)}</span><span class="pos ${esc(a.position)}">${esc(t[a.position]||a.position)}</span></div>
+            <div class="who-says">${esc(t.persona[a.key]||'')}</div>
             <div class="bubble">${esc(a.line)}${a.opinion?`<span class="op">${esc(t.op)}</span>`:''}</div></div>
         </article>`}).join('')}</div>
     </section>

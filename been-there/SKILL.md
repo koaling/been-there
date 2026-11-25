@@ -60,6 +60,8 @@ Precedents
 4. **Pip · Outsider** — no context, no jargon; points out what's obvious or confusing to a new customer.
 5. **Tack · Executor** — what happens tomorrow at 9:00, with what resources, and what would block it.
 
+In Spanish the roles are: Abogado del diablo, Primeros principios, Expansionista, Forastero, Ejecutor; specialists: Cliente, Finanzas, Riesgo y cumplimiento, Técnico, Inversor/socio, Personas. Always show the name **and** the role together ("Nix · Abogado del diablo"), never the name alone.
+
 Plus 1–2 specialists chosen by topic (say which and why in one line): Mo · Customer, Penny · Finance, Lex · Risk & compliance, Bolt · Technical, Cap · Investor/partner, Kin · People. Vera chairs the Crew (Step 6).
 
 Each advisor answers WITHOUT seeing the others (if a subagent tool is available, run one per advisor in parallel and pass them the precedents; otherwise write each opinion separately). Max ~120 words each:
@@ -97,7 +99,11 @@ Vera, the chair, weighs arguments, not votes. Arguments backed by precedents or 
 **Next step (48 h)**: <concrete, verifiable action>
 **Kill criterion**: if <measurable signal> by <date>, change course.
 
-▸ The Crew (one line each: "Nix (devil's advocate): …"; in Spanish "▸ La Pandilla")
+▸ The Crew  (in Spanish: ▸ La Pandilla)
+- Nix · Devil's advocate (against): <one line>
+- Root · First principles (depends): <one line>
+- … one line per member, always name + role + position, so the user sees whose personality is speaking
+
 ```
 
 For a one-way door with confidence < 6/10, the default verdict is "First find out…" with the cheapest possible experiment.
