@@ -1,0 +1,24 @@
+name: Build skill ZIP
+
+# Keeps dist/been-there.zip (the file people upload to Claude) in sync with been-there/.
+on:
+  push:
+    branches: [main]
+    paths: ["been-there/**"]
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: ./scripts/build_zip.sh
+      - run: |
+          if git diff --quiet --exit-code -- dist/been-there.zip; then exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dist/been-there.zip
+          git commit -m "Rebuild dist/been-there.zip"
+          git push

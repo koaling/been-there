@@ -59,28 +59,54 @@ Honest read: Claude is already good at spotting flaws. Been There's edge is a ti
 
 ## Install
 
-**Claude Code (plugin, one command):**
+Been There is one thing packaged two ways: a **skill** for the Claude app (web, desktop and mobile chats) and a **plugin** for Claude Code. What's inside is the same. Pick the row that matches where you use Claude:
 
-```
-/plugin install been-there --marketplace koaling/been-there
-```
+| Where you use Claude | Install | How |
+|---|---|---|
+| **Claude app chats**: claude.ai, Claude Desktop, iPhone/Android | Skill (ZIP) | 1. [Download `been-there.zip`](https://github.com/koaling/been-there/raw/main/dist/been-there.zip) (don't unzip it).<br>2. In Claude, open **Settings → Capabilities → Skills** and upload the ZIP.<br>3. Done. The mobile app picks it up from your account; you can't upload from the phone, but you can use it there. |
+| **Claude Code**: terminal, VS Code, JetBrains, or the Code tab in Claude Desktop | Plugin | Type these two lines in Claude Code, one at a time:<br>`/plugin marketplace add koaling/been-there`<br>`/plugin install been-there@been-there`<br>Then restart Claude Code. |
 
-Or from your shell:
+Don't see **Skills** in settings? Your plan or your organization may not have it enabled yet. Menu names can change slightly between app versions.
 
-```
-claude plugin marketplace add koaling/been-there
-claude plugin install been-there@been-there
-```
+**Check it works:** start a new chat and type `Been there? We want to open a second shop next month.` You should get a **Verdict** with a confidence score and a list called **The Crew**. If Claude just answers normally, the skill isn't on: check the toggle in Settings → Capabilities → Skills.
 
-**Any Claude surface with skills:** copy the [`been-there/`](been-there/) folder into `~/.claude/skills/been-there/`, or ask Claude: `Install this Claude skill: https://github.com/koaling/been-there`.
+**Update:** in the app, delete the old skill and upload the new ZIP. In Claude Code: `/plugin marketplace update been-there`, then `/plugin update been-there@been-there`.
 
 ## Use
 
+Write your plan in a normal chat and start with a trigger phrase. That's it.
+
+**Trigger phrases:** `Been there?`, `Has anyone tried this?`, `Pressure-test this:`, `Pre-mortem this:`, `Where am I wrong?`. In Spanish: `¿Alguien lo ha intentado?`, `Ponlo a prueba:`, `Dime dónde me equivoco`.
+
+**Examples you can copy:**
+
 ```
-Been there? We want to switch all customers from per-seat pricing to a flat €99/month.
+Been there? We're a 6-person agency. We want to stop client work and build our own SaaS, paid from savings (8 months of runway).
+```
+```
+Pressure-test this: hire a VP of Sales now. The founders close every deal themselves today, around €20k per year per customer.
+```
+```
+Where am I wrong? Our café is full at weekends, so we're opening a second one in another neighbourhood.
+```
+```
+Has anyone tried this? Switching all customers from per-seat pricing to a flat €99/month.
+```
+```
+¿Alguien lo ha intentado? Lanzar una app de suscripción para padres a 4,99 €/mes sin haberla probado con usuarios.
 ```
 
-Also: `has anyone tried this?`, `pressure-test this`, `pre-mortem this`, `where am I wrong`, `quick check:`.
+**Modes:**
+
+| Type | You get |
+|---|---|
+| `Been there? <plan>` | The short verdict (under ~400 words). |
+| `Quick check: <plan>` | An even shorter answer, for small, reversible decisions. |
+| `Full review: <plan>` | Every step: precedents, each Crew member's opinion, the blind cross-review, the debate and the pre-mortem. |
+| After any answer: `Make the visual report` | The one-page HTML report with the Crew (see above). |
+| `Make the visual report to share with my boss for Monday's meeting` | The same report with who prepared it and who it's for, ready to share. |
+
+**Tips for a better answer:** include your numbers (price, costs, customers, runway), what happens if you do nothing, and when you have to decide. If something important is missing, Been There asks up to 3 short questions first.
 
 ## Examples
 
@@ -108,9 +134,33 @@ Una skill de Claude para decisiones importantes: cambios de precio, contratacion
 - **No es pesimista**: si hay tracción real, lo dice primero.
 - **Termina en acción**: una prueba de 48 horas y un criterio con fecha para cambiar de rumbo.
 
-Uso: `¿Alguien lo ha intentado? Queremos pasar de precio por usuario a una tarifa plana de 99 €/mes.`
+### Instalación
 
-También: `ponlo a prueba`, `dime dónde me equivoco`, `chequeo rápido:`.
+Es lo mismo empaquetado de dos formas: **skill** para los chats de la app de Claude y **plugin** para Claude Code.
+
+- **Chats de Claude (web, Claude Desktop, móvil):** [descarga `been-there.zip`](https://github.com/koaling/been-there/raw/main/dist/been-there.zip) sin descomprimirlo. En Claude, ve a **Ajustes → Capacidades → Skills** y súbelo. En el móvil aparece solo, porque va con tu cuenta. Desde el móvil no se puede subir, pero sí usar.
+- **Claude Code (terminal, VS Code o la pestaña Code de Claude Desktop):** escribe en Claude Code, de una en una:
+  `/plugin marketplace add koaling/been-there` y `/plugin install been-there@been-there`. Después reinicia Claude Code.
+
+**Para comprobar que funciona,** abre un chat nuevo y escribe `¿Alguien lo ha intentado? Abrir una segunda tienda el mes que viene.` Debe salir un **Veredicto** con su confianza y **La Pandilla**.
+
+### Uso
+
+Escribe tu plan y empieza con `¿Alguien lo ha intentado?`, `Ponlo a prueba:` o `Dime dónde me equivoco`. Ejemplos:
+
+```
+¿Alguien lo ha intentado? Somos una agencia de 6 personas y queremos dejar los clientes para crear nuestro propio SaaS con 8 meses de ahorros.
+```
+```
+Ponlo a prueba: contratar ya un director comercial. Hoy cerramos las ventas los fundadores, unos 20.000 € al año por cliente.
+```
+```
+Dime dónde me equivoco: nuestra cafetería se llena los fines de semana, así que abrimos una segunda en otro barrio.
+```
+
+Modos: `chequeo rápido: <plan>` da la respuesta más corta, y `revisión completa: <plan>` muestra todos los pasos. Después de cualquier respuesta puedes pedir `hazme el informe visual` o `hazme el informe para compartirlo con mi jefe en la reunión del lunes`.
+
+Consejo: pon tus números (precio, costes, clientes, caja), qué pasa si no haces nada y cuándo tienes que decidir.
 
 Contribuir: añade una empresa en un YAML siguiendo [`precedents/SCHEMA.md`](been-there/precedents/SCHEMA.md). Se buscan especialmente casos europeos y españoles.
 
