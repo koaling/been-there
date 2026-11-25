@@ -20,5 +20,8 @@
     "post-mortem"
   ],
   "version": "0.2.0",
-  "icon": "./.claude-plugin/icon.png"
+  "icon": "./.claude-plugin/icon.png",
+  "privacyPolicyUrl": "https://github.com/koaling/been-there/blob/main/PRIVACY.md",
+  "supportUrl": "https://github.com/koaling/been-there/issues",
+  "documentationUrl": "https://github.com/koaling/been-there#readme"
 }
