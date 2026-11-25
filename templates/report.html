@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Precedent Council · Report</title>
+<title>Been There · Report</title>
 <style>
   :root{--bg:#f6f3ee;--card:#fff;--ink:#1d1b18;--muted:#756f66;--line:#e6e0d7;--for:#2f8f5b;--against:#c8442f;--depends:#c89a2f;--accent:#1d1b18}
   *{box-sizing:border-box}
@@ -44,7 +44,7 @@
 <div class="wrap" id="app"></div>
 
 <!-- Replace only this JSON when generating a report. -->
-<script id="COUNCIL_DATA" type="application/json">
+<script id="REPORT_DATA" type="application/json">
 {
   "title": "Example: launch same-day grocery delivery in 8 cities at once?",
   "date": "2026-11-24",
@@ -75,13 +75,13 @@
 </script>
 
 <script>
-  const d = JSON.parse(document.getElementById('COUNCIL_DATA').textContent);
+  const d = JSON.parse(document.getElementById('REPORT_DATA').textContent);
   const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const posLabel = {for:'For', against:'Against', depends:'Depends'};
-  document.title = 'Council · ' + d.title;
+  document.title = 'Been There · ' + d.title;
   document.getElementById('app').innerHTML = `
     <header>
-      <div class="eyebrow">Precedent Council · ${esc(d.date)}</div>
+      <div class="eyebrow">Been There · ${esc(d.date)}</div>
       <h1>${esc(d.title)}</h1>
     </header>
 
@@ -108,7 +108,7 @@
         </div>`).join('') || '<em>No strong precedent found.</em>'}
     </div></section>
 
-    <section class="card"><h2>The council</h2><table>
+    <section class="card"><h2>The panel</h2><table>
       ${(d.advisors||[]).map(a => `<tr>
         <td style="width:34%"><b>${esc(a.name)}</b></td>
         <td style="width:1%"><span class="pos ${esc(a.position)}">${esc(posLabel[a.position]||a.position)}</span></td>
@@ -124,7 +124,7 @@
       <dt>Kill criterion</dt><dd>${esc(d.kill_criterion)}</dd>
     </dl></section>
 
-    <footer>Generated with Precedent Council · precedents are illustrative, not predictions</footer>`;
+    <footer>Generated with Been There · precedents are illustrative, not predictions</footer>`;
 </script>
 </body>
 </html>

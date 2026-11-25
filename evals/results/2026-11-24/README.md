@@ -1,11 +1,12 @@
 # Run 2026-11-24 · v0.1
 
+> Note: these runs used the project's earlier working name ("Precedent Council") and the prompts started with "Council this:". The skill logic is the same; prompts in `cases*.yaml` now start with "Pressure-test this:".
+
 **Setups**
 - `plain-claude`: Claude with no skill, fresh session, prompt only.
-- `precedent-council`: same model, fresh session, with `SKILL.md` + `precedents/` (6 entries) loaded.
+- `been-there`: same model, fresh session, with `SKILL.md` + `precedents/` (6 entries) loaded.
 - Same model for both. No web search in either.
-- The original LLM Council skill was **not** tested in this run.
-
+- 
 **Grading**: blind (answers shuffled as X/Y; key in `blind_key.json`) by a separate model session using `evals/RUBRIC.md`. Raw scores are in `grades.json`.
 
 ## Results
@@ -13,7 +14,7 @@
 | | Traps caught (of 10) | False alarms (of 3) | Rubric total (of 78) | Judged better overall | Avg length |
 |---|---|---|---|---|---|
 | Plain Claude | 10 | 0 | 76 | 3 | ~815 words |
-| Precedent Council | 10 | 0 | 77 | 7 | ~2,050 words |
+| Been There | 10 | 0 | 77 | 7 | ~2,050 words |
 
 (3 ties on "better overall".)
 

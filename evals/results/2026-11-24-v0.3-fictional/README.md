@@ -1,11 +1,13 @@
 # Run 2026-11-24 · v0.2 skill · fictional set (`cases-v3.yaml`)
 
+> Note: these runs used the project's earlier working name ("Precedent Council") and the prompts started with "Council this:". The skill logic is the same; prompts in `cases*.yaml` now start with "Pressure-test this:".
+
 12 fictional cases the model can't recall: 8 traps whose fatal flaw is derivable from the prompt's own numbers or details (pricing, hiring vs runway, marketplace take rate, exclusive distributor, LTV/CAC, GDPR health data, seasonality, team overload) + 4 sound plans that look risky. Same model, fresh sessions, no web search, blind grading.
 
 | | Flaw found & central (of 8) | Rubric total (of 72) | Judged better | Avg length |
 |---|---|---|---|---|
 | Plain Claude | 8 | 71 | 3 | ~720 words |
-| Precedent Council | 8 | 72 | 4 | ~565 words |
+| Been There | 8 | 72 | 4 | ~565 words |
 
 5 ties.
 

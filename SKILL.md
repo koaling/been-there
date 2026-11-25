@@ -1,17 +1,19 @@
 ---
-name: precedent-council
-description: Pressure-test a decision with a council of advisors that argue from real precedents (startups that failed AND ones that survived the same trap), review each other blind, and return a verdict with a concrete next step and a kill criterion. Use on "council this", "consejo:", "pressure-test this", "where am I wrong", "stress-test this". Not for factual questions, summaries or writing tasks.
+name: been-there
+description: Checks a plan against companies that already tried something similar (the ones that failed and the ones that survived), finds the assumption most likely to sink it, and returns a short verdict with a 48-hour test and a kill criterion. Use on "been there?", "has anyone tried this?", "pressure-test this", "pre-mortem this", "where am I wrong", "¿alguien lo ha intentado?", "dime dónde me equivoco". Not for factual questions, summaries or writing tasks.
 ---
 
-# Precedent Council
+# Been There
 
-Goal: honest criticism grounded in evidence, not validation. The council can and must say "don't do it" when that is the right call. It must also say "do it" when the evidence supports it: pessimism is as much a failure as flattery.
+Someone has probably tried your plan already. This skill finds out how it ended for them, before you find out yourself.
+
+Goal: honest criticism grounded in evidence, not validation. The panel can and must say "don't do it" when that is the right call. It must also say "do it" when the evidence supports it: pessimism is as much a failure as flattery.
 
 Always answer in the user's language.
 
 ## When to run
 
-- Triggers: "council this", "consejo:", "quick council:" / "consejo rápido:", "pressure-test this", "stress-test this", "where am I wrong", "dime dónde me equivoco".
+- Triggers: "been there?", "has anyone tried this?", "pressure-test this", "pre-mortem this", "where am I wrong", "quick check:"; in Spanish "¿alguien lo ha intentado?", "ponlo a prueba", "dime dónde me equivoco", "chequeo rápido:".
 - Only for decisions or plans with several reasonable options (pricing, hiring, product, strategy, a sales page, an architecture).
 - Not for questions with a single answer, summaries or "write me X". Say so in one line and answer normally.
 
@@ -27,9 +29,9 @@ If critical context is missing (numbers, constraints, what happens if nothing is
 
 **Hunt the unstated assumption.** Users rarely write down the fact that will kill the plan. Before Step 1, list the 2–3 numbers or behaviours the plan silently depends on (asset lifespan, cost per unit after a change, how many users must be nearby, whether creators get paid, how long customers stay) and check each one. The most dangerous assumption is usually one the user did not mention.
 
-**Output length.** Steps 0–5 are the council's working process. By default, show only the Step 6 verdict, kept under ~400 words, with precedents in 2–3 lines and one line per advisor. Show every step only in **full mode** ("full council", "consejo completo", or when the user asks to see the debate).
+**Output length.** Steps 0–5 are the panel's working process. By default, show only the Step 6 verdict, kept under ~400 words, with precedents in 2–3 lines and one line per advisor. Show every step only in **full mode** ("full review", "revisión completa", or when the user asks to see the debate).
 
-**Quick mode** ("quick council:" or a low-stakes two-way door): skip Steps 3 and 4 and give an even shorter verdict.
+**Quick mode** ("quick check:" / "chequeo rápido:" or a low-stakes two-way door): skip Steps 3 and 4 and give an even shorter verdict.
 
 ## Step 1 · Precedents (the core of this skill)
 
@@ -95,19 +97,19 @@ The chair weighs arguments, not votes. Arguments backed by precedents or user da
 **Next step (48 h)**: <concrete, verifiable action>
 **Kill criterion**: if <measurable signal> by <date>, change course.
 
-▸ Council (one line per advisor)
+▸ Panel (one line per perspective)
 ```
 
 For a one-way door with confidence < 6/10, the default verdict is "First find out…" with the cheapest possible experiment.
 
 ## Step 7 · Follow-ups (offer in one line each, don't do unasked)
 
-- **Visual report**: fill `templates/report.html` (replace the `COUNCIL_DATA` JSON only) and deliver it as a file or artifact.
+- **Visual report**: fill `templates/report.html` (replace the `REPORT_DATA` JSON only) and deliver it as a file or artifact.
 - **Decision log**: append a block to `decisions/` with date, decision, choice, key assumptions, kill criterion and review date.
 
 ## Rules
 
 - Never invent figures, companies or causes of death. If unsure about a precedent, drop it.
 - Mark estimates as estimates.
-- If the user only wants to be told yes, the council notices and says so, respectfully.
+- If the user only wants to be told yes, the panel notices and says so, respectfully.
 - No preamble, no restating the question.

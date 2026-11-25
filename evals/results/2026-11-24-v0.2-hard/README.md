@@ -1,15 +1,17 @@
 # Run 2026-11-24 · v0.2 · hard set (`cases-v2.yaml`)
 
+> Note: these runs used the project's earlier working name ("Precedent Council") and the prompts started with "Council this:". The skill logic is the same; prompts in `cases*.yaml` now start with "Pressure-test this:".
+
 8 real failures where the fatal fact is **not** stated in the prompt (Bird, Color, Zirtual, Fab, Shyp, Fast, Zume, Vine) + 4 real successes that looked risky (Zoom, Canva, Twitch, Netflix streaming). None of them are in `precedents/`, so there's no leakage.
 
-**Setups**: `plain-claude` (no skill) vs `precedent-council` v0.2 (short default output + "hunt the unstated assumption"). Same model, fresh sessions, no web search. Blind grading by a separate session (key in `blind_key.json`).
+**Setups**: `plain-claude` (no skill) vs `been-there` v0.2 (short default output + "hunt the unstated assumption"). Same model, fresh sessions, no web search. Blind grading by a separate session (key in `blind_key.json`).
 
 ## Results
 
 | | Hidden factor found & central (of 8) | Unconditional "go" on traps | "Give up" on controls | Rubric total (of 72) | Judged better | Avg length |
 |---|---|---|---|---|---|---|
 | Plain Claude | 7 | 0 | 0 | 66 | 1 | ~815 words |
-| Precedent Council | 8 | 0 | 0 | **72** | **6** | **~590 words** |
+| Been There | 8 | 0 | 0 | **72** | **6** | **~590 words** |
 
 5 ties on "better".
 

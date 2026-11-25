@@ -1,13 +1,13 @@
 # How to run and score the evals
 
-Goal: show, with numbers, whether Precedent Council beats a baseline (e.g. the original LLM Council skill, or plain Claude) at spotting real failure patterns **without** becoming a blanket pessimist.
+Goal: show, with numbers, whether Been There beats a baseline (plain Claude, or any other decision skill) at spotting real failure patterns **without** becoming a blanket pessimist.
 
 ## Run
 
 For each case in `cases.yaml`, in a **fresh conversation**, paste only the `prompt`. Run it once with each setup:
 
-- **A — baseline**: plain Claude, or another council skill.
-- **B — precedent-council**.
+- **A — baseline**: plain Claude, or another decision skill.
+- **B — been-there**.
 
 Save each answer as `evals/results/<setup>/<id>.md`. Use the same model for both setups and note it in `results/README.md`.
 
