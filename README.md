@@ -6,7 +6,9 @@
 
 > LLM-council skills give you five opinions from the same model. Precedent Council makes them bring evidence, review each other blind, and tell you who already tried this — and how it ended.
 
-<!-- TODO: demo GIF here -->
+![Demo: Precedent Council on an e-scooter rollout](docs/demo.gif)
+
+<sub>Excerpt of a real answer from the eval run: [`H01.md`](evals/results/2026-11-24-v0.2-hard/precedent-council/H01.md).</sub>
 
 ## Benchmark
 

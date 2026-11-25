@@ -38,7 +38,7 @@ Before any advisor speaks, find precedents.
 1. Describe the decision along 4 dimensions: **market**, **business model**, **timing/context**, **failure mechanism at risk** (use the cause tags in `precedents/SCHEMA.md`).
 2. Search `precedents/*.yaml` for entries sharing tags. Then, if web search is available, search for more (founder post-mortems first; news second; AI-generated databases last and marked as weak evidence).
 3. Keep 2–4 **failures** and 1–2 **survivors**: companies that faced the same trap and made it, and what they did differently. Never present failures without survivors: a pattern that killed 5 companies and was survived by 50 is not a warning.
-4. For each precedent, state the similarity explicitly: which of the 4 dimensions match and which don't. **Do not cite a precedent that matches fewer than 2 dimensions.** If nothing qualifies, say "no strong precedent found" and continue; never force an analogy.
+4. For each precedent, state the similarity explicitly: which of the 4 dimensions match and which don't. **Do not cite a precedent that matches fewer than 2 dimensions.** If nothing qualifies, never force an analogy: drop the precedents block and the "Closest precedent" line from the output entirely (no "no precedent found" filler) and let the user's own numbers carry the argument.
 
 Output of this step (compact):
 
@@ -90,7 +90,7 @@ The chair weighs arguments, not votes. Arguments backed by precedents or user da
 **Agreement**: …
 **Real disagreement**: …
 **Assumption that matters most**: … → cheapest way to test it
-**Closest precedent**: <company> — and why you are / aren't them
+**Closest precedent**: <company> — and why you are / aren't them   ← omit this line if no precedent qualifies
 
 **Next step (48 h)**: <concrete, verifiable action>
 **Kill criterion**: if <measurable signal> by <date>, change course.
