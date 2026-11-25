@@ -38,9 +38,9 @@ Under ~400 words by default. Ask for a `full review` to see the whole reasoning.
 
 ## Meet the Crew
 
-Five regulars look at every plan, plus 1–2 specialists picked for the topic. Vera chairs and writes the verdict. For a bare idea, Scout joins first and turns it into bets you can test. Each one answers on its own before seeing the others.
+Five regulars look at every plan, plus 1–2 specialists picked for the topic. Vera chairs and writes the verdict. For a bare idea, Juno joins first and turns it into bets you can test. Each one answers on its own before seeing the others.
 
-![The Crew: Nix (devil's advocate), Root (first principles), Nova (expansionist), Pip (outsider), Tack (executor), Vera (chair), Scout (idea scout), and specialists Penny, Lex, Mo, Bolt, Cap and Kin](docs/crew.png)
+![The Crew: Nix (devil's advocate), Root (first principles), Nova (expansionist), Pip (outsider), Tack (executor), Vera (chair), Juno (idea scout), and specialists Penny, Lex, Mo, Bolt, Cap and Kin](docs/crew.png)
 
 Say `yes` to the visual report and you get a one-page HTML report with the verdict, the precedents and the Crew's positions (English or Spanish, works offline). **[See live examples →](https://koaling.github.io/been-there/)**
 
@@ -102,7 +102,7 @@ Has anyone tried this? Switching all customers from per-seat pricing to a flat �
 |---|---|
 | `Been there? <plan>` | The short verdict (under ~400 words). |
 | `Quick check: <plan>` | An even shorter answer, for small, reversible decisions. |
-| `Is this idea viable? <idea>` | **Idea mode** for a bare startup idea: Scout turns it into three testable bets (who pays, how they find you, what each customer costs), then the Crew checks each bet. |
+| `Is this idea viable? <idea>` | **Idea mode** for a bare startup idea: Juno turns it into three testable bets (who pays, how they find you, what each customer costs), then the Crew checks each bet. |
 | `Full review: <plan>` | Every step: precedents, each Crew member's opinion, the blind cross-review, the debate and the pre-mortem. |
 | After any answer: `Make the visual report` | The one-page HTML report with the Crew (see above). |
 | `Make the visual report to share with my boss for Monday's meeting` | The same report with who prepared it and who it's for, ready to share. |
@@ -159,7 +159,7 @@ Ponlo a prueba: contratar ya un director comercial. Hoy cerramos las ventas los 
 Dime dónde me equivoco: nuestra cafetería se llena los fines de semana, así que abrimos una segunda en otro barrio.
 ```
 
-Modos: `chequeo rápido: <plan>` da la respuesta más corta, `revisión completa: <plan>` muestra todos los pasos y `¿es viable esta idea? <idea>` activa el modo idea: Scout convierte la idea en tres apuestas comprobables y la Pandilla revisa cada una. Después de cualquier respuesta puedes pedir `hazme el informe visual` o `hazme el informe para compartirlo con mi jefe en la reunión del lunes`.
+Modos: `chequeo rápido: <plan>` da la respuesta más corta, `revisión completa: <plan>` muestra todos los pasos y `¿es viable esta idea? <idea>` activa el modo idea: Juno convierte la idea en tres apuestas comprobables y la Pandilla revisa cada una. Después de cualquier respuesta puedes pedir `hazme el informe visual` o `hazme el informe para compartirlo con mi jefe en la reunión del lunes`.
 
 Consejo: pon tus números (precio, costes, clientes, caja), qué pasa si no haces nada y cuándo tienes que decidir.
 

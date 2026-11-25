@@ -9,7 +9,7 @@ Keys:
 - `agreement`, `disagreement`, `key_assumption`, `next_step`, `kill_criterion`.
 - `precedents[]`: `type` failure|survivor, `name`, `years`, `note`, `match[]`, `miss[]`.
 - `advisors[]`: `role`, `name`, `position` for|against|depends, `line`, `opinion` true|false.
-  `role` picks the mascot: `devil` (Nix), `first` (Root), `expansion` (Nova), `outsider` (Pip), `executor` (Tack), `finance` (Penny), `risk` (Lex), `customer` (Mo), `technical` (Bolt), `investor` (Cap), `people` (Kin), `scout` (Scout, idea mode). The chair is Vera.
+  `role` picks the mascot: `devil` (Nix), `first` (Root), `expansion` (Nova), `outsider` (Pip), `executor` (Tack), `finance` (Penny), `risk` (Lex), `customer` (Mo), `technical` (Bolt), `investor` (Cap), `people` (Kin), `scout` (Juno, idea mode). The chair is Vera.
 - `premortem[]`: objects with `cause` and `signal` (the early warning to watch). Plain strings still work.
 
 Context, so the report makes sense to someone who wasn't in the conversation:
@@ -273,7 +273,7 @@ const CREW = {
   customer:  {nick:'Mo',    c:['#FFD1EA','#FF8FC7','#E0569D'], eyes:'happy',   mouth:'smile', arms:'hug',   acc:'heart',   tilt:-5},
   technical: {nick:'Bolt',  c:['#FFC9A8','#FF8A4C','#D9602A'], eyes:'focus',   mouth:'grin',  arms:'hold',  acc:'wrench',  tilt:2},
   investor:  {nick:'Cap',   c:['#E8C9A8','#C08457','#8E5A33'], eyes:'monocle', mouth:'smile', arms:'hips',  acc:'tophat',  tilt:0},
-  scout:     {nick:'Scout', c:['#A8DCE6','#1F8A9E','#0F5F6E'], eyes:'focus', mouth:'smile', arms:'hold', acc:'compass', tilt:3},
+  scout:     {nick:'Juno', c:['#A8DCE6','#1F8A9E','#0F5F6E'], eyes:'focus', mouth:'smile', arms:'hold', acc:'compass', tilt:3},
   people:    {nick:'Kin',   c:['#F5CDF8','#DA7FE3','#A94DB3'], eyes:'happy',   mouth:'grin',  arms:'wave',  acc:'bubbles', tilt:-2},
 };
 

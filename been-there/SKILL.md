@@ -35,14 +35,14 @@ If critical context is missing (numbers, constraints, what happens if nothing is
 
 ## Idea mode (a bare idea, not a plan)
 
-Use it when the user brings an idea rather than a plan: "is this idea viable?", "¿es viable esta idea?", or a one-liner with no price, channel or costs. A bare idea has no mechanism yet, so precedents only match on market and model and the answer drifts into the generic. Scout fixes that by turning the idea into bets first.
+Use it when the user brings an idea rather than a plan: "is this idea viable?", "¿es viable esta idea?", or a one-liner with no price, channel or costs. A bare idea has no mechanism yet, so precedents only match on market and model and the answer drifts into the generic. Juno fixes that by turning the idea into bets first.
 
-1. **Scout · Idea scout (Exploradora) speaks first.** Restate the idea as three bets, each one testable:
+1. **Juno · Idea scout (Exploradora) speaks first.** Restate the idea as three bets, each one testable:
    - **Who pays, and how badly do they need it?** (the buyer and the problem)
    - **How do they find you?** (the first channel that could bring the first 100 customers)
    - **What does each customer cost and bring in?** (rough acquisition cost vs. price × months retained)
    Then add **why you** and **why now** in one line each. If the user didn't say something a bet needs, write your best guess and mark it as assumed. Ask at most 2 questions, only if a bet would otherwise be pure invention.
-2. **Run Steps 1–6 per bet,** not on the idea as a whole. Precedents attach to the bet they match. Scout sits as one of the 1–2 specialists.
+2. **Run Steps 1–6 per bet,** not on the idea as a whole. Precedents attach to the bet they match. Juno sits as one of the 1–2 specialists.
 3. **Verdict first.** Lead with whether the idea is worth pursuing and which bet is weakest, then the rest. A first-time founder wants to know if the idea holds before reading a pre-mortem.
 4. **If no precedent matches 2 dimensions** (common for consumer social and new experiences), say so plainly. Fall back to the most common reasons startups fail: no market need, running out of cash, being outcompeted, a broken business model. Never force a match.
 5. **Positioning.** You are not a generic idea validator. Every judgement points to a real company or to an explicit assumption. No market-size guesses (TAM/SAM/SOM) unless the user gives the data.
@@ -74,9 +74,9 @@ Precedents
 4. **Pip · Outsider** — no context, no jargon; points out what's obvious or confusing to a new customer.
 5. **Tack · Executor** — what happens tomorrow at 9:00, with what resources, and what would block it.
 
-In Spanish the roles are: Abogado del diablo, Primeros principios, Expansionista, Forastero, Ejecutor; specialists: Cliente, Finanzas, Riesgo y cumplimiento, Técnico, Inversor/socio, Personas, Exploradora (Scout, solo en modo idea). Always show the name **and** the role together ("Nix · Abogado del diablo"), never the name alone.
+In Spanish the roles are: Abogado del diablo, Primeros principios, Expansionista, Forastero, Ejecutor; specialists: Cliente, Finanzas, Riesgo y cumplimiento, Técnico, Inversor/socio, Personas, Exploradora (Juno, solo en modo idea). Always show the name **and** the role together ("Nix · Abogado del diablo"), never the name alone.
 
-Plus 1–2 specialists chosen by topic (say which and why in one line): Mo · Customer, Penny · Finance, Lex · Risk & compliance, Bolt · Technical, Cap · Investor/partner, Kin · People, and Scout · Idea scout (idea mode only). Vera chairs the Crew (Step 6).
+Plus 1–2 specialists chosen by topic (say which and why in one line): Mo · Customer, Penny · Finance, Lex · Risk & compliance, Bolt · Technical, Cap · Investor/partner, Kin · People, and Juno · Idea scout (idea mode only). Vera chairs the Crew (Step 6).
 
 Each advisor answers WITHOUT seeing the others (if a subagent tool is available, run one per advisor in parallel and pass them the precedents; otherwise write each opinion separately). Max ~120 words each:
 
