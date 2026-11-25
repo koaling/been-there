@@ -1,0 +1,25 @@
+name: HomeAdvisor (formerly ServiceMagic)
+slug: homeadvisor
+type: survivor
+years: 2012-2013
+region: US
+sector: home-services-marketplace
+business_model: marketplace
+funding: "Part of IAC"
+causes: [distribution]
+root_cause: >
+  Renamed ServiceMagic to HomeAdvisor and moved domains, spending an estimated
+  $5–6M. Organic and paid search both dropped at first; it bid on both old and
+  new brand names in paid search during the transition, and a year later
+  organic traffic was 22% above pre-rename levels.
+warning_signs: []
+survived_by: []
+lesson: Budget for the dip and bridge it with paid search on old and new names; a clearer name can pay back within a year.
+sources:
+  - type: news
+    title: "HomeAdvisor name change: costs and results (Domain Name Wire, 2014)"
+    url: https://domainnamewire.com/2014/11/25/homeadvisor-name-change/
+  - type: analysis
+    title: "HomeAdvisor: paid search to overcome rebranding effects (Think with Google)"
+    url: https://thinkwithgoogle.com/marketing-strategies/search/homeadvisor-adwords
+status: verified

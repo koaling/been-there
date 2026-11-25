@@ -1,0 +1,28 @@
+name: Weight Watchers → WW
+slug: weight-watchers-ww
+type: failure
+years: 2018-2019
+region: US
+sector: consumer-health
+business_model: b2c-subscription
+funding: "Public company"
+causes: [distribution, retention]
+root_cause: >
+  Replaced a name everyone understood with initials that didn't stand for
+  anything, while shifting the message from weight loss to "wellness". Members
+  were confused, it forecast a ~10% membership drop for Q1 2019, added
+  "Weight Watchers reimagined" back to its materials and later returned to the
+  Weight Watchers name.
+warning_signs:
+  - The new name explains less than the old one.
+  - Changing name and positioning at the same time.
+survived_by: [dunkin]
+lesson: A name that says what you do is an asset; drop it only if customers already call you something else.
+sources:
+  - type: news
+    title: "Weight Watchers calls on Oprah to help sell wellness after confusing rebrand (CNBC, 2019)"
+    url: https://www.cnbc.com/2019/02/27/weight-watchers-calls-on-oprah-winfrey-to-help-sell-wellness.html
+  - type: news
+    title: "Weight Watchers lost a few pounds with name change to WW (City AM)"
+    url: https://www.cityam.com/weight-watchers-lost-few-pounds-name-change-ww-should-do/
+status: verified

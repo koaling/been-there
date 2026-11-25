@@ -121,7 +121,8 @@ Never put a figure under `given` that the user didn't give.
   .meta b{color:var(--ink);font-weight:700}
   .ask{margin:0;font-size:17px;line-height:1.5;padding-left:16px;border-left:4px solid var(--violet);color:var(--ink)}
   .facts{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
-  .facts li{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:baseline}
+  .facts li{display:grid;grid-template-columns:96px minmax(0,1fr);gap:10px;align-items:baseline}
+  .facts .kind{justify-self:start}
   .kind{font-size:11px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;border-radius:999px;padding:2px 9px;white-space:nowrap}
   .kind.given{background:var(--go-soft);color:var(--go)}.kind.assumed{background:var(--test-soft);color:#B67A00}.kind.external{background:var(--violet-soft);color:var(--violet)}
   .p a.src,.srcs a{color:var(--violet);font-weight:600;font-size:13px;text-decoration:none}

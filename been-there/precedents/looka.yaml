@@ -1,0 +1,28 @@
+name: Looka (formerly Logojoy)
+slug: looka
+type: failure
+years: 2019
+region: Canada
+sector: design-software
+business_model: b2c-saas
+funding: "~$7M"
+causes: [distribution]
+root_cause: >
+  Renamed from Logojoy to Looka and moved to a new domain at the same time as
+  expanding the product. It expected a 20–30% organic traffic dip recovering in
+  3–6 months; it lost about 80% of organic traffic, which drove roughly half of
+  revenue, and laid off most of the team. The company survived, much smaller.
+warning_signs:
+  - Half of revenue depending on organic search to the old brand and domain.
+  - Domain change bundled with a rename and a product change.
+survived_by: [homeadvisor]
+lesson: When search drives revenue, a domain change is a revenue bet; plan for the worst case, not the textbook dip.
+sources:
+  - type: news
+    title: "How one company's rebrand and domain name change led to SEO disaster (Econsultancy)"
+    url: https://econsultancy.com/how-one-companys-rebrand-and-domain-name-change-led-to-seo-disaster
+  - type: news
+    title: "Domain name change and rebrand causes one company to lose 80% of organic traffic (TheDomains, 2019)"
+    url: https://www.thedomains.com/2019/11/20/domain-change/
+notes: Not a shutdown; counted as a failure of the rename, not of the company.
+status: verified

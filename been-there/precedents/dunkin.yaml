@@ -1,0 +1,28 @@
+name: Dunkin' (dropped "Donuts")
+slug: dunkin
+type: survivor
+years: 2018-2019
+region: US
+sector: food-and-beverage
+business_model: franchise-retail
+funding: "Public company"
+causes: [distribution]
+root_cause: >
+  Dropped "Donuts" because ~60% of sales were already drinks and customers
+  already said "Dunkin'". It tested the name in ~50 stores for a year, kept its
+  pink and orange colours and font, and posted its best quarterly sales growth
+  in four years after the change.
+warning_signs: []
+survived_by: []
+lesson: Rename toward what customers already call you, test it in a few locations first, and keep the visual cues they recognise.
+sources:
+  - type: news
+    title: "Dunkin' Deletes Donuts From Its Name (NPR, 2018)"
+    url: https://www.npr.org/2018/09/26/651905960/dunkin-deletes-donuts-from-its-name
+  - type: news
+    title: "Dunkin' Donuts is officially dropping the Donuts (Business Insider, 2018)"
+    url: https://businessinsider.in/dunkin-donuts-is-officially-dropping-the-donuts-from-its-name-despite-earlier-backlash/articleshow/65954700.cms
+  - type: news
+    title: "The Dunkin' recast into beverage business pays off (1851 Franchise, 2019)"
+    url: https://1851franchise.com/the-dunkin-recast-into-beverage-business-pays-off-brand-banks-highest-sales-in-four-years-2709865
+status: verified

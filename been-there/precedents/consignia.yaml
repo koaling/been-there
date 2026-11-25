@@ -1,0 +1,26 @@
+name: Consignia (Royal Mail)
+slug: consignia
+type: failure
+years: 2001-2002
+region: EU (UK)
+sector: postal-services
+business_model: b2c-b2b-logistics
+funding: "State-owned plc"
+causes: [distribution, timing]
+root_cause: >
+  The Post Office group renamed itself Consignia in 2001 (about £2M) to sound
+  international. The public ridiculed it, the international plans were dropped,
+  and 16 months later it became Royal Mail Group again, at about £1M more.
+warning_signs:
+  - The rename justified by markets the company wasn't yet in.
+  - Customers and staff kept using the old name.
+survived_by: []
+lesson: Don't rename for markets you haven't entered; the name you already own is worth more than one you hope to grow into.
+sources:
+  - type: news
+    title: "Change of Consignia name to Royal Mail could cost £1M (Post&Parcel / FT, 2002)"
+    url: https://postandparcel.info/6311/news/change-of-consignia-name-to-royal-mail-could-cost-gbp-1m
+  - type: news
+    title: "Humbled Consignia reinvented as Royal Mail plc (The Independent via Post&Parcel, 2002)"
+    url: https://postandparcel.info/?p=6099
+status: verified

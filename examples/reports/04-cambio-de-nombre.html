@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Been There · Report</title>
+<style>
+  :root{
+    --bg:#F7F4FF;--card:#fff;--ink:#231C3A;--muted:#6E6787;--line:#ECE6FA;
+    --violet:#7C5CF0;--violet-soft:#EFEAFF;
+    --go:#1FA971;--go-soft:#E3F7EE;--stop:#E2475A;--stop-soft:#FDE8EB;--test:#E8A21B;--test-soft:#FFF4DC;
+    --r:22px;--shadow:0 1px 2px rgba(35,28,58,.04),0 8px 24px -12px rgba(35,28,58,.18);
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,sans-serif;padding:32px 16px 64px;position:relative;overflow-x:hidden}
+  body::before,body::after{content:"";position:fixed;z-index:-1;border-radius:50%;filter:blur(60px);opacity:.55}
+  body::before{width:420px;height:420px;background:#E2D8FF;top:-120px;right:-120px}
+  body::after{width:360px;height:360px;background:#FFE9C7;bottom:-140px;left:-120px}
+  .wrap{max-width:980px;margin:0 auto;display:flex;flex-direction:column;gap:20px}
+  h1,h2,h3,.display{font-family:ui-rounded,"SF Pro Rounded","Nunito","Segoe UI",sans-serif}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:-.01em}
+  .brand .dot{width:10px;height:10px;border-radius:50%;background:var(--stop);box-shadow:0 0 0 4px #FDE8EB}
+  .brand small{font-weight:600;color:var(--muted);margin-left:auto;font-size:13px}
+  h1{font-size:clamp(26px,4.6vw,40px);line-height:1.12;margin:10px 0 0;letter-spacing:-.02em}
+  h2{font-size:20px;margin:0 0 14px;display:flex;align-items:center;gap:10px;letter-spacing:-.01em}
+  h2 .count{font-size:13px;font-weight:700;color:var(--violet);background:var(--violet-soft);border-radius:999px;padding:2px 10px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:22px;box-shadow:var(--shadow)}
+  .muted{color:var(--muted)}
+
+  /* hero */
+  .hero{display:grid;grid-template-columns:auto 1fr auto;gap:22px;align-items:center;padding:26px;position:relative;overflow:hidden}
+  .hero::after{content:"";position:absolute;inset:0;background:radial-gradient(600px 200px at 100% 0,var(--tone-soft),transparent 70%);pointer-events:none}
+  .hero .who{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:12px;font-weight:700;color:var(--muted)}
+  .hero .label{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--tone);background:var(--tone-soft);border-radius:999px;padding:4px 12px}
+  .hero .verdict{font-size:clamp(22px,3.4vw,30px);font-weight:800;line-height:1.2;margin:10px 0 0;letter-spacing:-.015em}
+  .ring{position:relative;width:112px;z-index:1}
+  .ring b{position:absolute;left:0;right:0;top:0;height:112px;display:grid;place-items:center;font-size:30px;font-weight:800;font-family:ui-rounded,"SF Pro Rounded",sans-serif}
+  .ring b span{font-size:13px;color:var(--muted);font-weight:700;margin-top:34px;position:absolute}
+  .ring small{display:block;text-align:center;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+  @media(max-width:680px){.hero{grid-template-columns:1fr;text-align:center}.hero .who,.ring{margin:0 auto}}
+
+  .grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+  @media(max-width:680px){.grid2{grid-template-columns:1fr}}
+  .note{display:flex;gap:14px;align-items:flex-start}
+  .note .ic{flex:none;width:40px;height:40px;border-radius:14px;display:grid;place-items:center;font-size:20px}
+  .note h3{margin:0 0 4px;font-size:15px}
+
+  /* precedents */
+  .prec{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+  .p{border-radius:18px;padding:16px;border:1.5px solid var(--line);background:#fff;position:relative}
+  .p.failure{background:linear-gradient(180deg,#FFF6F7,#fff 60%);border-color:#F8D3D9}
+  .p.survivor{background:linear-gradient(180deg,#F1FBF6,#fff 60%);border-color:#C8EEDB}
+  .p .tag{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:3px 10px}
+  .p.failure .tag{background:var(--stop-soft);color:var(--stop)} .p.survivor .tag{background:var(--go-soft);color:var(--go)}
+  .p h3{margin:10px 0 2px;font-size:18px} .p .yrs{font-size:13px;color:var(--muted);font-weight:600}
+  .p p{margin:8px 0 10px;font-size:14.5px}
+  .chips span{display:inline-block;font-size:12px;font-weight:600;border-radius:999px;padding:2px 9px;margin:0 4px 4px 0;background:var(--violet-soft);color:var(--violet)}
+  .chips .miss{background:#F2F0F6;color:#A39DB5;text-decoration:line-through}
+
+  /* crew */
+  .tally{display:flex;height:10px;border-radius:999px;overflow:hidden;background:var(--line);margin:-4px 0 6px}
+  .tally i{display:block;height:100%}
+  .tally-legend{display:flex;gap:16px;font-size:13px;font-weight:600;color:var(--muted);margin-bottom:16px;flex-wrap:wrap}
+  .tally-legend b{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:-1px}
+  .crew{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
+  .m{display:grid;grid-template-columns:92px 1fr;gap:12px;align-items:start;border-radius:20px;padding:14px;background:var(--mc-soft);border:1.5px solid var(--mc-line)}
+  .m .av{display:flex;flex-direction:column;align-items:center}
+  .m .nick{font-weight:800;font-size:15px;font-family:ui-rounded,"SF Pro Rounded",sans-serif}
+  .m .head{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;margin-bottom:8px}
+  .m .role{font-family:ui-rounded,"SF Pro Rounded","Nunito",sans-serif;font-size:16px;font-weight:800;color:var(--mc-ink);line-height:1.2}
+  .m .who-says{font-size:12.5px;color:var(--muted);margin:-4px 0 8px}
+  .m .bubble{background:#fff;border-radius:16px;padding:10px 12px;font-size:14.5px;position:relative;box-shadow:0 2px 8px -4px rgba(35,28,58,.2)}
+  .m .bubble::before{content:"";position:absolute;left:-7px;top:18px;border:7px solid transparent;border-right-color:#fff;border-left:0}
+  .pos{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;border-radius:999px;padding:3px 10px}
+  .pos.for{background:var(--go-soft);color:var(--go)} .pos.against{background:var(--stop-soft);color:var(--stop)} .pos.depends{background:var(--test-soft);color:#B67A00}
+  .op{display:inline-block;font-size:11px;font-weight:700;color:var(--muted);background:#F2F0F6;border-radius:999px;padding:1px 8px;margin-left:4px}
+  .mascot{display:block;overflow:visible}
+
+  /* premortem */
+  .pm{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+  .pm li{display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:start}
+  .pm .n{width:34px;height:34px;border-radius:12px;background:#2A2140;color:#fff;display:grid;place-items:center;font-weight:800}
+
+  /* actions */
+  .actions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+  @media(max-width:760px){.actions{grid-template-columns:1fr}}
+  .a{border-radius:20px;padding:18px;color:var(--ink)}
+  .a .k{font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;display:flex;align-items:center;gap:8px;margin-bottom:8px}
+  .a .k i{font-style:normal;font-size:18px}
+  .a.test{background:var(--violet-soft)} .a.test .k{color:var(--violet)}
+  .a.next{background:var(--go-soft)} .a.next .k{color:var(--go)}
+  .a.kill{background:var(--stop-soft)} .a.kill .k{color:var(--stop)}
+
+  /* context */
+  .stamp{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;border-radius:8px;padding:4px 10px;border:2px solid currentColor;transform:rotate(-2deg)}
+  .stamp.draft{color:#8A7FA8}.stamp.decided{color:var(--go)}.stamp.dropped{color:var(--stop)}
+  .meta{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;margin-top:12px;font-size:13.5px;color:var(--muted)}
+  .meta b{color:var(--ink);font-weight:700}
+  .ask{margin:0;font-size:17px;line-height:1.5;padding-left:16px;border-left:4px solid var(--violet);color:var(--ink)}
+  .facts{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+  .facts li{display:grid;grid-template-columns:96px minmax(0,1fr);gap:10px;align-items:baseline}
+  .facts .kind{justify-self:start}
+  .kind{font-size:11px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;border-radius:999px;padding:2px 9px;white-space:nowrap}
+  .kind.given{background:var(--go-soft);color:var(--go)}.kind.assumed{background:var(--test-soft);color:#B67A00}.kind.external{background:var(--violet-soft);color:var(--violet)}
+  .p a.src,.srcs a{color:var(--violet);font-weight:600;font-size:13px;text-decoration:none}
+  .p a.src:hover,.srcs a:hover{text-decoration:underline}
+  .srcs{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px;font-size:14.5px}
+  .srcs a{font-size:14.5px;overflow-wrap:anywhere}
+  details.how summary{cursor:pointer;font-weight:800;font-size:17px;list-style:none;display:flex;align-items:center;gap:10px;font-family:ui-rounded,"SF Pro Rounded","Nunito",sans-serif}
+  details.how summary::-webkit-details-marker{display:none}
+  details.how summary::after{content:"+";margin-left:auto;font-size:22px;color:var(--violet)}
+  details.how[open] summary::after{content:"–"}
+  .how-body{margin-top:14px;font-size:14.5px;display:flex;flex-direction:column;gap:12px}
+  .legend{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px}
+  .legend div{display:flex;align-items:center;gap:8px;font-size:13.5px}
+  .legend .mascot{flex:none}
+  footer{display:flex;justify-content:center;align-items:center;gap:8px;color:var(--muted);font-size:13px;text-align:center;margin-top:6px;flex-wrap:wrap}
+  @media print{body{background:#fff;padding:0}body::before,body::after{display:none}.card{box-shadow:none;break-inside:avoid}}
+</style>
+</head>
+<body>
+<div class="wrap" id="app"></div>
+
+<!-- Replace only this JSON when generating a report. -->
+<script id="REPORT_DATA" type="application/json">
+{
+ "lang": "es",
+ "title": "¿Cambiar Tramitalia por \"Kova\" de golpe el 1 de marzo?",
+ "date": "2026-11-25",
+ "status": "draft",
+ "review_date": "2026-12-15",
+ "tone": "test",
+ "context": {
+  "prompt": "¿Alguien lo ha intentado? Somos Tramitalia, un software de facturación para autónomos de Valencia. Llevamos 9 años y tenemos 14.000 clientes de pago a 12 €/mes. Queremos cambiar el nombre a \"Kova\" porque Tramitalia suena a gestoría antigua y solo a España, y el año que viene queremos entrar en Portugal y México. El plan es cambiarlo todo de golpe el 1 de marzo: marca, web (tramitalia.es → kova.io), app y facturas. Presupuesto: 40.000 €. Más o menos el 60 % de las altas nuevas nos llegan de Google.",
+  "prepared_by": "Equipo de marketing de Tramitalia",
+  "for": "Comité de dirección (empresa ficticia de ejemplo)"
+ },
+ "verdict": "Hazlo por fases: no muevas el dominio hasta tener otro canal de altas",
+ "confidence": 7,
+ "agreement": "Un nombre más corto puede ayudar en Portugal. Pero hacerlo todo el mismo día pone en juego la fuente del 60 % de las altas.",
+ "disagreement": "Nova cree que hace falta un nombre internacional para crecer fuera. Root responde que México habla español: allí 'suena solo a España' no es un problema.",
+ "facts": [
+  {
+   "kind": "given",
+   "text": "14.000 clientes de pago a 12 €/mes, 9 años en el mercado."
+  },
+  {
+   "kind": "given",
+   "text": "Cerca del 60 % de las altas nuevas llegan desde Google."
+  },
+  {
+   "kind": "given",
+   "text": "Cambio de golpe el 1 de marzo: marca, dominio, app y facturas. Presupuesto: 40.000 €."
+  },
+  {
+   "kind": "assumed",
+   "text": "Una parte importante de esas altas buscan 'tramitalia' por su nombre (no lo dijeron: hay que comprobarlo)."
+  },
+  {
+   "kind": "assumed",
+   "text": "'Kova' no está comprobado como marca libre en la UE, Portugal ni México."
+  },
+  {
+   "kind": "external",
+   "text": "Looka esperaba perder un 20–30 % del tráfico orgánico al cambiar de dominio y perdió el 80 %."
+  }
+ ],
+ "key_assumption": "Que las altas de Google sobrevivan al cambio de dominio → mira en Search Console qué parte de las altas viene de búsquedas con 'tramitalia'.",
+ "precedents": [
+  {
+   "type": "failure",
+   "name": "Looka (antes Logojoy)",
+   "years": "2019",
+   "note": "Cambió nombre, dominio y producto a la vez. Perdió el 80 % del tráfico orgánico, que daba la mitad de sus ingresos.",
+   "match": [
+    "modelo",
+    "mecanismo"
+   ],
+   "miss": [
+    "mercado"
+   ],
+   "url": "https://econsultancy.com/how-one-companys-rebrand-and-domain-name-change-led-to-seo-disaster"
+  },
+  {
+   "type": "failure",
+   "name": "Consignia (Royal Mail)",
+   "years": "2001–2002",
+   "note": "Se renombró para sonar internacional y volvió a Royal Mail 16 meses después.",
+   "match": [
+    "mecanismo",
+    "motivo"
+   ],
+   "miss": [
+    "sector"
+   ],
+   "url": "https://postandparcel.info/6311/news/change-of-consignia-name-to-royal-mail-could-cost-gbp-1m"
+  },
+  {
+   "type": "survivor",
+   "name": "HomeAdvisor (antes ServiceMagic)",
+   "years": "2012–2013",
+   "note": "Sufrió la caída, pujó en Google por el nombre viejo y el nuevo, y al año tenía un 22 % más de tráfico.",
+   "match": [
+    "modelo",
+    "mecanismo"
+   ],
+   "miss": [],
+   "url": "https://domainnamewire.com/2014/11/25/homeadvisor-name-change/"
+  },
+  {
+   "type": "survivor",
+   "name": "Dunkin'",
+   "years": "2018–2019",
+   "note": "Probó el nombre nuevo en unas 50 tiendas durante un año y mantuvo sus colores.",
+   "match": [
+    "mecanismo"
+   ],
+   "miss": [
+    "modelo"
+   ],
+   "url": "https://www.npr.org/2018/09/26/651905960/dunkin-deletes-donuts-from-its-name"
+  }
+ ],
+ "advisors": [
+  {
+   "role": "devil",
+   "name": "Abogado del diablo",
+   "position": "against",
+   "line": "Es Looka en castellano: arriesgas el 60 % de tus altas por un nombre que todavía no necesitas.",
+   "opinion": false
+  },
+  {
+   "role": "first",
+   "name": "Primeros principios",
+   "position": "depends",
+   "line": "El problema es 'sonamos a gestoría', no 'sonamos a España'. Para México, Tramitalia funciona.",
+   "opinion": false
+  },
+  {
+   "role": "expansion",
+   "name": "Expansionista",
+   "position": "for",
+   "line": "Kova se pronuncia igual en Lisboa y en Monterrey, y HomeAdvisor demuestra que la caída se recupera.",
+   "opinion": true
+  },
+  {
+   "role": "outsider",
+   "name": "Forastero",
+   "position": "depends",
+   "line": "Si mañana veo en el banco un cargo de 'KOVA', pienso que me han hackeado.",
+   "opinion": false
+  },
+  {
+   "role": "executor",
+   "name": "Ejecutor",
+   "position": "depends",
+   "line": "Por fases: primero 'Kova, antes Tramitalia' en la app y las facturas; el dominio, lo último.",
+   "opinion": false
+  },
+  {
+   "role": "risk",
+   "name": "Riesgo y cumplimiento",
+   "position": "depends",
+   "line": "Antes de gastar 1 €, registra la marca en los tres países. Un nombre de 4 letras suele estar cogido.",
+   "opinion": false
+  },
+  {
+   "role": "technical",
+   "name": "Técnico",
+   "position": "against",
+   "line": "Migrar dominio, app y facturación a la vez multiplica los fallos. Redirecciones 301 página a página.",
+   "opinion": false
+  }
+ ],
+ "premortem": [
+  "Las altas orgánicas cayeron más de lo previsto y no volvieron (señal: altas desde Google semana a semana).",
+  "'Kova' estaba registrada en México o Portugal y hubo que volver a cambiar (señal: búsqueda en IMPI, INPI y EUIPO).",
+  "Los clientes no reconocieron el cargo y subieron las devoluciones (señal: devoluciones bancarias el mes del cambio)."
+ ],
+ "next_step": "Saca de Search Console y del CRM el porcentaje de altas de búsquedas de marca y de búsquedas genéricas, y comprueba si 'Kova' está libre en EUIPO, INPI e IMPI.",
+ "kill_criterion": "Si las altas orgánicas caen más de un 25 % durante 8 semanas tras cambiar el dominio, vuelve a poner tramitalia.es como principal.",
+ "sources": [
+  {
+   "title": "Looka: un cambio de dominio que acabó en desastre SEO (Econsultancy)",
+   "url": "https://econsultancy.com/how-one-companys-rebrand-and-domain-name-change-led-to-seo-disaster"
+  },
+  {
+   "title": "Consignia vuelve a llamarse Royal Mail (Post&Parcel / FT, 2002)",
+   "url": "https://postandparcel.info/6311/news/change-of-consignia-name-to-royal-mail-could-cost-gbp-1m"
+  },
+  {
+   "title": "HomeAdvisor: costes y resultados del cambio de nombre (Domain Name Wire)",
+   "url": "https://domainnamewire.com/2014/11/25/homeadvisor-name-change/"
+  },
+  {
+   "title": "Dunkin' quita Donuts de su nombre (NPR, 2018)",
+   "url": "https://www.npr.org/2018/09/26/651905960/dunkin-deletes-donuts-from-its-name"
+  },
+  {
+   "title": "Weight Watchers y la confusión con WW (CNBC, 2019)",
+   "url": "https://www.cnbc.com/2019/02/27/weight-watchers-calls-on-oprah-winfrey-to-help-sell-wellness.html"
+  }
+ ]
+}
+</script>
+
+<script>
+// Been There · The Crew — mascot generator (self-contained SVG, no external assets)
+const CREW = {
+  devil:     {nick:'Nix',   c:['#FFB0A8','#FF6B6B','#D63E4A'], eyes:'skeptic', mouth:'smirk', arms:'hips',  acc:'horns',   tilt:-4},
+  first:     {nick:'Root',  c:['#B5CCFF','#5B8DEF','#3559C2'], eyes:'focus',   mouth:'small', arms:'point', acc:'glasses', tilt:0},
+  expansion: {nick:'Nova',  c:['#FFE29A','#FFB547','#E5841A'], eyes:'happy',   mouth:'grin',  arms:'up',    acc:'sparks',  tilt:3},
+  outsider:  {nick:'Pip',   c:['#D3F2A6','#93CF55','#5E9F2A'], eyes:'wide',    mouth:'o',     arms:'down',  acc:'question',tilt:8},
+  executor:  {nick:'Tack',  c:['#9DECE4','#2EC4B6','#13968A'], eyes:'determined',mouth:'smile',arms:'hold', acc:'hardhat', tilt:0},
+  chair:     {nick:'Vera',  c:['#DCCCFF','#9B7BF7','#6C4ED6'], eyes:'calm',    mouth:'smile', arms:'hold',  acc:'gavel',   tilt:0},
+  finance:   {nick:'Penny', c:['#A9EFD2','#22B07D','#0F7F57'], eyes:'wink',    mouth:'smile', arms:'hold',  acc:'coin',    tilt:-3},
+  risk:      {nick:'Lex',   c:['#C9D3E6','#6B7FA6','#455776'], eyes:'determined',mouth:'flat',arms:'hold', acc:'shield',  tilt:0},
+  customer:  {nick:'Mo',    c:['#FFD1EA','#FF8FC7','#E0569D'], eyes:'happy',   mouth:'smile', arms:'hug',   acc:'heart',   tilt:-5},
+  technical: {nick:'Bolt',  c:['#FFC9A8','#FF8A4C','#D9602A'], eyes:'focus',   mouth:'grin',  arms:'hold',  acc:'wrench',  tilt:2},
+  investor:  {nick:'Cap',   c:['#E8C9A8','#C08457','#8E5A33'], eyes:'monocle', mouth:'smile', arms:'hips',  acc:'tophat',  tilt:0},
+  people:    {nick:'Kin',   c:['#F5CDF8','#DA7FE3','#A94DB3'], eyes:'happy',   mouth:'grin',  arms:'wave',  acc:'bubbles', tilt:-2},
+};
+
+function crewKey(name){
+  const n = String(name||'').toLowerCase();
+  const map = [
+    [/devil|abogado|diablo/,'devil'],[/first|primer|principi/,'first'],[/expan/,'expansion'],
+    [/outsider|forastero|ajeno|externo/,'outsider'],[/execut|ejecut/,'executor'],[/chair|presid|anfitri/,'chair'],
+    [/financ|cfo|money/,'finance'],[/risk|riesgo|legal|complian|cumplim/,'risk'],[/customer|cliente|user|usuario/,'customer'],
+    [/tech|técn|tecn/,'technical'],[/invest|partner|socio/,'investor'],[/people|personas|rrhh|hr|equipo|talent/,'people'],
+  ];
+  for (const [re,k] of map) if (re.test(n)) return k;
+  return 'chair';
+}
+
+function mascot(key, size=120){
+  const m = CREW[key] || CREW.chair; const [L,B,D] = m.c; const id = 'g'+key+Math.random().toString(36).slice(2,7);
+  const ink = '#2A2140';
+  const eye = (x,y)=>`<ellipse cx="${x}" cy="${y}" rx="6.2" ry="7.6" fill="${ink}"/><circle cx="${x+2}" cy="${y-2.8}" r="2.4" fill="#fff"/><circle cx="${x-1.8}" cy="${y+2.6}" r="1" fill="#fff" opacity=".8"/>`;
+  const arc = (x,y)=>`<path d="M${x-6} ${y+1} Q${x} ${y-6} ${x+6} ${y+1}" stroke="${ink}" stroke-width="3.2" fill="none" stroke-linecap="round"/>`;
+  const brow = (x,y,a)=>`<path d="M${x-6} ${y} L${x+6} ${y+a}" stroke="${ink}" stroke-width="2.8" stroke-linecap="round"/>`;
+  let eyes='';
+  switch(m.eyes){
+    case 'happy': eyes = arc(48,62)+arc(74,62); break;
+    case 'calm': eyes = `<path d="M42 62 Q48 67 54 62" stroke="${ink}" stroke-width="3.2" fill="none" stroke-linecap="round"/><path d="M68 62 Q74 67 80 62" stroke="${ink}" stroke-width="3.2" fill="none" stroke-linecap="round"/>`; break;
+    case 'wink': eyes = eye(48,62)+arc(74,63); break;
+    case 'wide': eyes = `<circle cx="48" cy="61" r="9" fill="#fff"/><circle cx="74" cy="61" r="9" fill="#fff"/>`+eye(49,62)+eye(75,62); break;
+    case 'skeptic': eyes = `<ellipse cx="48" cy="63" rx="6" ry="5" fill="${ink}"/><circle cx="50" cy="61.5" r="1.8" fill="#fff"/>`+eye(74,62)+brow(48,54,2)+`<path d="M68 51 Q74 46 80 50" stroke="${ink}" stroke-width="2.8" fill="none" stroke-linecap="round"/>`; break;
+    case 'determined': eyes = eye(48,63)+eye(74,63)+brow(48,52,3)+brow(74,55,-3); break;
+    case 'monocle': eyes = eye(48,62)+eye(74,62)+`<circle cx="74" cy="62" r="11" fill="#fff" fill-opacity=".25" stroke="#C9A227" stroke-width="2.6"/><path d="M84 66 Q90 80 86 92" stroke="#C9A227" stroke-width="1.5" fill="none"/>`; break;
+    case 'focus': default: eyes = eye(48,62)+eye(74,62);
+  }
+  const mouths = {
+    smile:`<path d="M54 76 Q61 83 68 76" stroke="${ink}" stroke-width="3" fill="none" stroke-linecap="round"/>`,
+    small:`<path d="M57 77 Q61 80 65 77" stroke="${ink}" stroke-width="3" fill="none" stroke-linecap="round"/>`,
+    grin:`<path d="M52 74 Q61 74 70 74 Q68 87 61 87 Q54 87 52 74Z" fill="${ink}"/><path d="M56 82 Q61 79 66 82 Q64 86 61 86 Q58 86 56 82Z" fill="#FF7A8A"/>`,
+    smirk:`<path d="M54 78 Q62 81 69 74" stroke="${ink}" stroke-width="3" fill="none" stroke-linecap="round"/>`,
+    o:`<ellipse cx="61" cy="79" rx="4" ry="5" fill="${ink}"/>`,
+    flat:`<path d="M55 78 L67 78" stroke="${ink}" stroke-width="3" stroke-linecap="round"/>`,
+  };
+  const armShape = (x,y,r)=>`<ellipse cx="${x}" cy="${y}" rx="7" ry="12" fill="url(#${id}b)" transform="rotate(${r} ${x} ${y})"/>`;
+  const arms = {
+    down: armShape(24,76,20)+armShape(98,76,-20),
+    hips: armShape(25,80,-35)+armShape(97,80,35),
+    up: armShape(22,50,40)+armShape(100,50,-40),
+    point: armShape(24,78,20)+armShape(98,50,-25)+`<circle cx="103" cy="39" r="3.6" fill="${B}"/>`,
+    hold: armShape(25,78,25)+armShape(92,80,-55),
+    hug: armShape(36,84,-60)+armShape(86,84,60),
+    wave: armShape(24,78,20)+armShape(100,48,-30),
+  };
+  const accs = {
+    horns:`<path d="M40 34 Q36 20 44 18 Q44 28 48 32Z" fill="${D}"/><path d="M82 34 Q86 20 78 18 Q78 28 74 32Z" fill="${D}"/><path d="M98 96 Q110 98 108 86 l4 -3 -6 -1" stroke="${D}" stroke-width="3" fill="none" stroke-linecap="round"/>`,
+    glasses:`<circle cx="48" cy="62" r="10" fill="#fff" fill-opacity=".18" stroke="${ink}" stroke-width="2.4"/><circle cx="74" cy="62" r="10" fill="#fff" fill-opacity=".18" stroke="${ink}" stroke-width="2.4"/><path d="M58 61 Q61 58 64 61" stroke="${ink}" stroke-width="2.4" fill="none"/><g transform="translate(96 20)" opacity=".9"><ellipse rx="11" ry="4" fill="none" stroke="${D}" stroke-width="1.8"/><ellipse rx="11" ry="4" fill="none" stroke="${D}" stroke-width="1.8" transform="rotate(60)"/><ellipse rx="11" ry="4" fill="none" stroke="${D}" stroke-width="1.8" transform="rotate(-60)"/><circle r="2.6" fill="${D}"/></g>`,
+    sparks:`<g stroke="#FFC83D" stroke-width="3.4" stroke-linecap="round"><path d="M14 30 l-6 -6"/><path d="M22 22 l-2 -9"/><path d="M106 30 l6 -6"/><path d="M98 22 l2 -9"/></g><path d="M104 6 l2 5 5 2 -5 2 -2 5 -2 -5 -5 -2 5 -2z" fill="#FFC83D"/><path d="M16 4 l1.5 4 4 1.5 -4 1.5 -1.5 4 -1.5 -4 -4 -1.5 4 -1.5z" fill="#FFC83D"/>`,
+    question:`<text x="92" y="30" font-family="Arial Rounded MT Bold,Arial,sans-serif" font-weight="900" font-size="26" fill="${D}">?</text><path d="M60 30 Q56 18 64 12 Q66 22 60 30Z" fill="#5E9F2A"/>`,
+    hardhat:`<path d="M30 42 Q31 18 61 17 Q91 18 92 42Z" fill="#FFC83D"/><path d="M26 42 h70 q3 0 3 3 v1 q0 3 -3 3 h-70 q-3 0 -3 -3 v-1 q0 -3 3 -3z" fill="#F2A900"/><rect x="57" y="18" width="8" height="24" rx="3" fill="#F2A900"/><g transform="translate(86 74) rotate(-12)"><rect x="0" y="0" width="22" height="28" rx="3" fill="#fff" stroke="${D}" stroke-width="2"/><rect x="6" y="-3" width="10" height="6" rx="2" fill="${D}"/><path d="M5 11 l3 3 6 -6 M5 20 l3 3 6 -6" stroke="#22B07D" stroke-width="2.2" fill="none" stroke-linecap="round"/></g>`,
+    gavel:`<g transform="translate(92 70) rotate(-35)"><rect x="-3" y="0" width="6" height="26" rx="3" fill="#8E5A33"/><rect x="-11" y="-9" width="22" height="11" rx="4" fill="#A86B3C"/></g><path d="M47 30 l3 -14 6 8 5 -10 5 10 6 -8 3 14z" fill="#FFC83D" stroke="#E5A100" stroke-width="1.5" stroke-linejoin="round"/>`,
+    coin:`<g transform="translate(96 82)"><circle r="12" fill="#FFC83D" stroke="#E5A100" stroke-width="2.5"/><text y="5.5" text-anchor="middle" font-family="Arial,sans-serif" font-weight="900" font-size="15" fill="#B57F00">€</text></g><circle cx="104" cy="56" r="5" fill="#FFC83D" stroke="#E5A100" stroke-width="1.5"/>`,
+    shield:`<g transform="translate(96 76)"><path d="M0 -14 L13 -9 Q13 8 0 16 Q-13 8 -13 -9Z" fill="#4C8DF6" stroke="#2C5EB8" stroke-width="2"/><path d="M-5 0 l4 4 7 -8" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/></g>`,
+    heart:`<path d="M61 100 C44 88 44 76 53 74 C57 73 60 76 61 79 C62 76 65 73 69 74 C78 76 78 88 61 100Z" fill="#FF4F7B" stroke="#D93460" stroke-width="1.5"/><path d="M98 22 c-4 -6 -12 -1 -6 6 l6 6 6 -6 c6 -7 -2 -12 -6 -6z" fill="#FF4F7B" opacity=".8"/>`,
+    wrench:`<g transform="translate(98 74) rotate(35) scale(1.25)"><rect x="-3" y="-2" width="6" height="26" rx="3" fill="#8A94A6"/><path d="M-9 -8 a9 9 0 1 0 18 0 l-5 0 l0 5 l-8 0 l0 -5z" fill="#A9B2C3"/></g>`,
+    tophat:`<rect x="38" y="6" width="46" height="26" rx="4" fill="#2A2140"/><rect x="38" y="24" width="46" height="5" fill="#C9A227"/><rect x="30" y="30" width="62" height="6" rx="3" fill="#2A2140"/>`,
+    bubbles:`<g transform="translate(92 14)"><rect x="0" y="0" width="22" height="15" rx="6" fill="#fff" stroke="${D}" stroke-width="2"/><path d="M5 15 l-2 6 7 -6z" fill="#fff" stroke="${D}" stroke-width="2" stroke-linejoin="round"/><circle cx="6" cy="7.5" r="1.6" fill="${D}"/><circle cx="11" cy="7.5" r="1.6" fill="${D}"/><circle cx="16" cy="7.5" r="1.6" fill="${D}"/></g><g transform="translate(6 22)"><rect width="16" height="12" rx="5" fill="#fff" stroke="${D}" stroke-width="2"/><path d="M5 7 q3 -4 6 0" stroke="#FF4F7B" stroke-width="2" fill="none"/></g>`,
+  };
+  const back = (m.acc==='tophat'||m.acc==='hardhat'||m.acc==='gavel') ? '' : `<path d="M54 30 Q50 14 62 10 Q60 20 68 26 Q64 30 54 30Z" fill="url(#${id}b)"/>`;
+  return `<svg class="mascot" viewBox="0 0 122 122" width="${size}" height="${size}" role="img" aria-label="${m.nick}" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="${id}b" cx="36%" cy="30%" r="78%"><stop offset="0" stop-color="${L}"/><stop offset=".55" stop-color="${B}"/><stop offset="1" stop-color="${D}"/></radialGradient>
+    <radialGradient id="${id}s" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#2A2140" stop-opacity=".22"/><stop offset="1" stop-color="#2A2140" stop-opacity="0"/></radialGradient>
+  </defs>
+  <ellipse cx="61" cy="112" rx="36" ry="6" fill="url(#${id}s)"/>
+  <g transform="rotate(${m.tilt} 61 70)">
+    <ellipse cx="48" cy="104" rx="9" ry="6" fill="${D}"/><ellipse cx="74" cy="104" rx="9" ry="6" fill="${D}"/>
+    ${arms[m.arms]}
+    ${back}
+    <path d="M61 26 C88 26 100 46 100 68 C100 92 84 104 61 104 C38 104 22 92 22 68 C22 46 34 26 61 26Z" fill="url(#${id}b)"/>
+    <ellipse cx="44" cy="40" rx="11" ry="6" fill="#fff" opacity=".55" transform="rotate(-28 44 40)"/>
+    <ellipse cx="38" cy="74" rx="6.5" ry="4" fill="#FF7FA0" opacity=".4"/><ellipse cx="84" cy="74" rx="6.5" ry="4" fill="#FF7FA0" opacity=".4"/>
+    ${eyes}${mouths[m.mouth]}
+    ${accs[m.acc]||''}
+  </g></svg>`;
+}
+
+</script>
+<script>
+  const d = JSON.parse(document.getElementById('REPORT_DATA').textContent);
+  const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const T = {
+    en:{crew:'The Crew',agree:'Where the crew agrees',dis:'Real disagreement',prec:'Who has been there',fell:'Fell',surv:'Survived',
+        none:'No precedent close enough. Better none than a forced one.',pm:"Pre-mortem · it's 12 months later and it failed because…",
+        todo:'What to do now',test:'Assumption to test',next:'Next 48 h',kill:'Kill criterion',conf:'confidence',verdict:'Verdict',
+        for:'For',against:'Against',depends:'Depends',op:'opinion',chairs:'chairs the crew',
+        roles:{devil:"Devil's advocate",first:'First principles',expansion:'Expansionist',outsider:'Outsider',executor:'Executor',chair:'Chair',finance:'Finance',risk:'Risk & compliance',customer:'Customer',technical:'Technical',investor:'Investor / partner',people:'People'},
+        tone:{go:'Go',stop:"Don't",test:'Test first'},
+        persona:{devil:'Looks for how it dies',first:'Asks what problem you really solve',expansion:'Sees the upside others miss',outsider:'Asks what a newcomer would ask',executor:'What happens tomorrow at 9:00',chair:'Weighs arguments, not votes',finance:'Follows the money',risk:'Reads the small print',customer:'Speaks for the buyer',technical:'Checks it can be built',investor:'Thinks like whoever funds it',people:'Thinks about the team'},foot:'Precedents are evidence, not predictions',
+        ctx:'The question',by:'Prepared by',forr:'For',review:'Review on',status:{draft:'Draft',decided:'Decided',dropped:'Dropped'},
+        facts:'Starting facts',kinds:{given:'Given',assumed:'Assumed',external:'Checked'},src:'Source',srcs:'Sources',
+        how:'How to read this report',
+        howText:['Been There checks a plan against companies that already tried something similar. <b>Fell</b> marks those that failed the same way; <b>Survived</b> marks those that faced the same trap and made it. Purple tags show what matches this plan; crossed-out tags show what doesn\'t.','The Crew answers independently before seeing each other. Points without evidence are tagged <b>opinion</b>. Vera, the chair, weighs arguments, not votes. Confidence is how sure the verdict is, not the odds of success.','Starting facts separate what was given, what was assumed and what was checked against outside sources.']},
+    es:{crew:'La Pandilla',agree:'En qué coinciden',dis:'Desacuerdo real',prec:'Quién ya pasó por aquí',fell:'Cayó',surv:'Sobrevivió',
+        none:'Ningún precedente se parece lo suficiente. Mejor ninguno que uno forzado.',pm:'Pre-mortem · han pasado 12 meses y fracasó porque…',
+        todo:'Qué hacer ahora',test:'Supuesto a comprobar',next:'Próximas 48 h',kill:'Criterio de abandono',conf:'confianza',verdict:'Veredicto',
+        for:'A favor',against:'En contra',depends:'Depende',op:'opinión',chairs:'preside la pandilla',
+        roles:{devil:'Abogado del diablo',first:'Primeros principios',expansion:'Expansionista',outsider:'Forastero',executor:'Ejecutor',chair:'Presidencia',finance:'Finanzas',risk:'Riesgo y cumplimiento',customer:'Cliente',technical:'Técnico',investor:'Inversor / socio',people:'Personas'},
+        tone:{go:'Adelante',stop:'No lo hagas',test:'Primero, prueba'},
+        persona:{devil:'Busca cómo puede morir el plan',first:'Pregunta qué problema resuelves de verdad',expansion:'Ve el potencial que otros no ven',outsider:'Pregunta lo que preguntaría alguien de fuera',executor:'Qué pasa mañana a las 9:00',chair:'Pesa argumentos, no votos',finance:'Sigue el dinero',risk:'Lee la letra pequeña',customer:'Habla por el cliente',technical:'Comprueba que se puede construir',investor:'Piensa como quien pone el dinero',people:'Piensa en el equipo'},foot:'Los precedentes son evidencias, no predicciones',
+        ctx:'El planteamiento',by:'Preparado por',forr:'Para',review:'Revisar el',status:{draft:'Borrador',decided:'Decidido',dropped:'Descartado'},
+        facts:'Datos de partida',kinds:{given:'Dato',assumed:'Supuesto',external:'Verificado'},src:'Fuente',srcs:'Fuentes',
+        how:'Cómo leer este informe',
+        howText:['Been There compara un plan con empresas que ya intentaron algo parecido. <b>Cayó</b> marca las que fracasaron por el mismo motivo; <b>Sobrevivió</b>, las que se enfrentaron a la misma trampa y salieron adelante. Las etiquetas moradas indican en qué se parecen a este plan; las tachadas, en qué no.','La Pandilla opina por separado, sin ver lo que dicen los demás. Lo que no se apoya en datos lleva la etiqueta <b>opinión</b>. Vera, que preside, pesa argumentos, no votos. La confianza mide lo seguro que es el veredicto, no la probabilidad de éxito.','Los datos de partida distinguen lo que se dio, lo que se supuso y lo que se comprobó con fuentes externas.']}
+  };
+  const t = T[d.lang] || T.en;
+  const tones = {go:['var(--go)','var(--go-soft)','🚀'],stop:['var(--stop)','var(--stop-soft)','✋'],test:['var(--test)','var(--test-soft)','🧪']};
+  const tone = tones[d.tone] || tones.test;
+  const conf = Math.max(0,Math.min(10,+d.confidence||0)), C = 2*Math.PI*48;
+  const cx = d.context || {}; const st = d.status ? (t.status[d.status]||d.status) : '';
+  const adv = (d.advisors||[]).map(a => ({...a, key: (a.role && CREW[a.role]) ? a.role : crewKey(a.name)}));
+  const cnt = {for:0,against:0,depends:0}; adv.forEach(a => cnt[a.position] = (cnt[a.position]||0)+1);
+  const tot = adv.length || 1;
+  const soft = hex => hex + '1F', line = hex => hex + '40';
+  document.documentElement.lang = d.lang || 'en';
+  document.title = 'Been There · ' + d.title;
+  document.getElementById('app').innerHTML = `
+    <header>
+      <div class="brand"><span class="dot"></span>Been There<small>${esc(d.date)}</small></div>
+      <h1>${esc(d.title)}</h1>
+      ${(st||cx.prepared_by||cx.for||d.review_date)?`<div class="meta">${st?`<span class="stamp ${esc(d.status)}">${esc(st)}</span>`:''}${cx.prepared_by?`<span>${esc(t.by)}: <b>${esc(cx.prepared_by)}</b></span>`:''}${cx.for?`<span>${esc(t.forr)}: <b>${esc(cx.for)}</b></span>`:''}${d.review_date?`<span>${esc(t.review)}: <b>${esc(d.review_date)}</b></span>`:''}</div>`:''}
+    </header>
+
+    ${cx.prompt?`<section class="card"><h2>${esc(t.ctx)}</h2><p class="ask">${esc(cx.prompt)}</p></section>`:''}
+
+    <section class="card hero" style="--tone:${tone[0]};--tone-soft:${tone[1]}">
+      <div class="who">${mascot('chair',96)}Vera · ${esc(t.chairs)}</div>
+      <div style="position:relative;z-index:1">
+        <span class="label">${tone[2]} ${esc(t.tone[d.tone]||t.verdict)}</span>
+        <div class="verdict display">${esc(d.verdict)}</div>
+      </div>
+      <div class="ring"><svg viewBox="0 0 112 112" width="112" height="112">
+          <circle cx="56" cy="56" r="48" fill="none" stroke="var(--line)" stroke-width="10"/>
+          <circle cx="56" cy="56" r="48" fill="none" stroke="${tone[0]}" stroke-width="10" stroke-linecap="round"
+            stroke-dasharray="${C*conf/10} ${C}" transform="rotate(-90 56 56)"/></svg>
+        <b>${conf}<span>/10</span></b><small>${esc(t.conf)}</small></div>
+    </section>
+
+    <div class="grid2">
+      <section class="card note"><div class="ic" style="background:var(--go-soft)">🤝</div><div><h3>${esc(t.agree)}</h3>${esc(d.agreement)}</div></section>
+      <section class="card note"><div class="ic" style="background:var(--test-soft)">⚡</div><div><h3>${esc(t.dis)}</h3>${esc(d.disagreement)}</div></section>
+    </div>
+
+    ${(d.facts||[]).length?`<section class="card"><h2>${esc(t.facts)}</h2><ul class="facts">${d.facts.map(f=>`<li><span class="kind ${esc(f.kind)}">${esc(t.kinds[f.kind]||f.kind)}</span><span>${esc(f.text)}</span></li>`).join('')}</ul></section>`:''}
+
+    <section class="card"><h2>${esc(t.prec)} <span class="count">${(d.precedents||[]).length}</span></h2>
+      ${(d.precedents||[]).length ? `<div class="prec">${d.precedents.map(p => {const s = p.type==='survivor'; return `
+        <article class="p ${s?'survivor':'failure'}">
+          <span class="tag">${s?'✓ '+esc(t.surv):'✕ '+esc(t.fell)}</span>
+          <h3>${esc(p.name)}</h3><div class="yrs">${esc(p.years)}</div>
+          <p>${esc(p.note)}</p>
+          ${p.url?`<div style="margin:-4px 0 8px"><a class="src" href="${esc(p.url)}" target="_blank" rel="noopener">${esc(t.src)} ↗</a></div>`:''}<div class="chips">${(p.match||[]).map(m=>`<span>${esc(m)}</span>`).join('')}${(p.miss||[]).map(m=>`<span class="miss">${esc(m)}</span>`).join('')}</div>
+        </article>`}).join('')}</div>` : `<p class="muted">${esc(t.none)}</p>`}
+    </section>
+
+    <section class="card"><h2>${esc(t.crew)} <span class="count">${adv.length}</span></h2>
+      <div class="tally">${['for','depends','against'].map(k=>`<i style="width:${cnt[k]/tot*100}%;background:var(--${k==='for'?'go':k==='against'?'stop':'test'})"></i>`).join('')}</div>
+      <div class="tally-legend">${['for','depends','against'].map(k=>`<span><b style="background:var(--${k==='for'?'go':k==='against'?'stop':'test'})"></b>${esc(t[k])} · ${cnt[k]}</span>`).join('')}</div>
+      <div class="crew">${adv.map(a => {const c = CREW[a.key]; return `
+        <article class="m" style="--mc-soft:${soft(c.c[1])};--mc-line:${line(c.c[1])};--mc-ink:${c.c[2]}">
+          <div class="av">${mascot(a.key,84)}<div class="nick">${esc(c.nick)}</div></div>
+          <div><div class="head"><span class="role">${esc(t.roles[a.key]||a.name)}</span><span class="pos ${esc(a.position)}">${esc(t[a.position]||a.position)}</span></div>
+            <div class="who-says">${esc(t.persona[a.key]||'')}</div>
+            <div class="bubble">${esc(a.line)}${a.opinion?`<span class="op">${esc(t.op)}</span>`:''}</div></div>
+        </article>`}).join('')}</div>
+    </section>
+
+    <section class="card"><h2>${esc(t.pm)}</h2>
+      <ol class="pm">${(d.premortem||[]).map((x,i)=>`<li><span class="n">${i+1}</span><div>${esc(x)}</div></li>`).join('')}</ol></section>
+
+    <section class="card"><h2>${esc(t.todo)}</h2><div class="actions">
+      <div class="a test"><div class="k"><i>🎯</i>${esc(t.test)}</div>${esc(d.key_assumption)}</div>
+      <div class="a next"><div class="k"><i>⏱️</i>${esc(t.next)}</div>${esc(d.next_step)}</div>
+      <div class="a kill"><div class="k"><i>🛑</i>${esc(t.kill)}</div>${esc(d.kill_criterion)}</div>
+    </div></section>
+
+    ${(d.sources||[]).length?`<section class="card"><h2>${esc(t.srcs)}</h2><ol class="srcs">${d.sources.map(s=>`<li>${s.url?`<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title||s.url)}</a>`:esc(s.title)}</li>`).join('')}</ol></section>`:''}
+
+    <section class="card"><details class="how"><summary>${esc(t.how)}</summary><div class="how-body">
+      ${t.howText.map(x=>`<p style="margin:0">${x}</p>`).join('')}
+      <div class="legend">${Object.keys(CREW).map(k=>`<div>${mascot(k,40)}<span><b>${esc(CREW[k].nick)}</b> · ${esc(t.roles[k])}</span></div>`).join('')}</div>
+    </div></details></section>
+
+    <footer><span class="brand" style="font-size:13px"><span class="dot"></span>Been There</span> · ${esc(t.foot)}</footer>`;
+</script>
+</body>
+</html>

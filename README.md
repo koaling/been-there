@@ -34,7 +34,7 @@ Under ~400 words by default. Ask for a `full review` to see the whole reasoning.
 - **Real precedents, both sides.** Failures and survivors, with the similarity spelled out (market, model, timing, mechanism). Weak analogies are dropped, not forced.
 - **Not a pessimist.** When there's real user pull (paying users, renewals, a waitlist), it says so first. Being wrongly negative counts as a failure too.
 - **Ends in action:** a 48-hour test and a dated kill criterion, not a list of "considerations".
-- **Bilingual** (EN/ES) and an **open precedent library** (30 sourced cases: 20 failures, 10 survivors, incl. EU and Spain) anyone can add to.
+- **Bilingual** (EN/ES) and an **open precedent library** (35 sourced cases: 23 failures, 12 survivors, incl. EU and Spain) anyone can add to.
 
 ## Meet the Crew
 
@@ -110,7 +110,7 @@ Has anyone tried this? Switching all customers from per-seat pricing to a flat â
 
 ## Examples
 
-Real, unedited answers: [a hardware fleet rollout](examples/01-scooter-rollout.md), [a switch to flat pricing](examples/02-flat-pricing.md) and [a first sales hire that holds up](examples/03-first-sales-hire.md).
+Real, unedited answers: [a hardware fleet rollout](examples/01-scooter-rollout.md), [a switch to flat pricing](examples/02-flat-pricing.md) [a first sales hire that holds up](examples/03-first-sales-hire.md) and, in Spanish, [a company rename](examples/04-cambio-de-nombre.md) (fictional company, real precedents).
 
 ## Contribute
 
