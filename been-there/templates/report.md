@@ -1,3 +1,10 @@
+# Visual report template
+
+When the user accepts the visual report, copy the HTML below into a new `.html` file, replace **only** the JSON inside `<script id="REPORT_DATA">` with this decision's data (same keys), and deliver the file (or publish it as an artifact). Keep everything else unchanged.
+
+Keys: `title`, `date`, `verdict`, `confidence` (0–10), `agreement`, `disagreement`, `key_assumption`, `precedents[]` (`type` failure|survivor, `name`, `years`, `note`, `match[]`, `miss[]`), `advisors[]` (`name`, `position` for|against|depends, `line`, `opinion` true|false), `premortem[]`, `next_step`, `kill_criterion`.
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -128,3 +135,4 @@
 </script>
 </body>
 </html>
+```

@@ -4,6 +4,6 @@ The plugin folder of [Been There](https://github.com/koaling/been-there): a Clau
 
 - `SKILL.md`: the skill
 - `precedents/`: the sourced precedent library (one YAML per company)
-- `templates/report.html`: the optional visual report
+- `templates/report.md`: the optional visual report template
 
 Install, examples, evals and contributing guide: see the [main README](https://github.com/koaling/been-there#readme).
