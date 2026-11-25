@@ -36,6 +36,16 @@ Under ~400 words by default. Ask for a `full review` to see the whole reasoning.
 - **Ends in action:** a 48-hour test and a dated kill criterion, not a list of "considerations".
 - **Bilingual** (EN/ES) and an **open precedent library** (30 sourced cases: 20 failures, 10 survivors, incl. EU and Spain) anyone can add to.
 
+## Meet the Crew
+
+Five regulars look at every plan, plus 1–2 specialists picked for the topic. Vera chairs and writes the verdict. Each one answers on its own before seeing the others.
+
+![The Crew: Nix (devil's advocate), Root (first principles), Nova (expansionist), Pip (outsider), Tack (executor), Vera (chair), and specialists Penny, Lex, Mo, Bolt, Cap and Kin](docs/crew.png)
+
+Say `yes` to the visual report and you get a one-page HTML report with the verdict, the precedents and the Crew's positions (English or Spanish, works offline):
+
+![Example visual report](docs/report-preview.png)
+
 ## Tested, blind
 
 37 cases, each answered by plain Claude and by Claude with Been There in fresh sessions, then scored blind by a separate grader. All raw answers are in [`evals/results/`](evals/results/).
@@ -93,6 +103,7 @@ If Been There saved you from a bad call, a ⭐ helps others find it.
 Una skill de Claude para decisiones importantes: cambios de precio, contrataciones, lanzamientos, expansiones o pedidos grandes. Compara tu plan con empresas que intentaron algo parecido (las que fracasaron y las que sobrevivieron), encuentra el supuesto con más probabilidades de hundirlo y te da un veredicto corto y accionable:
 
 - **Busca el supuesto que no has dicho**, el número del que depende tu plan sin que lo menciones.
+- **La Pandilla**: cinco personajes (Nix, Root, Nova, Pip y Tack) más especialistas opinan por separado y Vera decide.
 - **Precedentes reales de los dos lados**, explicando en qué se parecen a tu caso y en qué no.
 - **No es pesimista**: si hay tracción real, lo dice primero.
 - **Termina en acción**: una prueba de 48 horas y un criterio con fecha para cambiar de rumbo.

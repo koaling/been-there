@@ -23,7 +23,7 @@ Unedited answer from the blind eval run (case `FC4`).
 
 **Kill criterion**: If closed revenue from the hire hasn't reached a monthly run-rate equal to their fully loaded cost by day 90, or their win rate is under half the founders' baseline, end the trial and go back to founder-led sales.
 
-▸ Council
+▸ The Crew
 - **Devil's advocate**: The risk is a hire with no playbook and no clear lead quality. Get the baseline first.
 - **First principles**: The real problem is follow-up capacity, not headcount. A part-time or contract closer is a valid third option.
 - **Expansionist**: Inbound demand plus a short cycle is when a first sales hire is most likely to work. Waiting has a cost.

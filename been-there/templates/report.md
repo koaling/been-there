@@ -1,8 +1,16 @@
 # Visual report template
 
-When the user accepts the visual report, copy the HTML below into a new `.html` file, replace **only** the JSON inside `<script id="REPORT_DATA">` with this decision's data (same keys), and deliver the file (or publish it as an artifact). Keep everything else unchanged.
+When the user accepts the visual report, copy the HTML below into a new `.html` file, replace **only** the JSON inside `<script id="REPORT_DATA">` with this decision's data (same keys), and deliver the file (or publish it as an artifact). Keep everything else unchanged: the Crew mascots are drawn inline, so the file works offline.
 
-Keys: `title`, `date`, `verdict`, `confidence` (0–10), `agreement`, `disagreement`, `key_assumption`, `precedents[]` (`type` failure|survivor, `name`, `years`, `note`, `match[]`, `miss[]`), `advisors[]` (`name`, `position` for|against|depends, `line`, `opinion` true|false), `premortem[]`, `next_step`, `kill_criterion`.
+Keys:
+- `lang`: `en` | `es` (use the user's language; labels switch automatically).
+- `title`, `date`, `verdict`, `confidence` (0–10).
+- `tone`: `go` (do it) | `stop` (don't) | `test` (do it like this / first find out).
+- `agreement`, `disagreement`, `key_assumption`, `next_step`, `kill_criterion`.
+- `precedents[]`: `type` failure|survivor, `name`, `years`, `note`, `match[]`, `miss[]`.
+- `advisors[]`: `role`, `name`, `position` for|against|depends, `line`, `opinion` true|false.
+  `role` picks the mascot: `devil` (Nix), `first` (Root), `expansion` (Nova), `outsider` (Pip), `executor` (Tack), `finance` (Penny), `risk` (Lex), `customer` (Mo), `technical` (Bolt), `investor` (Cap), `people` (Kin). The chair is Vera.
+- `premortem[]`.
 
 ```html
 <!DOCTYPE html>
@@ -12,39 +20,92 @@ Keys: `title`, `date`, `verdict`, `confidence` (0–10), `agreement`, `disagreem
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Been There · Report</title>
 <style>
-  :root{--bg:#f6f3ee;--card:#fff;--ink:#1d1b18;--muted:#756f66;--line:#e6e0d7;--for:#2f8f5b;--against:#c8442f;--depends:#c89a2f;--accent:#1d1b18}
+  :root{
+    --bg:#F7F4FF;--card:#fff;--ink:#231C3A;--muted:#6E6787;--line:#ECE6FA;
+    --violet:#7C5CF0;--violet-soft:#EFEAFF;
+    --go:#1FA971;--go-soft:#E3F7EE;--stop:#E2475A;--stop-soft:#FDE8EB;--test:#E8A21B;--test-soft:#FFF4DC;
+    --r:22px;--shadow:0 1px 2px rgba(35,28,58,.04),0 8px 24px -12px rgba(35,28,58,.18);
+  }
   *{box-sizing:border-box}
-  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,sans-serif;padding:28px 16px 60px}
-  .wrap{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:22px}
-  .eyebrow{font:600 12px/1 ui-monospace,Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-  h1{font-size:clamp(24px,5vw,34px);line-height:1.15;margin:6px 0 0}
-  h2{font-size:15px;text-transform:uppercase;letter-spacing:.06em;margin:0 0 10px;color:var(--muted)}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 20px}
-  .verdict{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
-  .verdict strong{font-size:22px;flex:1;min-width:220px}
-  .conf{display:flex;flex-direction:column;align-items:center;min-width:90px}
-  .conf b{font-size:34px;line-height:1}
-  .bar{width:90px;height:6px;border-radius:3px;background:var(--line);overflow:hidden;margin-top:6px}
-  .bar i{display:block;height:100%;background:var(--accent)}
-  .grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-  @media(max-width:600px){.grid2{grid-template-columns:1fr}}
-  .prec{display:flex;flex-direction:column;gap:10px}
-  .p{display:grid;grid-template-columns:28px 1fr;gap:10px;align-items:start}
-  .p .ic{width:28px;height:28px;border-radius:8px;display:grid;place-items:center;font-size:15px;color:#fff}
-  .p.failure .ic{background:var(--against)} .p.survivor .ic{background:var(--for)}
-  .p small{display:block;color:var(--muted)}
-  .tags span{display:inline-block;font-size:12px;border:1px solid var(--line);border-radius:999px;padding:1px 8px;margin:4px 4px 0 0}
-  .tags .miss{opacity:.45;text-decoration:line-through}
-  table{width:100%;border-collapse:collapse;font-size:15px}
-  td{padding:9px 6px;border-top:1px solid var(--line);vertical-align:top}
-  tr:first-child td{border-top:0}
-  .pos{font-weight:700;font-size:12px;text-transform:uppercase;padding:2px 8px;border-radius:999px;color:#fff;white-space:nowrap}
-  .pos.for{background:var(--for)} .pos.against{background:var(--against)} .pos.depends{background:var(--depends)}
-  .op{font-size:12px;color:var(--muted);font-style:italic}
-  ol{margin:0;padding-left:20px} li{margin:4px 0}
-  .kv{display:grid;grid-template-columns:auto 1fr;gap:6px 14px}
-  .kv dt{font-weight:700} .kv dd{margin:0}
-  footer{color:var(--muted);font-size:13px;text-align:center}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,sans-serif;padding:32px 16px 64px;position:relative;overflow-x:hidden}
+  body::before,body::after{content:"";position:fixed;z-index:-1;border-radius:50%;filter:blur(60px);opacity:.55}
+  body::before{width:420px;height:420px;background:#E2D8FF;top:-120px;right:-120px}
+  body::after{width:360px;height:360px;background:#FFE9C7;bottom:-140px;left:-120px}
+  .wrap{max-width:980px;margin:0 auto;display:flex;flex-direction:column;gap:20px}
+  h1,h2,h3,.display{font-family:ui-rounded,"SF Pro Rounded","Nunito","Segoe UI",sans-serif}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:-.01em}
+  .brand .dot{width:10px;height:10px;border-radius:50%;background:var(--stop);box-shadow:0 0 0 4px #FDE8EB}
+  .brand small{font-weight:600;color:var(--muted);margin-left:auto;font-size:13px}
+  h1{font-size:clamp(26px,4.6vw,40px);line-height:1.12;margin:10px 0 0;letter-spacing:-.02em}
+  h2{font-size:20px;margin:0 0 14px;display:flex;align-items:center;gap:10px;letter-spacing:-.01em}
+  h2 .count{font-size:13px;font-weight:700;color:var(--violet);background:var(--violet-soft);border-radius:999px;padding:2px 10px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:22px;box-shadow:var(--shadow)}
+  .muted{color:var(--muted)}
+
+  /* hero */
+  .hero{display:grid;grid-template-columns:auto 1fr auto;gap:22px;align-items:center;padding:26px;position:relative;overflow:hidden}
+  .hero::after{content:"";position:absolute;inset:0;background:radial-gradient(600px 200px at 100% 0,var(--tone-soft),transparent 70%);pointer-events:none}
+  .hero .who{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:12px;font-weight:700;color:var(--muted)}
+  .hero .label{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--tone);background:var(--tone-soft);border-radius:999px;padding:4px 12px}
+  .hero .verdict{font-size:clamp(22px,3.4vw,30px);font-weight:800;line-height:1.2;margin:10px 0 0;letter-spacing:-.015em}
+  .ring{position:relative;width:112px;z-index:1}
+  .ring b{position:absolute;left:0;right:0;top:0;height:112px;display:grid;place-items:center;font-size:30px;font-weight:800;font-family:ui-rounded,"SF Pro Rounded",sans-serif}
+  .ring b span{font-size:13px;color:var(--muted);font-weight:700;margin-top:34px;position:absolute}
+  .ring small{display:block;text-align:center;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+  @media(max-width:680px){.hero{grid-template-columns:1fr;text-align:center}.hero .who,.ring{margin:0 auto}}
+
+  .grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+  @media(max-width:680px){.grid2{grid-template-columns:1fr}}
+  .note{display:flex;gap:14px;align-items:flex-start}
+  .note .ic{flex:none;width:40px;height:40px;border-radius:14px;display:grid;place-items:center;font-size:20px}
+  .note h3{margin:0 0 4px;font-size:15px}
+
+  /* precedents */
+  .prec{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+  .p{border-radius:18px;padding:16px;border:1.5px solid var(--line);background:#fff;position:relative}
+  .p.failure{background:linear-gradient(180deg,#FFF6F7,#fff 60%);border-color:#F8D3D9}
+  .p.survivor{background:linear-gradient(180deg,#F1FBF6,#fff 60%);border-color:#C8EEDB}
+  .p .tag{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:3px 10px}
+  .p.failure .tag{background:var(--stop-soft);color:var(--stop)} .p.survivor .tag{background:var(--go-soft);color:var(--go)}
+  .p h3{margin:10px 0 2px;font-size:18px} .p .yrs{font-size:13px;color:var(--muted);font-weight:600}
+  .p p{margin:8px 0 10px;font-size:14.5px}
+  .chips span{display:inline-block;font-size:12px;font-weight:600;border-radius:999px;padding:2px 9px;margin:0 4px 4px 0;background:var(--violet-soft);color:var(--violet)}
+  .chips .miss{background:#F2F0F6;color:#A39DB5;text-decoration:line-through}
+
+  /* crew */
+  .tally{display:flex;height:10px;border-radius:999px;overflow:hidden;background:var(--line);margin:-4px 0 6px}
+  .tally i{display:block;height:100%}
+  .tally-legend{display:flex;gap:16px;font-size:13px;font-weight:600;color:var(--muted);margin-bottom:16px;flex-wrap:wrap}
+  .tally-legend b{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:-1px}
+  .crew{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
+  .m{display:grid;grid-template-columns:92px 1fr;gap:12px;align-items:start;border-radius:20px;padding:14px;background:var(--mc-soft);border:1.5px solid var(--mc-line)}
+  .m .av{display:flex;flex-direction:column;align-items:center}
+  .m .nick{font-weight:800;font-size:15px;font-family:ui-rounded,"SF Pro Rounded",sans-serif}
+  .m .role{font-size:12px;font-weight:600;color:var(--muted);line-height:1.25;text-align:center}
+  .m .bubble{background:#fff;border-radius:16px;padding:10px 12px;font-size:14.5px;position:relative;box-shadow:0 2px 8px -4px rgba(35,28,58,.2)}
+  .m .bubble::before{content:"";position:absolute;left:-7px;top:18px;border:7px solid transparent;border-right-color:#fff;border-left:0}
+  .pos{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;border-radius:999px;padding:3px 10px;margin-bottom:8px}
+  .pos.for{background:var(--go-soft);color:var(--go)} .pos.against{background:var(--stop-soft);color:var(--stop)} .pos.depends{background:var(--test-soft);color:#B67A00}
+  .op{display:inline-block;font-size:11px;font-weight:700;color:var(--muted);background:#F2F0F6;border-radius:999px;padding:1px 8px;margin-left:4px}
+  .mascot{display:block;overflow:visible}
+
+  /* premortem */
+  .pm{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+  .pm li{display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:start}
+  .pm .n{width:34px;height:34px;border-radius:12px;background:#2A2140;color:#fff;display:grid;place-items:center;font-weight:800}
+
+  /* actions */
+  .actions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+  @media(max-width:760px){.actions{grid-template-columns:1fr}}
+  .a{border-radius:20px;padding:18px;color:var(--ink)}
+  .a .k{font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;display:flex;align-items:center;gap:8px;margin-bottom:8px}
+  .a .k i{font-style:normal;font-size:18px}
+  .a.test{background:var(--violet-soft)} .a.test .k{color:var(--violet)}
+  .a.next{background:var(--go-soft)} .a.next .k{color:var(--go)}
+  .a.kill{background:var(--stop-soft)} .a.kill .k{color:var(--stop)}
+  footer{display:flex;justify-content:center;align-items:center;gap:8px;color:var(--muted);font-size:13px;text-align:center;margin-top:6px;flex-wrap:wrap}
+  @media print{body{background:#fff;padding:0}body::before,body::after{display:none}.card{box-shadow:none;break-inside:avoid}}
 </style>
 </head>
 <body>
@@ -53,85 +114,217 @@ Keys: `title`, `date`, `verdict`, `confidence` (0–10), `agreement`, `disagreem
 <!-- Replace only this JSON when generating a report. -->
 <script id="REPORT_DATA" type="application/json">
 {
-  "title": "Example: launch same-day grocery delivery in 8 cities at once?",
-  "date": "2026-11-24",
-  "verdict": "First prove one city, then expand",
+  "lang": "en",
+  "title": "Launch same-day grocery delivery in 8 cities at once?",
+  "date": "2026-11-25",
+  "tone": "test",
+  "verdict": "Prove one city first, then expand",
   "confidence": 8,
   "agreement": "Volume won't fix negative per-order margins; it multiplies them.",
-  "disagreement": "Expansionist argues speed matters against competitors; others say speed without economics is how Webvan died.",
-  "key_assumption": "Per-order loss drops below zero with density → test with 4 weeks of route data in city 1.",
+  "disagreement": "Nova says speed matters against competitors; the rest say speed without economics is exactly how Webvan died.",
+  "key_assumption": "Per-order loss turns positive with route density → test with 4 weeks of route data in city 1.",
   "precedents": [
     {"type":"failure","name":"Webvan","years":"1996–2001","note":"Built warehouses in many cities before one was profitable.","match":["market","mechanism"],"miss":["timing"]},
-    {"type":"survivor","name":"Instacart","years":"2012–","note":"Same trap, asset-light: picked from existing stores.","match":["market","model"],"miss":[]}
+    {"type":"survivor","name":"Instacart","years":"2012–","note":"Same market, asset-light: shoppers picked from existing stores.","match":["market","model"],"miss":[]}
   ],
   "advisors": [
-    {"name":"Devil's advocate","position":"against","line":"You're Webvan with better branding: losses scale with cities.","opinion":false},
-    {"name":"First principles","position":"depends","line":"The goal is density per route, not number of cities.","opinion":false},
-    {"name":"Expansionist","position":"for","line":"First mover in 8 cities could lock in partnerships.","opinion":true},
-    {"name":"Outsider","position":"depends","line":"Why would I switch from my current delivery app?","opinion":true},
-    {"name":"Executor","position":"against","line":"Tomorrow: measure cost per order by route, not average.","opinion":false}
+    {"role":"devil","name":"Devil's advocate","position":"against","line":"You're Webvan with better branding: losses scale with cities.","opinion":false},
+    {"role":"first","name":"First principles","position":"depends","line":"The goal is density per route, not the number of cities.","opinion":false},
+    {"role":"expansion","name":"Expansionist","position":"for","line":"First mover in 8 cities could lock in store partnerships.","opinion":true},
+    {"role":"outsider","name":"Outsider","position":"depends","line":"Why would I switch from the delivery app I already use?","opinion":true},
+    {"role":"executor","name":"Executor","position":"against","line":"Tomorrow: measure cost per order by route, not the average.","opinion":false},
+    {"role":"finance","name":"Finance","position":"against","line":"Eight warehouses lock up the cash before demand is proven.","opinion":false}
   ],
   "premortem": [
     "Per-order losses grew with each new city (signal: contribution margin by city).",
-    "Warehouse capex locked cash before demand was proven (signal: utilisation < 40%).",
-    "Competitor with no warehouses undercut prices (signal: Instacart-style partner model in your market)."
+    "Warehouse capex locked cash before demand was proven (signal: utilisation under 40%).",
+    "A competitor with no warehouses undercut prices (signal: Instacart-style partner model in your market)."
   ],
-  "next_step": "Pull 4 weeks of order data in city 1 and compute margin per route density.",
-  "kill_criterion": "If margin per order isn't positive at the best-density routes by 31 Jan, stop expansion plans."
+  "next_step": "Pull 4 weeks of order data in city 1 and compute margin by route density.",
+  "kill_criterion": "If margin per order isn't positive on the densest routes by 31 Jan, drop the expansion plan."
 }
 </script>
 
 <script>
+// Been There · The Crew — mascot generator (self-contained SVG, no external assets)
+const CREW = {
+  devil:     {nick:'Nix',   c:['#FFB0A8','#FF6B6B','#D63E4A'], eyes:'skeptic', mouth:'smirk', arms:'hips',  acc:'horns',   tilt:-4},
+  first:     {nick:'Root',  c:['#B5CCFF','#5B8DEF','#3559C2'], eyes:'focus',   mouth:'small', arms:'point', acc:'glasses', tilt:0},
+  expansion: {nick:'Nova',  c:['#FFE29A','#FFB547','#E5841A'], eyes:'happy',   mouth:'grin',  arms:'up',    acc:'sparks',  tilt:3},
+  outsider:  {nick:'Pip',   c:['#D3F2A6','#93CF55','#5E9F2A'], eyes:'wide',    mouth:'o',     arms:'down',  acc:'question',tilt:8},
+  executor:  {nick:'Tack',  c:['#9DECE4','#2EC4B6','#13968A'], eyes:'determined',mouth:'smile',arms:'hold', acc:'hardhat', tilt:0},
+  chair:     {nick:'Vera',  c:['#DCCCFF','#9B7BF7','#6C4ED6'], eyes:'calm',    mouth:'smile', arms:'hold',  acc:'gavel',   tilt:0},
+  finance:   {nick:'Penny', c:['#A9EFD2','#22B07D','#0F7F57'], eyes:'wink',    mouth:'smile', arms:'hold',  acc:'coin',    tilt:-3},
+  risk:      {nick:'Lex',   c:['#C9D3E6','#6B7FA6','#455776'], eyes:'determined',mouth:'flat',arms:'hold', acc:'shield',  tilt:0},
+  customer:  {nick:'Mo',    c:['#FFD1EA','#FF8FC7','#E0569D'], eyes:'happy',   mouth:'smile', arms:'hug',   acc:'heart',   tilt:-5},
+  technical: {nick:'Bolt',  c:['#FFC9A8','#FF8A4C','#D9602A'], eyes:'focus',   mouth:'grin',  arms:'hold',  acc:'wrench',  tilt:2},
+  investor:  {nick:'Cap',   c:['#E8C9A8','#C08457','#8E5A33'], eyes:'monocle', mouth:'smile', arms:'hips',  acc:'tophat',  tilt:0},
+  people:    {nick:'Kin',   c:['#F5CDF8','#DA7FE3','#A94DB3'], eyes:'happy',   mouth:'grin',  arms:'wave',  acc:'bubbles', tilt:-2},
+};
+
+function crewKey(name){
+  const n = String(name||'').toLowerCase();
+  const map = [
+    [/devil|abogado|diablo/,'devil'],[/first|primer|principi/,'first'],[/expan/,'expansion'],
+    [/outsider|forastero|ajeno|externo/,'outsider'],[/execut|ejecut/,'executor'],[/chair|presid|anfitri/,'chair'],
+    [/financ|cfo|money/,'finance'],[/risk|riesgo|legal|complian|cumplim/,'risk'],[/customer|cliente|user|usuario/,'customer'],
+    [/tech|técn|tecn/,'technical'],[/invest|partner|socio/,'investor'],[/people|personas|rrhh|hr|equipo|talent/,'people'],
+  ];
+  for (const [re,k] of map) if (re.test(n)) return k;
+  return 'chair';
+}
+
+function mascot(key, size=120){
+  const m = CREW[key] || CREW.chair; const [L,B,D] = m.c; const id = 'g'+key+Math.random().toString(36).slice(2,7);
+  const ink = '#2A2140';
+  const eye = (x,y)=>`<ellipse cx="${x}" cy="${y}" rx="6.2" ry="7.6" fill="${ink}"/><circle cx="${x+2}" cy="${y-2.8}" r="2.4" fill="#fff"/><circle cx="${x-1.8}" cy="${y+2.6}" r="1" fill="#fff" opacity=".8"/>`;
+  const arc = (x,y)=>`<path d="M${x-6} ${y+1} Q${x} ${y-6} ${x+6} ${y+1}" stroke="${ink}" stroke-width="3.2" fill="none" stroke-linecap="round"/>`;
+  const brow = (x,y,a)=>`<path d="M${x-6} ${y} L${x+6} ${y+a}" stroke="${ink}" stroke-width="2.8" stroke-linecap="round"/>`;
+  let eyes='';
+  switch(m.eyes){
+    case 'happy': eyes = arc(48,62)+arc(74,62); break;
+    case 'calm': eyes = `<path d="M42 62 Q48 67 54 62" stroke="${ink}" stroke-width="3.2" fill="none" stroke-linecap="round"/><path d="M68 62 Q74 67 80 62" stroke="${ink}" stroke-width="3.2" fill="none" stroke-linecap="round"/>`; break;
+    case 'wink': eyes = eye(48,62)+arc(74,63); break;
+    case 'wide': eyes = `<circle cx="48" cy="61" r="9" fill="#fff"/><circle cx="74" cy="61" r="9" fill="#fff"/>`+eye(49,62)+eye(75,62); break;
+    case 'skeptic': eyes = `<ellipse cx="48" cy="63" rx="6" ry="5" fill="${ink}"/><circle cx="50" cy="61.5" r="1.8" fill="#fff"/>`+eye(74,62)+brow(48,54,2)+`<path d="M68 51 Q74 46 80 50" stroke="${ink}" stroke-width="2.8" fill="none" stroke-linecap="round"/>`; break;
+    case 'determined': eyes = eye(48,63)+eye(74,63)+brow(48,52,3)+brow(74,55,-3); break;
+    case 'monocle': eyes = eye(48,62)+eye(74,62)+`<circle cx="74" cy="62" r="11" fill="#fff" fill-opacity=".25" stroke="#C9A227" stroke-width="2.6"/><path d="M84 66 Q90 80 86 92" stroke="#C9A227" stroke-width="1.5" fill="none"/>`; break;
+    case 'focus': default: eyes = eye(48,62)+eye(74,62);
+  }
+  const mouths = {
+    smile:`<path d="M54 76 Q61 83 68 76" stroke="${ink}" stroke-width="3" fill="none" stroke-linecap="round"/>`,
+    small:`<path d="M57 77 Q61 80 65 77" stroke="${ink}" stroke-width="3" fill="none" stroke-linecap="round"/>`,
+    grin:`<path d="M52 74 Q61 74 70 74 Q68 87 61 87 Q54 87 52 74Z" fill="${ink}"/><path d="M56 82 Q61 79 66 82 Q64 86 61 86 Q58 86 56 82Z" fill="#FF7A8A"/>`,
+    smirk:`<path d="M54 78 Q62 81 69 74" stroke="${ink}" stroke-width="3" fill="none" stroke-linecap="round"/>`,
+    o:`<ellipse cx="61" cy="79" rx="4" ry="5" fill="${ink}"/>`,
+    flat:`<path d="M55 78 L67 78" stroke="${ink}" stroke-width="3" stroke-linecap="round"/>`,
+  };
+  const armShape = (x,y,r)=>`<ellipse cx="${x}" cy="${y}" rx="7" ry="12" fill="url(#${id}b)" transform="rotate(${r} ${x} ${y})"/>`;
+  const arms = {
+    down: armShape(24,76,20)+armShape(98,76,-20),
+    hips: armShape(25,80,-35)+armShape(97,80,35),
+    up: armShape(22,50,40)+armShape(100,50,-40),
+    point: armShape(24,78,20)+armShape(98,50,-25)+`<circle cx="103" cy="39" r="3.6" fill="${B}"/>`,
+    hold: armShape(25,78,25)+armShape(92,80,-55),
+    hug: armShape(36,84,-60)+armShape(86,84,60),
+    wave: armShape(24,78,20)+armShape(100,48,-30),
+  };
+  const accs = {
+    horns:`<path d="M40 34 Q36 20 44 18 Q44 28 48 32Z" fill="${D}"/><path d="M82 34 Q86 20 78 18 Q78 28 74 32Z" fill="${D}"/><path d="M98 96 Q110 98 108 86 l4 -3 -6 -1" stroke="${D}" stroke-width="3" fill="none" stroke-linecap="round"/>`,
+    glasses:`<circle cx="48" cy="62" r="10" fill="#fff" fill-opacity=".18" stroke="${ink}" stroke-width="2.4"/><circle cx="74" cy="62" r="10" fill="#fff" fill-opacity=".18" stroke="${ink}" stroke-width="2.4"/><path d="M58 61 Q61 58 64 61" stroke="${ink}" stroke-width="2.4" fill="none"/><g transform="translate(96 20)" opacity=".9"><ellipse rx="11" ry="4" fill="none" stroke="${D}" stroke-width="1.8"/><ellipse rx="11" ry="4" fill="none" stroke="${D}" stroke-width="1.8" transform="rotate(60)"/><ellipse rx="11" ry="4" fill="none" stroke="${D}" stroke-width="1.8" transform="rotate(-60)"/><circle r="2.6" fill="${D}"/></g>`,
+    sparks:`<g stroke="#FFC83D" stroke-width="3.4" stroke-linecap="round"><path d="M14 30 l-6 -6"/><path d="M22 22 l-2 -9"/><path d="M106 30 l6 -6"/><path d="M98 22 l2 -9"/></g><path d="M104 6 l2 5 5 2 -5 2 -2 5 -2 -5 -5 -2 5 -2z" fill="#FFC83D"/><path d="M16 4 l1.5 4 4 1.5 -4 1.5 -1.5 4 -1.5 -4 -4 -1.5 4 -1.5z" fill="#FFC83D"/>`,
+    question:`<text x="92" y="30" font-family="Arial Rounded MT Bold,Arial,sans-serif" font-weight="900" font-size="26" fill="${D}">?</text><path d="M60 30 Q56 18 64 12 Q66 22 60 30Z" fill="#5E9F2A"/>`,
+    hardhat:`<path d="M30 42 Q31 18 61 17 Q91 18 92 42Z" fill="#FFC83D"/><path d="M26 42 h70 q3 0 3 3 v1 q0 3 -3 3 h-70 q-3 0 -3 -3 v-1 q0 -3 3 -3z" fill="#F2A900"/><rect x="57" y="18" width="8" height="24" rx="3" fill="#F2A900"/><g transform="translate(86 74) rotate(-12)"><rect x="0" y="0" width="22" height="28" rx="3" fill="#fff" stroke="${D}" stroke-width="2"/><rect x="6" y="-3" width="10" height="6" rx="2" fill="${D}"/><path d="M5 11 l3 3 6 -6 M5 20 l3 3 6 -6" stroke="#22B07D" stroke-width="2.2" fill="none" stroke-linecap="round"/></g>`,
+    gavel:`<g transform="translate(92 70) rotate(-35)"><rect x="-3" y="0" width="6" height="26" rx="3" fill="#8E5A33"/><rect x="-11" y="-9" width="22" height="11" rx="4" fill="#A86B3C"/></g><path d="M47 30 l3 -14 6 8 5 -10 5 10 6 -8 3 14z" fill="#FFC83D" stroke="#E5A100" stroke-width="1.5" stroke-linejoin="round"/>`,
+    coin:`<g transform="translate(96 82)"><circle r="12" fill="#FFC83D" stroke="#E5A100" stroke-width="2.5"/><text y="5.5" text-anchor="middle" font-family="Arial,sans-serif" font-weight="900" font-size="15" fill="#B57F00">€</text></g><circle cx="104" cy="56" r="5" fill="#FFC83D" stroke="#E5A100" stroke-width="1.5"/>`,
+    shield:`<g transform="translate(96 76)"><path d="M0 -14 L13 -9 Q13 8 0 16 Q-13 8 -13 -9Z" fill="#4C8DF6" stroke="#2C5EB8" stroke-width="2"/><path d="M-5 0 l4 4 7 -8" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/></g>`,
+    heart:`<path d="M61 100 C44 88 44 76 53 74 C57 73 60 76 61 79 C62 76 65 73 69 74 C78 76 78 88 61 100Z" fill="#FF4F7B" stroke="#D93460" stroke-width="1.5"/><path d="M98 22 c-4 -6 -12 -1 -6 6 l6 6 6 -6 c6 -7 -2 -12 -6 -6z" fill="#FF4F7B" opacity=".8"/>`,
+    wrench:`<g transform="translate(98 74) rotate(35) scale(1.25)"><rect x="-3" y="-2" width="6" height="26" rx="3" fill="#8A94A6"/><path d="M-9 -8 a9 9 0 1 0 18 0 l-5 0 l0 5 l-8 0 l0 -5z" fill="#A9B2C3"/></g>`,
+    tophat:`<rect x="38" y="6" width="46" height="26" rx="4" fill="#2A2140"/><rect x="38" y="24" width="46" height="5" fill="#C9A227"/><rect x="30" y="30" width="62" height="6" rx="3" fill="#2A2140"/>`,
+    bubbles:`<g transform="translate(92 14)"><rect x="0" y="0" width="22" height="15" rx="6" fill="#fff" stroke="${D}" stroke-width="2"/><path d="M5 15 l-2 6 7 -6z" fill="#fff" stroke="${D}" stroke-width="2" stroke-linejoin="round"/><circle cx="6" cy="7.5" r="1.6" fill="${D}"/><circle cx="11" cy="7.5" r="1.6" fill="${D}"/><circle cx="16" cy="7.5" r="1.6" fill="${D}"/></g><g transform="translate(6 22)"><rect width="16" height="12" rx="5" fill="#fff" stroke="${D}" stroke-width="2"/><path d="M5 7 q3 -4 6 0" stroke="#FF4F7B" stroke-width="2" fill="none"/></g>`,
+  };
+  const back = (m.acc==='tophat'||m.acc==='hardhat'||m.acc==='gavel') ? '' : `<path d="M54 30 Q50 14 62 10 Q60 20 68 26 Q64 30 54 30Z" fill="url(#${id}b)"/>`;
+  return `<svg class="mascot" viewBox="0 0 122 122" width="${size}" height="${size}" role="img" aria-label="${m.nick}" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="${id}b" cx="36%" cy="30%" r="78%"><stop offset="0" stop-color="${L}"/><stop offset=".55" stop-color="${B}"/><stop offset="1" stop-color="${D}"/></radialGradient>
+    <radialGradient id="${id}s" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#2A2140" stop-opacity=".22"/><stop offset="1" stop-color="#2A2140" stop-opacity="0"/></radialGradient>
+  </defs>
+  <ellipse cx="61" cy="112" rx="36" ry="6" fill="url(#${id}s)"/>
+  <g transform="rotate(${m.tilt} 61 70)">
+    <ellipse cx="48" cy="104" rx="9" ry="6" fill="${D}"/><ellipse cx="74" cy="104" rx="9" ry="6" fill="${D}"/>
+    ${arms[m.arms]}
+    ${back}
+    <path d="M61 26 C88 26 100 46 100 68 C100 92 84 104 61 104 C38 104 22 92 22 68 C22 46 34 26 61 26Z" fill="url(#${id}b)"/>
+    <ellipse cx="44" cy="40" rx="11" ry="6" fill="#fff" opacity=".55" transform="rotate(-28 44 40)"/>
+    <ellipse cx="38" cy="74" rx="6.5" ry="4" fill="#FF7FA0" opacity=".4"/><ellipse cx="84" cy="74" rx="6.5" ry="4" fill="#FF7FA0" opacity=".4"/>
+    ${eyes}${mouths[m.mouth]}
+    ${accs[m.acc]||''}
+  </g></svg>`;
+}
+
+</script>
+<script>
   const d = JSON.parse(document.getElementById('REPORT_DATA').textContent);
   const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  const posLabel = {for:'For', against:'Against', depends:'Depends'};
+  const T = {
+    en:{crew:'The Crew',agree:'Where the crew agrees',dis:'Real disagreement',prec:'Who has been there',fell:'Fell',surv:'Survived',
+        none:'No precedent close enough. Better none than a forced one.',pm:"Pre-mortem · it's 12 months later and it failed because…",
+        todo:'What to do now',test:'Assumption to test',next:'Next 48 h',kill:'Kill criterion',conf:'confidence',verdict:'Verdict',
+        for:'For',against:'Against',depends:'Depends',op:'opinion',chairs:'chairs the crew',
+        roles:{devil:"Devil's advocate",first:'First principles',expansion:'Expansionist',outsider:'Outsider',executor:'Executor',chair:'Chair',finance:'Finance',risk:'Risk & compliance',customer:'Customer',technical:'Technical',investor:'Investor / partner',people:'People'},
+        tone:{go:'Go',stop:"Don't",test:'Test first'},foot:'Precedents are evidence, not predictions'},
+    es:{crew:'La Pandilla',agree:'En qué coinciden',dis:'Desacuerdo real',prec:'Quién ya pasó por aquí',fell:'Cayó',surv:'Sobrevivió',
+        none:'Ningún precedente se parece lo suficiente. Mejor ninguno que uno forzado.',pm:'Pre-mortem · han pasado 12 meses y fracasó porque…',
+        todo:'Qué hacer ahora',test:'Supuesto a comprobar',next:'Próximas 48 h',kill:'Criterio de abandono',conf:'confianza',verdict:'Veredicto',
+        for:'A favor',against:'En contra',depends:'Depende',op:'opinión',chairs:'preside la pandilla',
+        roles:{devil:'Abogado del diablo',first:'Primeros principios',expansion:'Expansionista',outsider:'Forastero',executor:'Ejecutor',chair:'Presidencia',finance:'Finanzas',risk:'Riesgo y cumplimiento',customer:'Cliente',technical:'Técnico',investor:'Inversor / socio',people:'Personas'},
+        tone:{go:'Adelante',stop:'No lo hagas',test:'Primero, prueba'},foot:'Los precedentes son evidencias, no predicciones'}
+  };
+  const t = T[d.lang] || T.en;
+  const tones = {go:['var(--go)','var(--go-soft)','🚀'],stop:['var(--stop)','var(--stop-soft)','✋'],test:['var(--test)','var(--test-soft)','🧪']};
+  const tone = tones[d.tone] || tones.test;
+  const conf = Math.max(0,Math.min(10,+d.confidence||0)), C = 2*Math.PI*48;
+  const adv = (d.advisors||[]).map(a => ({...a, key: (a.role && CREW[a.role]) ? a.role : crewKey(a.name)}));
+  const cnt = {for:0,against:0,depends:0}; adv.forEach(a => cnt[a.position] = (cnt[a.position]||0)+1);
+  const tot = adv.length || 1;
+  const soft = hex => hex + '1F', line = hex => hex + '40';
+  document.documentElement.lang = d.lang || 'en';
   document.title = 'Been There · ' + d.title;
   document.getElementById('app').innerHTML = `
     <header>
-      <div class="eyebrow">Been There · ${esc(d.date)}</div>
+      <div class="brand"><span class="dot"></span>Been There<small>${esc(d.date)}</small></div>
       <h1>${esc(d.title)}</h1>
     </header>
 
-    <section class="card verdict">
-      <strong>${esc(d.verdict)}</strong>
-      <div class="conf"><b>${esc(d.confidence)}<span style="font-size:16px">/10</span></b>
-        <div class="bar"><i style="width:${Math.max(0,Math.min(10,+d.confidence))*10}%"></i></div>
-        <span class="eyebrow" style="margin-top:6px">confidence</span></div>
+    <section class="card hero" style="--tone:${tone[0]};--tone-soft:${tone[1]}">
+      <div class="who">${mascot('chair',96)}Vera · ${esc(t.chairs)}</div>
+      <div style="position:relative;z-index:1">
+        <span class="label">${tone[2]} ${esc(t.tone[d.tone]||t.verdict)}</span>
+        <div class="verdict display">${esc(d.verdict)}</div>
+      </div>
+      <div class="ring"><svg viewBox="0 0 112 112" width="112" height="112">
+          <circle cx="56" cy="56" r="48" fill="none" stroke="var(--line)" stroke-width="10"/>
+          <circle cx="56" cy="56" r="48" fill="none" stroke="${tone[0]}" stroke-width="10" stroke-linecap="round"
+            stroke-dasharray="${C*conf/10} ${C}" transform="rotate(-90 56 56)"/></svg>
+        <b>${conf}<span>/10</span></b><small>${esc(t.conf)}</small></div>
     </section>
 
     <div class="grid2">
-      <section class="card"><h2>Agreement</h2>${esc(d.agreement)}</section>
-      <section class="card"><h2>Real disagreement</h2>${esc(d.disagreement)}</section>
+      <section class="card note"><div class="ic" style="background:var(--go-soft)">🤝</div><div><h3>${esc(t.agree)}</h3>${esc(d.agreement)}</div></section>
+      <section class="card note"><div class="ic" style="background:var(--test-soft)">⚡</div><div><h3>${esc(t.dis)}</h3>${esc(d.disagreement)}</div></section>
     </div>
 
-    <section class="card"><h2>Precedents</h2><div class="prec">
-      ${(d.precedents||[]).map(p => `
-        <div class="p ${p.type==='survivor'?'survivor':'failure'}">
-          <div class="ic">${p.type==='survivor'?'✓':'✕'}</div>
-          <div><b>${esc(p.name)}</b> <small style="display:inline">${esc(p.years)}</small>
-            <small>${esc(p.note)}</small>
-            <div class="tags">${(p.match||[]).map(m=>`<span>${esc(m)}</span>`).join('')}${(p.miss||[]).map(m=>`<span class="miss">${esc(m)}</span>`).join('')}</div>
-          </div>
-        </div>`).join('') || '<em>No strong precedent found.</em>'}
+    <section class="card"><h2>${esc(t.prec)} <span class="count">${(d.precedents||[]).length}</span></h2>
+      ${(d.precedents||[]).length ? `<div class="prec">${d.precedents.map(p => {const s = p.type==='survivor'; return `
+        <article class="p ${s?'survivor':'failure'}">
+          <span class="tag">${s?'✓ '+esc(t.surv):'✕ '+esc(t.fell)}</span>
+          <h3>${esc(p.name)}</h3><div class="yrs">${esc(p.years)}</div>
+          <p>${esc(p.note)}</p>
+          <div class="chips">${(p.match||[]).map(m=>`<span>${esc(m)}</span>`).join('')}${(p.miss||[]).map(m=>`<span class="miss">${esc(m)}</span>`).join('')}</div>
+        </article>`}).join('')}</div>` : `<p class="muted">${esc(t.none)}</p>`}
+    </section>
+
+    <section class="card"><h2>${esc(t.crew)} <span class="count">${adv.length}</span></h2>
+      <div class="tally">${['for','depends','against'].map(k=>`<i style="width:${cnt[k]/tot*100}%;background:var(--${k==='for'?'go':k==='against'?'stop':'test'})"></i>`).join('')}</div>
+      <div class="tally-legend">${['for','depends','against'].map(k=>`<span><b style="background:var(--${k==='for'?'go':k==='against'?'stop':'test'})"></b>${esc(t[k])} · ${cnt[k]}</span>`).join('')}</div>
+      <div class="crew">${adv.map(a => {const c = CREW[a.key]; return `
+        <article class="m" style="--mc-soft:${soft(c.c[1])};--mc-line:${line(c.c[1])}">
+          <div class="av">${mascot(a.key,84)}<div class="nick">${esc(c.nick)}</div><div class="role">${esc(t.roles[a.key]||a.name)}</div></div>
+          <div><span class="pos ${esc(a.position)}">${esc(t[a.position]||a.position)}</span>
+            <div class="bubble">${esc(a.line)}${a.opinion?`<span class="op">${esc(t.op)}</span>`:''}</div></div>
+        </article>`}).join('')}</div>
+    </section>
+
+    <section class="card"><h2>${esc(t.pm)}</h2>
+      <ol class="pm">${(d.premortem||[]).map((x,i)=>`<li><span class="n">${i+1}</span><div>${esc(x)}</div></li>`).join('')}</ol></section>
+
+    <section class="card"><h2>${esc(t.todo)}</h2><div class="actions">
+      <div class="a test"><div class="k"><i>🎯</i>${esc(t.test)}</div>${esc(d.key_assumption)}</div>
+      <div class="a next"><div class="k"><i>⏱️</i>${esc(t.next)}</div>${esc(d.next_step)}</div>
+      <div class="a kill"><div class="k"><i>🛑</i>${esc(t.kill)}</div>${esc(d.kill_criterion)}</div>
     </div></section>
 
-    <section class="card"><h2>The panel</h2><table>
-      ${(d.advisors||[]).map(a => `<tr>
-        <td style="width:34%"><b>${esc(a.name)}</b></td>
-        <td style="width:1%"><span class="pos ${esc(a.position)}">${esc(posLabel[a.position]||a.position)}</span></td>
-        <td>${esc(a.line)} ${a.opinion?'<span class="op">(opinion)</span>':''}</td></tr>`).join('')}
-    </table></section>
-
-    <section class="card"><h2>Pre-mortem · 12 months later it failed because…</h2>
-      <ol>${(d.premortem||[]).map(x=>`<li>${esc(x)}</li>`).join('')}</ol></section>
-
-    <section class="card"><h2>What to do</h2><dl class="kv">
-      <dt>Assumption to test</dt><dd>${esc(d.key_assumption)}</dd>
-      <dt>Next 48 h</dt><dd>${esc(d.next_step)}</dd>
-      <dt>Kill criterion</dt><dd>${esc(d.kill_criterion)}</dd>
-    </dl></section>
-
-    <footer>Generated with Been There · precedents are illustrative, not predictions</footer>`;
+    <footer><span class="brand" style="font-size:13px"><span class="dot"></span>Been There</span> · ${esc(t.foot)}</footer>`;
 </script>
 </body>
 </html>

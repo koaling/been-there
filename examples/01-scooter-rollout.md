@@ -25,12 +25,12 @@ The demand you're seeing is real, and it's the strongest point in your favour. T
 **Next step (48 h)**: Pull the pilot data by scooter: deployment date, retirement date, total net revenue and total repair cost. Ask the supplier whether you can turn the 50,000 order into about 5,000 firm units plus options on the rest.
 **Kill criterion**: By 31 March 2027, run 3–5 cities with fleet sizes like the ones you plan. If projected lifetime net per scooter is below about €1,000 (2× unit cost, my estimate), or the median scooter lives less than 9 months, don't place the big order.
 
-▸ Council
-- Devil's advocate: against. €8/day × 60 days is break-even only if the scooter survives. The pilot may also be inflated by novelty and having no competitors.
-- First principles: depends. Lease or finance the fleet, or partner on it, rather than paying €25M up front.
-- Expansionist: for doing it in stages. City permits are scarce and worth something.
-- Outsider: 40 cities in one year means 40 sets of rules, 40 local teams and 40 winters.
-- Executor: 1,250 scooters per city need warehouses, mechanics and chargers, and you don't have any of that yet.
+▸ The Crew
+- Nix (devil's advocate): against. €8/day × 60 days is break-even only if the scooter survives. The pilot may also be inflated by novelty and having no competitors.
+- Root (first principles): depends. Lease or finance the fleet, or partner on it, rather than paying €25M up front.
+- Nova (expansionist): for doing it in stages. City permits are scarce and worth something.
+- Pip (outsider): 40 cities in one year means 40 sets of rules, 40 local teams and 40 winters.
+- Tack (executor): 1,250 scooters per city need warehouses, mechanics and chargers, and you don't have any of that yet.
 - Finance (added because €25M is at stake): a two-month payback with no lifespan data isn't a payback figure.
 
 I can also make a visual report or a decision log if you want one.

@@ -19,12 +19,12 @@ Unedited answer from the blind eval run (case `F01`).
 **Next step (48 h)**: Export seats per customer and model three options: (a) €99 flat, (b) bands such as ≤10 / ≤50 / ≤150 / unlimited, set so that no top-10 account's bill drops more than 10%, (c) per-seat with annual billing and no mid-term true-ups. Pick the option that keeps ≥95% of MRR.
 **Kill criterion**: if a pilot of the new pricing on new signups only hasn't lifted trial-to-paid conversion by ≥20% within 90 days, keep current pricing for existing accounts. If any top-10 account asks to renegotiate down, pause the rollout.
 
-▸ Council
-- Devil's advocate: You'd lose at least 54% of MRR overnight, and repricing big accounts down is close to a one-way door.
-- First principles: The problem is friction, not the unit. Fix billing mechanics (annual seats, a fair-billing credit for inactive users).
-- Expansionist: Flat pricing could work for small teams as a starter tier capped at a seat limit.
-- Outsider: "Unlimited for €99" makes a buyer ask why big companies pay the same as small ones.
-- Executor: You can model the bands tomorrow. Grandfather existing contracts and test on new signups first.
-- Finance: Price on value, not to make the invoice simpler. Your expansion revenue goes away.
+▸ The Crew
+- Nix (devil's advocate): You'd lose at least 54% of MRR overnight, and repricing big accounts down is close to a one-way door.
+- Root (first principles): The problem is friction, not the unit. Fix billing mechanics (annual seats, a fair-billing credit for inactive users).
+- Nova (expansionist): Flat pricing could work for small teams as a starter tier capped at a seat limit.
+- Pip (outsider): "Unlimited for €99" makes a buyer ask why big companies pay the same as small ones.
+- Tack (executor): You can model the bands tomorrow. Grandfather existing contracts and test on new signups first.
+- Penny (finance): Price on value, not to make the invoice simpler. Your expansion revenue goes away.
 
 Want the visual report or a decision log entry? Just ask.
