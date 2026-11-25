@@ -3,26 +3,311 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Been There · example reports</title>
+<title>Been There · Meet the Crew</title>
+<meta name="description" content="A free Claude skill that checks your plan against companies that already tried it. Meet the Crew and see example reports.">
 <style>
-  :root{--bg:#F7F4FF;--ink:#231C3A;--muted:#6E6787;--violet:#7C5CF0}
-  *{box-sizing:border-box}
-  body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,sans-serif;padding:40px 18px}
-  main{max-width:720px;margin:0 auto}
-  h1{font-size:clamp(30px,6vw,44px);line-height:1.1;margin:0 0 8px;letter-spacing:-.02em}
-  p{color:var(--muted);margin:0 0 24px}
-  img{width:100%;border-radius:18px;margin:8px 0 24px}
-  a.card{display:block;background:#fff;border-radius:18px;padding:18px 20px;margin:0 0 12px;text-decoration:none;color:var(--ink);box-shadow:0 8px 24px -14px rgba(35,28,58,.3)}
-  a.card b{display:block;font-size:18px} a.card span{color:var(--muted);font-size:15px}
-  a.repo{color:var(--violet);font-weight:700}
+  :root{--bg:#F7F4FF;--card:#fff;--ink:#231C3A;--muted:#6E6787;--line:#ECE6FA;--violet:#7C5CF0;--violet-soft:#EFEAFF;
+    --go:#1FA971;--go-soft:#E3F7EE;--stop:#E2475A;--stop-soft:#FDE8EB;--test:#E8A21B;--test-soft:#FFF4DC}
+  *{box-sizing:border-box;min-width:0}
+  html{overflow-x:clip}
+  body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,sans-serif;overflow-x:clip}
+  h1,h2,h3,.rounded{font-family:ui-rounded,"SF Pro Rounded","Nunito","Segoe UI",sans-serif}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 18px}
+  nav{display:flex;align-items:center;gap:10px;padding:18px 0;font-weight:800}
+  nav .dot{width:10px;height:10px;border-radius:50%;background:var(--stop);box-shadow:0 0 0 4px var(--stop-soft)}
+  .lang{margin-left:auto;display:flex;background:#fff;border:1px solid var(--line);border-radius:999px;padding:3px}
+  .lang button{border:0;background:none;font:700 13px/1 inherit;padding:8px 12px;border-radius:999px;color:var(--muted);cursor:pointer;min-height:36px}
+  .lang button[aria-pressed=true]{background:var(--ink);color:#fff}
+  .hero{text-align:center;padding:30px 0 8px;position:relative}
+  .hero::before{content:"";position:absolute;inset:-60px -20% auto;height:420px;background:radial-gradient(closest-side,#E2D8FF,transparent),radial-gradient(closest-side at 80% 60%,#FFE9C7,transparent);z-index:-1;filter:blur(10px)}
+  h1{font-size:clamp(38px,8vw,72px);line-height:1;margin:0;letter-spacing:-.03em}
+  .sub{font-size:clamp(17px,2.4vw,21px);color:var(--muted);max-width:640px;margin:16px auto 24px;text-wrap:balance}
+  .ctas{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:0 20px;border-radius:14px;font-weight:800;text-decoration:none}
+  .btn.primary{background:var(--ink);color:#fff}.btn.ghost{background:#fff;color:var(--ink);border:1.5px solid var(--line)}
+  .btn:focus-visible,.member:focus-visible,.lang button:focus-visible{outline:3px solid var(--violet);outline-offset:2px}
+
+  /* crew parade */
+  .parade{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px;margin:34px 0 6px}
+  @media(max-width:760px){.parade{grid-template-columns:repeat(4,minmax(0,1fr))}}
+  @media(max-width:520px){.parade{gap:2px;margin-top:26px}.member b{font-size:14px}.member small{font-size:11.5px}.member{padding:4px 0 8px}}
+  .member{position:relative;background:none;border:0;padding:6px 2px 10px;cursor:pointer;display:flex;flex-direction:column;align-items:center;border-radius:18px;color:var(--ink);font:inherit}
+  .member .mascot{width:100%;max-width:118px;height:auto}
+  .member b{font-size:16px;font-family:ui-rounded,"SF Pro Rounded","Nunito",sans-serif}
+  .member small{font-size:13px;color:var(--muted);font-weight:600;line-height:1.2;text-align:center}
+  .member[aria-expanded=true]{background:#fff;box-shadow:0 10px 26px -16px rgba(35,28,58,.35)}
+  .say{max-width:620px;margin:10px auto 0;min-height:92px;background:#fff;border-radius:20px;padding:14px 18px;display:flex;flex-direction:column;gap:4px;align-items:center;justify-content:center;text-align:center;box-shadow:0 10px 26px -18px rgba(35,28,58,.35);border:1.5px solid var(--line)}
+  .say .who{font-weight:800;font-size:14px;color:var(--violet)}
+  .say p{margin:0;color:var(--ink)}
+  .hint{text-align:center;color:var(--muted);font-size:14px;margin:8px 0 0}
+
+  section.block{padding:56px 0 8px}
+  h2{font-size:clamp(28px,4.4vw,40px);line-height:1.08;margin:0 0 8px;letter-spacing:-.02em}
+  .lead{color:var(--muted);margin:0 0 22px;max-width:680px}
+  .guide{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+  @media(max-width:760px){.guide{grid-template-columns:1fr}}
+  .g{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:18px 20px;display:grid;grid-template-columns:118px minmax(0,1fr);gap:16px;align-items:center}
+  @media(max-width:420px){.g{grid-template-columns:1fr}}
+  .g h3{margin:0 0 4px;font-size:17px}.g p{margin:0;font-size:15px;color:var(--muted)}
+  .demo{display:flex;flex-wrap:wrap;gap:6px;justify-content:flex-start}
+  .tag{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;border-radius:999px;padding:4px 10px}
+  .tag.fell{background:var(--stop-soft);color:var(--stop)}.tag.surv{background:var(--go-soft);color:var(--go)}
+  .tag.for{background:var(--go-soft);color:var(--go)}.tag.ag{background:var(--stop-soft);color:var(--stop)}.tag.dep{background:var(--test-soft);color:#B67A00}
+  .tag.given{background:var(--go-soft);color:var(--go)}.tag.ass{background:var(--test-soft);color:#B67A00}.tag.ext{background:var(--violet-soft);color:var(--violet)}
+  .chip{font-size:12px;font-weight:600;border-radius:999px;padding:3px 9px;background:var(--violet-soft);color:var(--violet)}
+  .chip.miss{background:#F2F0F6;color:#A39DB5;text-decoration:line-through}
+  .op{font-size:12px;font-weight:700;color:var(--muted);background:#F2F0F6;border-radius:999px;padding:3px 9px}
+  .mini-ring{width:76px;height:76px;position:relative}.mini-ring b{position:absolute;inset:0;display:grid;place-items:center;font-size:22px;font-weight:800}
+  .trio{display:flex;flex-direction:column;gap:5px}.trio span{font-size:11px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;border-radius:10px;padding:5px 9px}
+  .reports{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+  @media(max-width:760px){.reports{grid-template-columns:1fr}}
+  .rep{display:block;background:#fff;border:1px solid var(--line);border-radius:22px;padding:18px 20px;text-decoration:none;color:var(--ink);transition:transform .2s ease,box-shadow .2s ease}
+  .rep:hover{transform:translateY(-3px);box-shadow:0 14px 28px -18px rgba(35,28,58,.4)}
+  .rep .v{display:inline-block;margin-bottom:8px}
+  .rep b{display:block;font-size:18px;line-height:1.25}.rep span{display:block;color:var(--muted);font-size:14.5px;margin-top:4px}
+  .steps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+  @media(max-width:760px){.steps{grid-template-columns:1fr}}
+  .step{background:#fff;border:1px solid var(--line);border-radius:22px;padding:18px 20px}
+  .step h3{margin:0 0 6px;font-size:17px}.step p{margin:0;font-size:15px;color:var(--muted)}
+  code{background:var(--violet-soft);color:#4A33B8;border-radius:6px;padding:1px 6px;font-size:14px;overflow-wrap:anywhere}
+  footer{padding:46px 0 40px;text-align:center;color:var(--muted);font-size:14px}
+  footer a{color:var(--violet);font-weight:700}
+  @media (prefers-reduced-motion:no-preference){
+    .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.8,.2,1)}
+    .reveal.in{opacity:1;transform:none}
+    .say p{animation:fadein .35s ease}
+    @keyframes fadein{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+  }
 </style>
 </head>
-<body><main>
-  <h1>Been There</h1>
-  <p>Checks your plan against companies that already tried it. These are example visual reports. <a class="repo" href="https://github.com/koaling/been-there">Get the skill on GitHub →</a></p>
-  <img src="docs/crew.png" alt="The Crew: the Been There mascots">
-  <a class="card" href="examples/reports/grocery-delivery-en.html"><b>Same-day grocery delivery in 8 cities</b><span>English · Webvan vs Instacart</span></a>
-  <a class="card" href="examples/reports/04-cambio-de-nombre.html"><b>Tramitalia → Kova: cambio de nombre</b><span>Español · empresa ficticia, precedentes reales</span></a>
-  <a class="card" href="examples/reports/patinetes-es.html"><b>Patinetes compartidos en 5 ciudades</b><span>Español · Bird, Lime y las licencias en Madrid</span></a>
-</main></body>
+<body>
+<div class="wrap">
+  <nav><span class="dot"></span>Been There
+    <div class="lang" role="group" aria-label="Language"><button data-l="en" aria-pressed="true">EN</button><button data-l="es" aria-pressed="false">ES</button></div>
+  </nav>
+
+  <header class="hero">
+    <h1 data-t="h1">Someone already tried your plan.</h1>
+    <p class="sub" data-t="sub">Been There is a free Claude skill. It checks your plan against companies that tried something similar, the ones that failed and the ones that survived, and tells you what to test before you bet on it.</p>
+    <div class="ctas"><a class="btn primary" href="https://github.com/koaling/been-there#install" data-t="cta1">Get it on GitHub</a><a class="btn ghost" href="#reports" data-t="cta2">See example reports</a></div>
+    <div class="parade" id="parade"></div>
+    <div class="say" aria-live="polite"><span class="who" id="sayWho"></span><p id="sayText"></p></div>
+    <p class="hint" data-t="hint">Tap a member of the Crew to meet them.</p>
+  </header>
+
+  <section class="block reveal" id="how">
+    <h2 data-t="howH">How to read a report</h2>
+    <p class="lead" data-t="howLead">Every report has the same parts. Here is what each one means.</p>
+    <div class="guide" id="guide"></div>
+  </section>
+
+  <section class="block reveal" id="reports">
+    <h2 data-t="repH">Example reports</h2>
+    <p class="lead" data-t="repLead">Real Been There answers turned into one-page reports. Open one on your phone.</p>
+    <div class="reports">
+      <a class="rep" href="examples/reports/grocery-delivery-en.html"><span class="tag dep v" data-t="tTest">Test first</span><b>Same-day grocery delivery in 8 cities</b><span>English · Webvan vs Instacart</span></a>
+      <a class="rep" href="examples/reports/04-cambio-de-nombre.html"><span class="tag dep v" data-t="tTest">Test first</span><b>Tramitalia → Kova</b><span data-t="r2">Spanish · company rename (fictional company, real precedents)</span></a>
+      <a class="rep" href="examples/reports/patinetes-es.html"><span class="tag ag v" data-t="tStop">Don't</span><b data-t="r3t">Shared e-scooters in 5 Spanish cities</b><span data-t="r3">Spanish · Bird, Lime and Madrid's licences</span></a>
+    </div>
+  </section>
+
+  <section class="block reveal">
+    <h2 data-t="insH">Use it in 1 minute</h2>
+    <div class="steps">
+      <div class="step"><h3 data-t="i1h">Claude app (web, desktop, phone)</h3><p data-t="i1">Download <a href="https://github.com/koaling/been-there/raw/main/dist/been-there.zip">been-there.zip</a>, then upload it in Settings → Capabilities → Skills. It then works on your phone too.</p></div>
+      <div class="step"><h3 data-t="i2h">Claude Code</h3><p><code>/plugin marketplace add koaling/been-there</code><br><code>/plugin install been-there@been-there</code></p></div>
+      <div class="step"><h3 data-t="i3h">Then ask</h3><p data-t="i3"><code>Been there? We want to open a second shop next month.</code></p></div>
+      <div class="step"><h3 data-t="i4h">Want the report?</h3><p data-t="i4">After the answer, say <code>Make the visual report</code>.</p></div>
+    </div>
+  </section>
+
+  <footer><span data-t="foot">Open source, MIT.</span> <a href="https://github.com/koaling/been-there">github.com/koaling/been-there</a></footer>
+</div>
+
+<script>
+// Been There · The Crew — mascot generator (self-contained SVG, no external assets)
+const CREW = {
+  devil:     {nick:'Nix',   c:['#FFB0A8','#FF6B6B','#D63E4A'], eyes:'skeptic', mouth:'smirk', arms:'hips',  acc:'horns',   tilt:-4},
+  first:     {nick:'Root',  c:['#B5CCFF','#5B8DEF','#3559C2'], eyes:'focus',   mouth:'small', arms:'point', acc:'glasses', tilt:0},
+  expansion: {nick:'Nova',  c:['#FFE29A','#FFB547','#E5841A'], eyes:'happy',   mouth:'grin',  arms:'up',    acc:'sparks',  tilt:3},
+  outsider:  {nick:'Pip',   c:['#D3F2A6','#93CF55','#5E9F2A'], eyes:'wide',    mouth:'o',     arms:'down',  acc:'question',tilt:8},
+  executor:  {nick:'Tack',  c:['#9DECE4','#2EC4B6','#13968A'], eyes:'determined',mouth:'smile',arms:'hold', acc:'hardhat', tilt:0},
+  chair:     {nick:'Vera',  c:['#DCCCFF','#9B7BF7','#6C4ED6'], eyes:'calm',    mouth:'smile', arms:'hold',  acc:'gavel',   tilt:0},
+  finance:   {nick:'Penny', c:['#A9EFD2','#22B07D','#0F7F57'], eyes:'wink',    mouth:'smile', arms:'hold',  acc:'coin',    tilt:-3},
+  risk:      {nick:'Lex',   c:['#C9D3E6','#6B7FA6','#455776'], eyes:'determined',mouth:'flat',arms:'hold', acc:'shield',  tilt:0},
+  customer:  {nick:'Mo',    c:['#FFD1EA','#FF8FC7','#E0569D'], eyes:'happy',   mouth:'smile', arms:'hug',   acc:'heart',   tilt:-5},
+  technical: {nick:'Bolt',  c:['#FFC9A8','#FF8A4C','#D9602A'], eyes:'focus',   mouth:'grin',  arms:'hold',  acc:'wrench',  tilt:2},
+  investor:  {nick:'Cap',   c:['#E8C9A8','#C08457','#8E5A33'], eyes:'monocle', mouth:'smile', arms:'hips',  acc:'tophat',  tilt:0},
+  people:    {nick:'Kin',   c:['#F5CDF8','#DA7FE3','#A94DB3'], eyes:'happy',   mouth:'grin',  arms:'wave',  acc:'bubbles', tilt:-2},
+};
+
+function crewKey(name){
+  const n = String(name||'').toLowerCase();
+  const map = [
+    [/devil|abogado|diablo/,'devil'],[/first|primer|principi/,'first'],[/expan/,'expansion'],
+    [/outsider|forastero|ajeno|externo/,'outsider'],[/execut|ejecut/,'executor'],[/chair|presid|anfitri/,'chair'],
+    [/financ|cfo|money/,'finance'],[/risk|riesgo|legal|complian|cumplim/,'risk'],[/customer|cliente|user|usuario/,'customer'],
+    [/tech|técn|tecn/,'technical'],[/invest|partner|socio/,'investor'],[/people|personas|rrhh|hr|equipo|talent/,'people'],
+  ];
+  for (const [re,k] of map) if (re.test(n)) return k;
+  return 'chair';
+}
+
+function mascot(key, size=120){
+  const m = CREW[key] || CREW.chair; const [L,B,D] = m.c; const id = 'g'+key+Math.random().toString(36).slice(2,7);
+  const ink = '#2A2140';
+  const eye = (x,y)=>`<ellipse cx="${x}" cy="${y}" rx="6.2" ry="7.6" fill="${ink}"/><circle cx="${x+2}" cy="${y-2.8}" r="2.4" fill="#fff"/><circle cx="${x-1.8}" cy="${y+2.6}" r="1" fill="#fff" opacity=".8"/>`;
+  const arc = (x,y)=>`<path d="M${x-6} ${y+1} Q${x} ${y-6} ${x+6} ${y+1}" stroke="${ink}" stroke-width="3.2" fill="none" stroke-linecap="round"/>`;
+  const brow = (x,y,a)=>`<path d="M${x-6} ${y} L${x+6} ${y+a}" stroke="${ink}" stroke-width="2.8" stroke-linecap="round"/>`;
+  let eyes='';
+  switch(m.eyes){
+    case 'happy': eyes = arc(48,62)+arc(74,62); break;
+    case 'calm': eyes = `<path d="M42 62 Q48 67 54 62" stroke="${ink}" stroke-width="3.2" fill="none" stroke-linecap="round"/><path d="M68 62 Q74 67 80 62" stroke="${ink}" stroke-width="3.2" fill="none" stroke-linecap="round"/>`; break;
+    case 'wink': eyes = eye(48,62)+arc(74,63); break;
+    case 'wide': eyes = `<circle cx="48" cy="61" r="9" fill="#fff"/><circle cx="74" cy="61" r="9" fill="#fff"/>`+eye(49,62)+eye(75,62); break;
+    case 'skeptic': eyes = `<ellipse cx="48" cy="63" rx="6" ry="5" fill="${ink}"/><circle cx="50" cy="61.5" r="1.8" fill="#fff"/>`+eye(74,62)+brow(48,54,2)+`<path d="M68 51 Q74 46 80 50" stroke="${ink}" stroke-width="2.8" fill="none" stroke-linecap="round"/>`; break;
+    case 'determined': eyes = eye(48,63)+eye(74,63)+brow(48,52,3)+brow(74,55,-3); break;
+    case 'monocle': eyes = eye(48,62)+eye(74,62)+`<circle cx="74" cy="62" r="11" fill="#fff" fill-opacity=".25" stroke="#C9A227" stroke-width="2.6"/><path d="M84 66 Q90 80 86 92" stroke="#C9A227" stroke-width="1.5" fill="none"/>`; break;
+    case 'focus': default: eyes = eye(48,62)+eye(74,62);
+  }
+  const mouths = {
+    smile:`<path d="M54 76 Q61 83 68 76" stroke="${ink}" stroke-width="3" fill="none" stroke-linecap="round"/>`,
+    small:`<path d="M57 77 Q61 80 65 77" stroke="${ink}" stroke-width="3" fill="none" stroke-linecap="round"/>`,
+    grin:`<path d="M52 74 Q61 74 70 74 Q68 87 61 87 Q54 87 52 74Z" fill="${ink}"/><path d="M56 82 Q61 79 66 82 Q64 86 61 86 Q58 86 56 82Z" fill="#FF7A8A"/>`,
+    smirk:`<path d="M54 78 Q62 81 69 74" stroke="${ink}" stroke-width="3" fill="none" stroke-linecap="round"/>`,
+    o:`<ellipse cx="61" cy="79" rx="4" ry="5" fill="${ink}"/>`,
+    flat:`<path d="M55 78 L67 78" stroke="${ink}" stroke-width="3" stroke-linecap="round"/>`,
+  };
+  const armShape = (x,y,r)=>`<ellipse cx="${x}" cy="${y}" rx="7" ry="12" fill="url(#${id}b)" transform="rotate(${r} ${x} ${y})"/>`;
+  const arms = {
+    down: armShape(24,76,20)+armShape(98,76,-20),
+    hips: armShape(25,80,-35)+armShape(97,80,35),
+    up: armShape(22,50,40)+armShape(100,50,-40),
+    point: armShape(24,78,20)+armShape(98,50,-25)+`<circle cx="103" cy="39" r="3.6" fill="${B}"/>`,
+    hold: armShape(25,78,25)+armShape(92,80,-55),
+    hug: armShape(36,84,-60)+armShape(86,84,60),
+    wave: armShape(24,78,20)+armShape(100,48,-30),
+  };
+  const accs = {
+    horns:`<path d="M40 34 Q36 20 44 18 Q44 28 48 32Z" fill="${D}"/><path d="M82 34 Q86 20 78 18 Q78 28 74 32Z" fill="${D}"/><path d="M98 96 Q110 98 108 86 l4 -3 -6 -1" stroke="${D}" stroke-width="3" fill="none" stroke-linecap="round"/>`,
+    glasses:`<circle cx="48" cy="62" r="10" fill="#fff" fill-opacity=".18" stroke="${ink}" stroke-width="2.4"/><circle cx="74" cy="62" r="10" fill="#fff" fill-opacity=".18" stroke="${ink}" stroke-width="2.4"/><path d="M58 61 Q61 58 64 61" stroke="${ink}" stroke-width="2.4" fill="none"/><g transform="translate(96 20)" opacity=".9"><ellipse rx="11" ry="4" fill="none" stroke="${D}" stroke-width="1.8"/><ellipse rx="11" ry="4" fill="none" stroke="${D}" stroke-width="1.8" transform="rotate(60)"/><ellipse rx="11" ry="4" fill="none" stroke="${D}" stroke-width="1.8" transform="rotate(-60)"/><circle r="2.6" fill="${D}"/></g>`,
+    sparks:`<g stroke="#FFC83D" stroke-width="3.4" stroke-linecap="round"><path d="M14 30 l-6 -6"/><path d="M22 22 l-2 -9"/><path d="M106 30 l6 -6"/><path d="M98 22 l2 -9"/></g><path d="M104 6 l2 5 5 2 -5 2 -2 5 -2 -5 -5 -2 5 -2z" fill="#FFC83D"/><path d="M16 4 l1.5 4 4 1.5 -4 1.5 -1.5 4 -1.5 -4 -4 -1.5 4 -1.5z" fill="#FFC83D"/>`,
+    question:`<text x="92" y="30" font-family="Arial Rounded MT Bold,Arial,sans-serif" font-weight="900" font-size="26" fill="${D}">?</text><path d="M60 30 Q56 18 64 12 Q66 22 60 30Z" fill="#5E9F2A"/>`,
+    hardhat:`<path d="M30 42 Q31 18 61 17 Q91 18 92 42Z" fill="#FFC83D"/><path d="M26 42 h70 q3 0 3 3 v1 q0 3 -3 3 h-70 q-3 0 -3 -3 v-1 q0 -3 3 -3z" fill="#F2A900"/><rect x="57" y="18" width="8" height="24" rx="3" fill="#F2A900"/><g transform="translate(86 74) rotate(-12)"><rect x="0" y="0" width="22" height="28" rx="3" fill="#fff" stroke="${D}" stroke-width="2"/><rect x="6" y="-3" width="10" height="6" rx="2" fill="${D}"/><path d="M5 11 l3 3 6 -6 M5 20 l3 3 6 -6" stroke="#22B07D" stroke-width="2.2" fill="none" stroke-linecap="round"/></g>`,
+    gavel:`<g transform="translate(92 70) rotate(-35)"><rect x="-3" y="0" width="6" height="26" rx="3" fill="#8E5A33"/><rect x="-11" y="-9" width="22" height="11" rx="4" fill="#A86B3C"/></g><path d="M47 30 l3 -14 6 8 5 -10 5 10 6 -8 3 14z" fill="#FFC83D" stroke="#E5A100" stroke-width="1.5" stroke-linejoin="round"/>`,
+    coin:`<g transform="translate(96 82)"><circle r="12" fill="#FFC83D" stroke="#E5A100" stroke-width="2.5"/><text y="5.5" text-anchor="middle" font-family="Arial,sans-serif" font-weight="900" font-size="15" fill="#B57F00">€</text></g><circle cx="104" cy="56" r="5" fill="#FFC83D" stroke="#E5A100" stroke-width="1.5"/>`,
+    shield:`<g transform="translate(96 76)"><path d="M0 -14 L13 -9 Q13 8 0 16 Q-13 8 -13 -9Z" fill="#4C8DF6" stroke="#2C5EB8" stroke-width="2"/><path d="M-5 0 l4 4 7 -8" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/></g>`,
+    heart:`<path d="M61 100 C44 88 44 76 53 74 C57 73 60 76 61 79 C62 76 65 73 69 74 C78 76 78 88 61 100Z" fill="#FF4F7B" stroke="#D93460" stroke-width="1.5"/><path d="M98 22 c-4 -6 -12 -1 -6 6 l6 6 6 -6 c6 -7 -2 -12 -6 -6z" fill="#FF4F7B" opacity=".8"/>`,
+    wrench:`<g transform="translate(98 74) rotate(35) scale(1.25)"><rect x="-3" y="-2" width="6" height="26" rx="3" fill="#8A94A6"/><path d="M-9 -8 a9 9 0 1 0 18 0 l-5 0 l0 5 l-8 0 l0 -5z" fill="#A9B2C3"/></g>`,
+    tophat:`<rect x="38" y="6" width="46" height="26" rx="4" fill="#2A2140"/><rect x="38" y="24" width="46" height="5" fill="#C9A227"/><rect x="30" y="30" width="62" height="6" rx="3" fill="#2A2140"/>`,
+    bubbles:`<g transform="translate(92 14)"><rect x="0" y="0" width="22" height="15" rx="6" fill="#fff" stroke="${D}" stroke-width="2"/><path d="M5 15 l-2 6 7 -6z" fill="#fff" stroke="${D}" stroke-width="2" stroke-linejoin="round"/><circle cx="6" cy="7.5" r="1.6" fill="${D}"/><circle cx="11" cy="7.5" r="1.6" fill="${D}"/><circle cx="16" cy="7.5" r="1.6" fill="${D}"/></g><g transform="translate(6 22)"><rect width="16" height="12" rx="5" fill="#fff" stroke="${D}" stroke-width="2"/><path d="M5 7 q3 -4 6 0" stroke="#FF4F7B" stroke-width="2" fill="none"/></g>`,
+  };
+  const back = (m.acc==='tophat'||m.acc==='hardhat'||m.acc==='gavel') ? '' : `<path d="M54 30 Q50 14 62 10 Q60 20 68 26 Q64 30 54 30Z" fill="url(#${id}b)"/>`;
+  return `<svg class="mascot" viewBox="0 0 122 122" width="${size}" height="${size}" role="img" aria-label="${m.nick}" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="${id}b" cx="36%" cy="30%" r="78%"><stop offset="0" stop-color="${L}"/><stop offset=".55" stop-color="${B}"/><stop offset="1" stop-color="${D}"/></radialGradient>
+    <radialGradient id="${id}s" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#2A2140" stop-opacity=".22"/><stop offset="1" stop-color="#2A2140" stop-opacity="0"/></radialGradient>
+  </defs>
+  <ellipse class="sh" cx="61" cy="112" rx="36" ry="6" fill="url(#${id}s)"/>
+  <g class="bob"><g transform="rotate(${m.tilt} 61 70)">
+    <ellipse cx="48" cy="104" rx="9" ry="6" fill="${D}"/><ellipse cx="74" cy="104" rx="9" ry="6" fill="${D}"/>
+    ${arms[m.arms]}
+    ${back}
+    <path d="M61 26 C88 26 100 46 100 68 C100 92 84 104 61 104 C38 104 22 92 22 68 C22 46 34 26 61 26Z" fill="url(#${id}b)"/>
+    <ellipse cx="44" cy="40" rx="11" ry="6" fill="#fff" opacity=".55" transform="rotate(-28 44 40)"/>
+    <ellipse cx="38" cy="74" rx="6.5" ry="4" fill="#FF7FA0" opacity=".4"/><ellipse cx="84" cy="74" rx="6.5" ry="4" fill="#FF7FA0" opacity=".4"/>
+    <g class="eyes">${eyes}</g>${mouths[m.mouth]}
+    ${accs[m.acc]||''}
+  </g></g></svg>`;
+}
+
+// Motion for mascots (bob, blink, hop). Inject once; respects reduced motion.
+const MASCOT_CSS = `
+.mascot{overflow:visible}
+.mascot .bob,.mascot .sh,.mascot .eyes{transform-box:fill-box;transform-origin:50% 100%}
+.mascot .eyes{transform-origin:50% 50%}
+@keyframes bt-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@keyframes bt-sh{0%,100%{transform:scaleX(1);opacity:1}50%{transform:scaleX(.86);opacity:.75}}
+@keyframes bt-blink{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.1)}}
+@keyframes bt-hop{0%{transform:translateY(0) scale(1)}30%{transform:translateY(-14px) scale(1.04,.96)}55%{transform:translateY(0) scale(1.06,.92)}75%{transform:translateY(-4px)}100%{transform:translateY(0)}}
+@media (prefers-reduced-motion:no-preference){
+  .mascot .bob{animation:bt-bob 3.4s ease-in-out infinite;animation-delay:var(--d,0s)}
+  .mascot .sh{animation:bt-sh 3.4s ease-in-out infinite;animation-delay:var(--d,0s)}
+  .mascot .eyes{animation:bt-blink 4.6s infinite;animation-delay:var(--d,0s)}
+  .hop:hover .mascot .bob,.hop:focus-within .mascot .bob,.hop.tap .mascot .bob{animation:bt-hop .7s ease-out}
+}`;
+(function(){ if (typeof document==='undefined' || document.getElementById('bt-mascot-css')) return;
+  const st=document.createElement('style'); st.id='bt-mascot-css'; st.textContent=MASCOT_CSS; document.head.appendChild(st);
+  document.addEventListener('pointerdown', e => { const h=e.target.closest && e.target.closest('.hop'); if(!h) return;
+    h.classList.remove('tap'); void h.offsetWidth; h.classList.add('tap'); setTimeout(()=>h.classList.remove('tap'),750); });
+})();
+
+</script>
+<script>
+{
+  const T = {
+    en:{h1:'Someone already tried your plan.',sub:'Been There is a free Claude skill. It checks your plan against companies that tried something similar, the ones that failed and the ones that survived, and tells you what to test before you bet on it.',
+      cta1:'Get it on GitHub',cta2:'See example reports',hint:'Tap a member of the Crew to meet them.',howH:'How to read a report',howLead:'Every report has the same parts. Here is what each one means.',
+      repH:'Example reports',repLead:'Real Been There answers turned into one-page reports. Open one on your phone.',tTest:'Test first',tStop:"Don't",r2:'Spanish · company rename (fictional company, real precedents)',r3t:'Shared e-scooters in 5 Spanish cities',r3:"Spanish · Bird, Lime and Madrid's licences",
+      insH:'Use it in 1 minute',i1h:'Claude app (web, desktop, phone)',i1:'Download <a href="https://github.com/koaling/been-there/raw/main/dist/been-there.zip">been-there.zip</a>, then upload it in Settings → Capabilities → Skills. It then works on your phone too.',i2h:'Claude Code',i3h:'Then ask',i3:'<code>Been there? We want to open a second shop next month.</code>',i4h:'Want the report?',i4:'After the answer, say <code>Make the visual report</code>.',foot:'Open source, MIT.',
+      roles:{devil:"Devil's advocate",first:'First principles',expansion:'Expansionist',outsider:'Outsider',executor:'Executor',chair:'Chair',finance:'Finance',risk:'Risk & compliance',customer:'Customer',technical:'Technical',investor:'Investor / partner',people:'People'},
+      says:{devil:"I look for how your plan dies. If a company already died this way, I'll find it.",first:"I ignore the question as asked and look for the real problem. Sometimes there's a third option.",expansion:"I look for the upside nobody sees, and I have to explain why you're not the failed precedent.",outsider:"No context, no jargon. I ask what a new customer would ask.",executor:"What happens tomorrow at 9:00, with what people and money, and what blocks it.",chair:"I weigh arguments, not votes. Evidence beats opinion. I write the verdict.",finance:"I follow the money: margins, cash and payback.",risk:"I read the small print: rules, licences, contracts and trademarks.",customer:"I speak for the buyer. Would they pay, and why switch?",technical:"I check it can actually be built and run.",investor:"I think like whoever funds it: returns, risk, timing.",people:"I think about the team: hiring, roles and who carries the load."},
+      guide:[['verdict','The verdict','Do it, don\'t, or test first, with a confidence score. Confidence is how sure the verdict is, not your odds of success.'],
+             ['prec','Who has been there','Fell: failed the same way. Survived: faced the same trap and made it. Purple tags show what matches your plan; crossed-out ones show what doesn\'t.'],
+             ['crew','The Crew','Each member answers alone, before seeing the others. Green is for, amber depends, red against. Points without evidence are tagged opinion.'],
+             ['facts','Starting facts','What you said, what was assumed and what was checked against a source. Assumptions are the first thing to verify.'],
+             ['act','What to do now','The assumption to test, a 48-hour next step, and a dated kill criterion: the signal that should make you change course.'],
+             ['ctx','Context and sources','The original question, who prepared it and for whom, a status stamp, a review date and links to every source.']],
+      tags:{fell:'Fell',surv:'Survived',for:'For',dep:'Depends',ag:'Against',given:'Given',ass:'Assumed',ext:'Checked',op:'opinion',test:'Assumption',next:'Next 48 h',kill:'Kill criterion',m1:'market',m2:'model',m3:'timing',status:'Draft'}},
+    es:{h1:'Alguien ya intentó tu plan.',sub:'Been There es una skill gratuita para Claude. Compara tu plan con empresas que intentaron algo parecido, las que fracasaron y las que sobrevivieron, y te dice qué comprobar antes de apostar.',
+      cta1:'Descárgalo en GitHub',cta2:'Ver informes de ejemplo',hint:'Toca a un miembro de la Pandilla para conocerlo.',howH:'Cómo leer un informe',howLead:'Todos los informes tienen las mismas partes. Esto es lo que significa cada una.',
+      repH:'Informes de ejemplo',repLead:'Respuestas reales de Been There convertidas en informes de una página. Ábrelos en el móvil.',tTest:'Primero, prueba',tStop:'No lo hagas',r2:'Español · cambio de nombre (empresa ficticia, precedentes reales)',r3t:'Patinetes compartidos en 5 ciudades',r3:'Español · Bird, Lime y las licencias de Madrid',
+      insH:'Úsalo en 1 minuto',i1h:'App de Claude (web, escritorio, móvil)',i1:'Descarga <a href="https://github.com/koaling/been-there/raw/main/dist/been-there.zip">been-there.zip</a> y súbelo en Ajustes → Capacidades → Skills. Después funciona también en el móvil.',i2h:'Claude Code',i3h:'Y pregunta',i3:'<code>¿Alguien lo ha intentado? Queremos abrir una segunda tienda el mes que viene.</code>',i4h:'¿Quieres el informe?',i4:'Después de la respuesta, di <code>Hazme el informe visual</code>.',foot:'Código abierto, MIT.',
+      roles:{devil:'Abogado del diablo',first:'Primeros principios',expansion:'Expansionista',outsider:'Forastero',executor:'Ejecutor',chair:'Presidencia',finance:'Finanzas',risk:'Riesgo y cumplimiento',customer:'Cliente',technical:'Técnico',investor:'Inversor / socio',people:'Personas'},
+      says:{devil:'Busco cómo puede morir tu plan. Si una empresa ya murió así, la encuentro.',first:'Ignoro la pregunta tal como viene y busco el problema real. A veces hay una tercera opción.',expansion:'Busco el potencial que nadie ve, y tengo que explicar por qué no eres el precedente que fracasó.',outsider:'Sin contexto ni jerga. Pregunto lo que preguntaría un cliente nuevo.',executor:'Qué pasa mañana a las 9:00, con qué personas y dinero, y qué lo bloquea.',chair:'Peso argumentos, no votos. Los datos ganan a las opiniones. Yo escribo el veredicto.',finance:'Sigo el dinero: márgenes, caja y retorno.',risk:'Leo la letra pequeña: normas, licencias, contratos y marcas.',customer:'Hablo por el cliente. ¿Pagaría? ¿Por qué cambiaría?',technical:'Compruebo que se puede construir y mantener.',investor:'Pienso como quien pone el dinero: retorno, riesgo, momento.',people:'Pienso en el equipo: contratar, roles y quién carga con el trabajo.'},
+      guide:[['verdict','El veredicto','Adelante, no lo hagas o primero prueba, con una confianza. La confianza mide lo seguro que es el veredicto, no tu probabilidad de éxito.'],
+             ['prec','Quién ya pasó por aquí','Cayó: fracasó por lo mismo. Sobrevivió: se enfrentó a la misma trampa y salió adelante. Las etiquetas moradas indican en qué se parece a tu plan; las tachadas, en qué no.'],
+             ['crew','La Pandilla','Cada miembro opina por separado, sin ver a los demás. Verde es a favor, ámbar depende, rojo en contra. Lo que no se apoya en datos lleva la etiqueta opinión.'],
+             ['facts','Datos de partida','Lo que dijiste, lo que se supuso y lo que se comprobó con una fuente. Los supuestos son lo primero que hay que verificar.'],
+             ['act','Qué hacer ahora','El supuesto a comprobar, un paso para las próximas 48 horas y un criterio de abandono con fecha: la señal que debería hacerte cambiar de rumbo.'],
+             ['ctx','Contexto y fuentes','La pregunta original, quién lo preparó y para quién, un sello de estado, una fecha de revisión y enlaces a todas las fuentes.']],
+      tags:{fell:'Cayó',surv:'Sobrevivió',for:'A favor',dep:'Depende',ag:'En contra',given:'Dato',ass:'Supuesto',ext:'Verificado',op:'opinión',test:'Supuesto',next:'48 h',kill:'Abandono',m1:'mercado',m2:'modelo',m3:'momento',status:'Borrador'}}
+  };
+  const order=['devil','first','expansion','outsider','executor','chair','finance','risk','customer','technical','investor','people'];
+  const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  let L=(navigator.language||'en').toLowerCase().startsWith('es')?'es':'en', sel='devil';
+  const ring=(v,c)=>{const C=2*Math.PI*30;return `<div class="mini-ring"><svg viewBox="0 0 76 76" width="76" height="76"><circle cx="38" cy="38" r="30" fill="none" stroke="#ECE6FA" stroke-width="8"/><circle cx="38" cy="38" r="30" fill="none" stroke="${c}" stroke-width="8" stroke-linecap="round" stroke-dasharray="${C*v/10} ${C}" transform="rotate(-90 38 38)"/></svg><b>${v}</b></div>`};
+  const demos=t=>({
+    verdict:ring(8,'#E8A21B'),
+    prec:`<div class="demo"><span class="tag fell">✕ ${t.fell}</span><span class="tag surv">✓ ${t.surv}</span><span class="chip">${t.m1}</span><span class="chip miss">${t.m3}</span></div>`,
+    crew:`<div class="demo">${mascot('devil',46)}${mascot('expansion',46)}<span class="tag for">${t.for}</span><span class="tag dep">${t.dep}</span><span class="tag ag">${t.ag}</span><span class="op">${t.op}</span></div>`,
+    facts:`<div class="demo"><span class="tag given">${t.given}</span><span class="tag ass">${t.ass}</span><span class="tag ext">${t.ext}</span></div>`,
+    act:`<div class="trio"><span style="background:var(--violet-soft);color:var(--violet)">🎯 ${t.test}</span><span style="background:var(--go-soft);color:var(--go)">⏱️ ${t.next}</span><span style="background:var(--stop-soft);color:var(--stop)">🛑 ${t.kill}</span></div>`,
+    ctx:`<div class="demo"><span class="tag" style="border:2px solid #8A7FA8;color:#8A7FA8;border-radius:8px;transform:rotate(-2deg)">${t.status}</span>${mascot('chair',46)}</div>`
+  });
+  function render(){
+    const t=T[L]; document.documentElement.lang=L;
+    document.querySelectorAll('[data-t]').forEach(el=>{const v=t[el.dataset.t]; if(v!=null) el.innerHTML=v;});
+    document.querySelectorAll('.lang button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.l===L)));
+    document.getElementById('parade').innerHTML=order.map((k,i)=>`<button class="member hop" data-k="${k}" aria-expanded="${k===sel}" style="--d:${(-i*0.45).toFixed(2)}s">${mascot(k,118)}<b>${esc(CREW[k].nick)}</b><small>${esc(t.roles[k])}</small></button>`).join('');
+    const d=demos(t.tags);
+    document.getElementById('guide').innerHTML=t.guide.map(([k,h,p])=>`<div class="g"><div>${d[k]}</div><div><h3>${esc(h)}</h3><p>${esc(p)}</p></div></div>`).join('');
+    say();
+  }
+  function say(){ const t=T[L]; document.getElementById('sayWho').textContent=CREW[sel].nick+' · '+t.roles[sel]; const p=document.getElementById('sayText'); p.textContent='“'+t.says[sel]+'”'; p.style.animation='none'; void p.offsetWidth; p.style.animation='';
+    document.querySelectorAll('.member').forEach(m=>m.setAttribute('aria-expanded',String(m.dataset.k===sel))); }
+  document.addEventListener('click',e=>{
+    const m=e.target.closest('.member'); if(m){ sel=m.dataset.k; say(); return; }
+    const b=e.target.closest('.lang button'); if(b){ L=b.dataset.l; render(); }
+  });
+  render();
+  // auto-cycle through the crew until the visitor taps someone
+  let auto=setInterval(()=>{ sel=order[(order.indexOf(sel)+1)%order.length]; say(); },3800);
+  document.addEventListener('pointerdown',()=>clearInterval(auto),{once:true});
+  if(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) clearInterval(auto);
+  if('IntersectionObserver' in window){ const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.1}); document.querySelectorAll('.reveal').forEach(el=>io.observe(el)); }
+  else document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in'));
+}
+</script>
+</body>
 </html>
