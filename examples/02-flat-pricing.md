@@ -27,4 +27,4 @@ Unedited answer from the blind eval run (case `F01`).
 - Tack · Executor: You can model the bands tomorrow. Grandfather existing contracts and test on new signups first.
 - Penny · Finance: Price on value, not to make the invoice simpler. Your expansion revenue goes away.
 
-Want the visual report or a decision log entry? Just ask.
+📊 Want the visual report? One page you can share with your team: Vera's verdict, the Crew with each member's position, MoviePass and AMC A-List side by side, and the three pricing options to model this week. Just say "yes".

@@ -34,6 +34,8 @@
 - Lex · Riesgo y cumplimiento (depende): Antes de gastar 1 €, registra la marca en los tres países. Un nombre de 4 letras suele estar cogido.
 - Bolt · Técnico (en contra): Migrar el dominio a la vez que la app y la facturación multiplica los fallos. Haz redirecciones 301 página a página y avisa a Google con "Cambio de dirección".
 
+📊 ¿Te preparo el informe visual? Una página lista para el comité: el veredicto de Vera, la Pandilla con la postura de cada uno, Looka y HomeAdvisor frente a frente con sus fuentes, y tu plan de 48 horas. Dime para quién es y lo pongo en la portada.
+
 ---
 
 *Informe visual de este caso: [verlo en el navegador](https://koaling.github.io/been-there/examples/reports/04-cambio-de-nombre.html).*

@@ -19,7 +19,7 @@
     "founders",
     "post-mortem"
   ],
-  "version": "0.6.0",
+  "version": "0.7.0",
   "icon": "./.claude-plugin/icon.png",
   "privacyPolicyUrl": "https://github.com/koaling/been-there/blob/main/PRIVACY.md",
   "supportUrl": "https://github.com/koaling/been-there/issues",

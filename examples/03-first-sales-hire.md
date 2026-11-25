@@ -32,4 +32,4 @@ Unedited answer from the blind eval run (case `FC4`).
 - **Finance**: 18 months of runway can carry one trial salary. Check the break-even deal count before signing.
 - **People**: Agree a co-founder veto on the 90-day review, so the hire isn't a fight you lose twice.
 
-Want the visual report or a decision-log entry? I can do either.
+📊 Want the visual report? One page for your co-founder: Vera's verdict, the Crew with each member's position, the precedents with sources, and the 90-day checkpoints. Just say "yes".

@@ -29,7 +29,7 @@ If critical context is missing (numbers, constraints, what happens if nothing is
 
 **Hunt the unstated assumption.** Users rarely write down the fact that will kill the plan. Before Step 1, list the 2–3 numbers or behaviours the plan silently depends on (asset lifespan, cost per unit after a change, how many users must be nearby, whether creators get paid, how long customers stay) and check each one. The most dangerous assumption is usually one the user did not mention.
 
-**Output length.** Steps 0–5 are the Crew's working process. By default, show only the Step 6 verdict, kept under ~400 words, with precedents in 2–3 lines and one line per advisor. Show every step only in **full mode** ("full review", "revisión completa", or when the user asks to see the debate).
+**Output length.** Steps 0–5 are the Crew's working process. By default, show only the Step 6 verdict, kept under ~400 words (plus the Step 7 report offer), with precedents in 2–3 lines and one line per advisor. Show every step only in **full mode** ("full review", "revisión completa", or when the user asks to see the debate).
 
 **Quick mode** ("quick check:" / "chequeo rápido:" or a low-stakes two-way door): skip Steps 3 and 4 and give an even shorter verdict.
 
@@ -108,10 +108,25 @@ Vera, the chair, weighs arguments, not votes. Arguments backed by precedents or 
 
 For a one-way door with confidence < 6/10, the default verdict is "First find out…" with the cheapest possible experiment.
 
-## Step 7 · Follow-ups (offer in one line each, don't do unasked)
+## Step 7 · Always offer the visual report
 
-- **Visual report**: follow `templates/report.md` (copy its HTML, replace only the `REPORT_DATA` JSON, set `lang` to the user's language and `role` per member; fill `context`, `facts`, `sources`, `status` and `review_date` so it stands on its own when shared) and deliver it as a file or artifact.
-- **Decision log**: append a block to `decisions/` with date, decision, choice, key assumptions, kill criterion and review date.
+**Every answer ends with an offer of the visual report**, unless the user already asked for it. This is not optional: the text verdict is the summary, and the report is where the Crew, the precedents with sources and the action plan come together. People who only see the text underestimate what they got.
+
+Make the offer specific to this decision and inviting, in the user's language, as the last lines of the answer. Name what they will get and one concrete detail from this case. One short paragraph, no pressure. For example:
+
+```
+📊 Want the visual report? One page you can share: Vera's verdict, the Crew with each member's position, [Webvan and Instacart] side by side with sources, and your 48-hour plan. Just say "yes".
+```
+
+```
+📊 ¿Te preparo el informe visual? Una página lista para compartir: el veredicto de Vera, la Pandilla con la postura de cada uno, [Looka y HomeAdvisor] frente a frente con sus fuentes, y tu plan de 48 horas. Solo di "sí".
+```
+
+If they might share it (they mention a boss, a team, a meeting, investors), add: "Tell me who it's for and I'll add it to the cover." Otherwise don't ask for that.
+
+**When they accept:** follow `templates/report.md`. Copy its HTML, replace only the `REPORT_DATA` JSON, set `lang` to the user's language and `role` per member, and fill `context`, `facts`, `premortem` (cause + signal), `sources`, `status` and `review_date` so it stands on its own when shared. Publish it as an artifact or page if your environment can; otherwise deliver the `.html` file and say: "Open it in your browser."
+
+Also offer, in one line and only after the report, a **decision log**: append a block to `decisions/` with date, decision, choice, key assumptions, kill criterion and review date.
 
 ## Rules
 

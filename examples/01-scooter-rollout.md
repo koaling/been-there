@@ -33,4 +33,4 @@ The demand you're seeing is real, and it's the strongest point in your favour. T
 - Tack · Executor: 1,250 scooters per city need warehouses, mechanics and chargers, and you don't have any of that yet.
 - Finance (added because €25M is at stake): a two-month payback with no lifespan data isn't a payback figure.
 
-I can also make a visual report or a decision log if you want one.
+📊 Want the visual report? One page you can share: Vera's verdict, the Crew with each member's position, Bird and Lime side by side with sources, and your 60-day pilot plan. Just say "yes".
