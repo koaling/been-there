@@ -2,9 +2,15 @@
 
 **Someone has probably tried your plan already. Find out how it ended before you do.**
 
+[![Claude Code plugin](https://img.shields.io/badge/Claude_Code-plugin-D97757)](#install)
+[![Agent Skill](https://img.shields.io/badge/Agent_Skill-SKILL.md-1d1b18)](SKILL.md)
+[![Blind-tested](https://img.shields.io/badge/evals-37_cases,_blind-2f8f5b)](evals/results/)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
+[![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen)](CONTRIBUTING.md)
+
 *[Español abajo](#español)*
 
-A Claude skill for decisions that matter: pricing changes, hires, launches, expansions, big orders. It checks your plan against companies that tried something similar (the ones that failed *and* the ones that survived), finds the assumption most likely to sink it, and gives you a short verdict you can act on.
+A Claude skill (Agent Skill / Claude Code plugin) for decisions that matter that matter: pricing changes, hires, launches, expansions, big orders. It checks your plan against companies that tried something similar (the ones that failed *and* the ones that survived), finds the assumption most likely to sink it, and gives you a short verdict you can act on.
 
 ![Demo: Been There on an e-scooter rollout](docs/demo.gif)
 
@@ -32,7 +38,7 @@ Under ~400 words by default. Ask for a `full review` to see the whole reasoning.
 
 ## Tested, blind
 
-36 cases, each answered by plain Claude and by Claude with Been There in fresh sessions, then scored blind by a separate grader. All raw answers are in [`evals/results/`](evals/results/).
+37 cases, each answered by plain Claude and by Claude with Been There in fresh sessions, then scored blind by a separate grader. All raw answers are in [`evals/results/`](evals/results/).
 
 | Case set | Flaw found (plain → Been There) | Judged better (plain / Been There / tie) | Avg length (plain → Been There) |
 |---|---|---|---|
@@ -43,13 +49,20 @@ Honest read: Claude is already good at spotting flaws. Been There's edge is a ti
 
 ## Install
 
-Paste into Claude Code (or any Claude surface with skills):
+**Claude Code (plugin, one command):**
 
 ```
-Install this Claude skill: https://github.com/koaling/been-there
+/plugin install been-there --marketplace koaling/been-there
 ```
 
-Or copy the folder into `~/.claude/skills/been-there/`.
+Or from your shell:
+
+```
+claude plugin marketplace add koaling/been-there
+claude plugin install been-there@been-there
+```
+
+**Any Claude surface with skills:** copy this folder into `~/.claude/skills/been-there/`, or ask Claude: `Install this Claude skill: https://github.com/koaling/been-there`.
 
 ## Use
 
@@ -59,9 +72,17 @@ Been there? We want to switch all customers from per-seat pricing to a flat €9
 
 Also: `has anyone tried this?`, `pressure-test this`, `pre-mortem this`, `where am I wrong`, `quick check:`.
 
-## Contribute a precedent
+## Examples
 
-The precedent library is the heart of the project. Add a company in one YAML file: see [`precedents/SCHEMA.md`](precedents/SCHEMA.md). Rules: factual, short, at least one source, founder post-mortems preferred. Survivors are as welcome as failures. EU and Spanish cases especially wanted.
+Real, unedited answers: [a hardware fleet rollout](examples/01-scooter-rollout.md), [a switch to flat pricing](examples/02-flat-pricing.md) and [a first sales hire that holds up](examples/03-first-sales-hire.md).
+
+## Contribute
+
+The precedent library is the heart of the project, and adding one company is a 10-minute first PR. See [CONTRIBUTING.md](CONTRIBUTING.md) or [open a precedent suggestion](https://github.com/koaling/been-there/issues/new?template=new-precedent.yml). Most wanted: survivors, European and Spanish cases, and regulatory failures.
+
+Got a bad answer? [Report it](https://github.com/koaling/been-there/issues/new?template=bad-answer.yml): it becomes an eval case.
+
+If Been There saved you from a bad call, a ⭐ helps others find it.
 
 ---
 

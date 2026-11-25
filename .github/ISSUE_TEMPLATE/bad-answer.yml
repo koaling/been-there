@@ -1,0 +1,29 @@
+name: Bad or wrong answer
+description: The skill missed a flaw, invented a fact, or was wrongly negative
+title: "Bad answer: <short description>"
+labels: ["quality"]
+body:
+  - type: textarea
+    id: prompt
+    attributes:
+      label: Your prompt
+      description: Remove anything confidential.
+    validations:
+      required: true
+  - type: textarea
+    id: answer
+    attributes:
+      label: What the skill answered (or the relevant part)
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What it should have said
+    validations:
+      required: true
+  - type: input
+    id: model
+    attributes:
+      label: Model and surface
+      placeholder: e.g. Claude Opus in Claude Code

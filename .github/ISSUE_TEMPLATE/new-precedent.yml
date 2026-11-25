@@ -1,0 +1,41 @@
+name: Suggest a precedent
+description: A company that failed (or survived) a trap that others can learn from
+title: "Precedent: <company>"
+labels: ["precedent", "good first issue"]
+body:
+  - type: input
+    id: company
+    attributes:
+      label: Company
+      placeholder: e.g. Homejoy
+    validations:
+      required: true
+  - type: dropdown
+    id: type
+    attributes:
+      label: Type
+      options:
+        - failure
+        - survivor
+    validations:
+      required: true
+  - type: textarea
+    id: mechanism
+    attributes:
+      label: What happened (mechanism, not symptom)
+      description: '"Ran out of money" is a symptom. What caused it?'
+    validations:
+      required: true
+  - type: textarea
+    id: sources
+    attributes:
+      label: Sources (URLs)
+      description: Founder post-mortems preferred, then reputable news.
+    validations:
+      required: true
+  - type: checkboxes
+    id: pr
+    attributes:
+      label: Contribution
+      options:
+        - label: I'd like to open the pull request myself
