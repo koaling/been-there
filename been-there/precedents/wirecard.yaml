@@ -1,0 +1,30 @@
+name: Wirecard
+slug: wirecard
+type: failure
+years: 1999-2020
+region: EU (Germany)
+sector: payments
+business_model: b2b-payments-processing
+funding: "DAX-listed, peak value ~€24B"
+causes: [fraud, trust-privacy]
+root_cause: >
+  Reported profits depended on third-party partner business and €1.9B in cash
+  supposedly held in Philippine trustee accounts. In June 2020 auditors EY
+  could not confirm it, the banks said the documents were false, and Wirecard
+  filed for insolvency within a week.
+warning_signs:
+  - Years of investigative reporting and short-seller allegations.
+  - A large share of profits from opaque partners nobody could audit.
+survived_by: []
+lesson: Revenue you can't independently verify is a liability; if partners can't be audited, treat their numbers as zero.
+sources:
+  - type: news
+    title: "The rise and fall of Wirecard (Reuters via Investing.com)"
+    url: https://uk.investing.com/news/stock-market-news/the-rise-and-fall-of-wirecard-2175168
+  - type: news
+    title: "High-flying German fintech Wirecard plunges as millions go missing (Fortune, 2020)"
+    url: https://fortune.com/2020/06/18/high-flying-german-fintech-wirecard-plunges-as-millions-go-missing/
+  - type: analysis
+    title: "Wirecard scandal (Wikipedia)"
+    url: https://en.wikipedia.org/wiki/Wirecard_scandal
+status: verified

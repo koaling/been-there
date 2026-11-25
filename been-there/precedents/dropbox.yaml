@@ -1,0 +1,25 @@
+name: Dropbox
+slug: dropbox
+type: survivor
+years: 2007-present
+region: US
+sector: cloud-storage
+business_model: b2c-b2b-saas-freemium
+funding: "Y Combinator, then VC; IPO 2018"
+causes: [competition, distribution]
+root_cause: >
+  Investors said file sync was crowded and unimportant. Before the product was
+  finished, Drew Houston posted a demo video aimed at Hacker News and Digg;
+  the beta waitlist went from 5,000 to 75,000 overnight. A two-sided referral
+  program then drove growth.
+warning_signs: []
+survived_by: []
+lesson: "Test demand before building: a demo plus a waitlist measures real intent cheaply."
+sources:
+  - type: founder-postmortem
+    title: "Dropbox minimal viable product (TechCrunch, 2011)"
+    url: https://techcrunch.com/2011/10/19/dropbox-minimal-viable-product
+  - type: news
+    title: "How Dropbox got its first 10 million users (TechCrunch, 2011)"
+    url: https://techcrunch.com/2011/11/01/founder-storie-how-dropbox-got-its-first-10-million-users/amp/
+status: verified

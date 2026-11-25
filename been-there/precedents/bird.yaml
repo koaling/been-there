@@ -1,0 +1,30 @@
+name: Bird
+slug: bird
+type: failure
+years: 2017-2023
+region: US
+sector: micromobility
+business_model: shared-vehicle-rental
+funding: "~$880M VC + SPAC (2021)"
+causes: [unit-economics, premature-scaling, regulation]
+root_cause: >
+  Flooded cities with cheap consumer-grade scooters that often lasted only
+  months, so many never earned back their cost before charging, repairs and
+  city fees. Rides per scooter fell from nearly 3 a day (2019) to about 1.2
+  (2023) while cities tightened rules. It filed for Chapter 11 in December 2023.
+warning_signs:
+  - Vehicle lifespan shorter than its payback period.
+  - Falling rides per vehicle per day.
+survived_by: [lime]
+lesson: In hardware rentals, asset life must exceed payback; fix durability before adding cities.
+sources:
+  - type: news
+    title: "Scooter Company Bird Global Files Bankruptcy to Sell Itself (Bloomberg, 2023)"
+    url: https://www.bloomberg.com/news/articles/2023-12-20/scooter-company-bird-global-files-for-chapter-11-bankruptcy
+  - type: news
+    title: "Once-hot electric scooter companies in free fall (New York Sun, 2023)"
+    url: https://www.nysun.com/article/once-hot-electric-scooter-companies-in-free-fall-as-consumers-resist-idle-scooters-become-dangerous-eyesores
+  - type: news
+    title: "Bird attracted $500m in venture capital... now it's filed for bankruptcy (Fortune/AP, 2023)"
+    url: https://fortune.com/2023/12/21/bird-attracted-500m-venture-capital-electric-scooters-urban-vehicle-filed-bankruptcy/
+status: verified

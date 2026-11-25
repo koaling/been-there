@@ -1,0 +1,25 @@
+name: Zoom
+slug: zoom
+type: survivor
+years: 2011-present
+region: US
+sector: video-conferencing
+business_model: b2b-saas-freemium
+funding: "~$3M seed (2011); IPO 2019"
+causes: [competition, pricing]
+root_cause: >
+  Entered a market investors called saturated (WebEx, Skype). Founder Eric
+  Yuan, ex-WebEx, built from what WebEx customers complained about and used
+  freemium (free meetings up to 40 minutes) so people tried it without sales.
+  It grew steadily before the pandemic accelerated it.
+warning_signs: []
+survived_by: []
+lesson: A "crowded market" is open if incumbents' customers are unhappy and switching is cheap.
+sources:
+  - type: news
+    title: "Zoom is zooming (Fortune, 2020)"
+    url: https://fortune.com/2020/03/18/zoom-is-zooming-despite-coronavirus/
+  - type: analysis
+    title: "Zoom software (Britannica)"
+    url: https://britannica.com/technology/Zoom-software
+status: verified

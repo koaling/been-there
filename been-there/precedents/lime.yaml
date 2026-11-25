@@ -1,0 +1,26 @@
+name: Lime
+slug: lime
+type: survivor
+years: 2017-present
+region: US / EU
+sector: micromobility
+business_model: shared-vehicle-rental
+funding: "VC (incl. Uber investment, 2020)"
+causes: [unit-economics, overengineering]
+root_cause: >
+  Same market as Bird, but it designed its own durable, modular scooters and
+  bikes, stretching vehicle life from a few months in 2018 to years. Lower
+  maintenance capex made it the first micromobility company with a full
+  profitable year (2022, adjusted EBITDA).
+warning_signs: []
+survived_by: []
+lesson: Durable hardware turned scooter economics around; cheaper vehicles were the trap, not the saving.
+sources:
+  - type: news
+    title: "Lime reports its first fully profitable year on an adjusted basis (Fast Company, 2023)"
+    url: https://www.fastcompany.com/90851725/lime-reports-first-fully-profitable-year
+  - type: news
+    title: "Why Lime says the time is almost right to go public (TechCrunch, 2023)"
+    url: https://techcrunch.com/2023/09/11/why-lime-says-the-time-is-almost-right-to-go-public/
+notes: Survivor counterpart to bird. Profitability figures are adjusted EBITDA.
+status: verified

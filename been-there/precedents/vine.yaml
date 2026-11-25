@@ -1,0 +1,30 @@
+name: Vine
+slug: vine
+type: failure
+years: 2013-2017
+region: US
+sector: social-video
+business_model: ad-supported-platform
+funding: "Acquired by Twitter (2012)"
+causes: [platform-dependency, competition, retention]
+root_cause: >
+  Built huge creator audiences but never gave creators a way to earn. When top
+  creators asked to be paid in 2016, Vine had no revenue to share and they moved
+  to YouTube, Instagram and Snapchat. Twitter announced the shutdown in
+  October 2016.
+warning_signs:
+  - Top creators leaving for platforms that paid them.
+  - Monetization features (revenue share, longer videos) arriving after the exodus.
+survived_by: [twitch]
+lesson: On a creator platform, the creators' income is the product; pay them before a rival does.
+sources:
+  - type: news
+    title: "Inside the secret meeting that changed the fate of Vine forever (Mic, 2016)"
+    url: https://mic.com/articles/157977/inside-the-secret-meeting-that-changed-the-fate-of-vine-forever
+  - type: news
+    title: "Twitter is shutting down Vine (The Hollywood Reporter, 2016)"
+    url: https://www.hollywoodreporter.com/news/twitter-is-shutting-down-vine-app-941705
+  - type: news
+    title: "Twitter Never Figured Out How to Take Advantage of Vine (Fortune, 2016)"
+    url: https://fortune.com/2016/10/27/twitter-vine
+status: verified

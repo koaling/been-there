@@ -1,0 +1,30 @@
+name: Katerra
+slug: katerra
+type: failure
+years: 2015-2021
+region: US
+sector: construction-tech
+business_model: vertically-integrated-construction
+funding: "~$2B (mostly SoftBank Vision Fund)"
+causes: [premature-scaling, overengineering]
+root_cause: >
+  Tried to own the whole chain at once (design, factories, materials, general
+  contracting, project management), acquiring more than twenty companies,
+  while its projects repeatedly ran into problems. Financing dependent on
+  Greensill collapsed in 2021 and it filed for Chapter 11.
+warning_signs:
+  - Projects stumbling while the company kept expanding scope and offices.
+  - Dependence on a single financier for bonding and working capital.
+survived_by: []
+lesson: Integrating every step multiplies hard problems; make one piece work profitably before owning the next.
+sources:
+  - type: news
+    title: "Softbank-backed Katerra's collapse is a failure of pattern-matching (Axios, 2021)"
+    url: https://www.axios.com/2021/06/08/katerra-bankruptcy-softbank
+  - type: analysis
+    title: "Katerra's $2 Billion Legacy (Architect Magazine)"
+    url: https://www.architectmagazine.com/technology/katerras-2-billion-legacy_o
+  - type: news
+    title: "What does Katerra's demise mean for the contech and modular industries? (Construction Dive)"
+    url: https://www.constructiondive.com/news/what-does-katerras-demise-mean-for-the-contech-and-modular-industries/608037/
+status: verified

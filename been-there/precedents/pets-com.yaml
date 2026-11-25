@@ -1,0 +1,30 @@
+name: Pets.com
+slug: pets-com
+type: failure
+years: 1998-2000
+region: US
+sector: e-commerce-pet-supplies
+business_model: b2c-e-commerce
+funding: "VC + ~$80M IPO (Feb 2000)"
+causes: [unit-economics, pricing, distribution]
+root_cause: >
+  Sold heavy, low-margin goods (big bags of food and litter) with discounts
+  and free shipping it couldn't afford, while spending heavily on advertising
+  (including a Super Bowl ad). It liquidated in November 2000, less than a
+  year after its IPO.
+warning_signs:
+  - Shipping a bag cost more than the margin on it.
+  - Ad spend creating awareness but not profitable repeat orders.
+survived_by: [chewy]
+lesson: Free shipping on heavy, low-margin goods turns every order into a loss; fix per-order economics before spending on brand.
+sources:
+  - type: news
+    title: "10 IPOs that flopped (InvestmentNews)"
+    url: https://www.investmentnews.com/galleries/10-ipos-that-flopped/image/8
+  - type: news
+    title: "Dot-com flops (CNN Money, 2015)"
+    url: https://money.cnn.com/gallery/technology/2015/03/02/dot-com-flops/
+  - type: analysis
+    title: "Pets.com (Wikipedia)"
+    url: https://en.wikipedia.org/wiki/Pets.com
+status: verified

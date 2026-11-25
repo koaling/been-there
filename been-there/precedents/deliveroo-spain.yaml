@@ -1,0 +1,30 @@
+name: Deliveroo (Spain exit)
+slug: deliveroo-spain
+type: failure
+years: 2015-2021
+region: EU (Spain)
+sector: food-delivery
+business_model: marketplace-labor
+funding: "Market exit of a listed company"
+causes: [regulation, labor-model, competition]
+root_cause: >
+  Spain's "Ley Rider" (in force 12 August 2021) required delivery platforms to
+  employ riders. Spain was under 2% of Deliveroo's GTV and it trailed Glovo
+  and Uber Eats, so it judged that paying for employees and market share
+  wasn't worth it and left on 29 November 2021.
+warning_signs:
+  - Courts ruling riders were employees (Supreme Court, 2020).
+  - A small, third-place market where scale economics never arrived.
+survived_by: []
+lesson: If the model depends on a labour classification, price in the scenario where it changes; a third-place market can't absorb the cost.
+sources:
+  - type: founder-postmortem
+    title: "Deliveroo announces agreement to end operations in Spain (Deliveroo corporate)"
+    url: https://corporate.deliveroo.co.uk/media/deliveroo-announces-agreement-end-operations-spain
+  - type: news
+    title: "Deliveroo, Closure in Spain (Eurofound, European Restructuring Monitor)"
+    url: https://apps.eurofound.europa.eu/restructuring-events/detail/106015
+  - type: news
+    title: "Deliveroo could leave Spanish market ahead of on-demand labor reclassification (TechCrunch, 2021)"
+    url: https://techcrunch.com/2021/07/30/deliveroo-could-leave-spanish-market-ahead-of-on-demand-labor-reclassification
+status: verified

@@ -1,0 +1,29 @@
+name: Chewy
+slug: chewy
+type: survivor
+years: 2011-present
+region: US
+sector: e-commerce-pet-supplies
+business_model: b2c-e-commerce-subscription
+funding: "Bootstrapped start, then VC; acquired by PetSmart (2017), IPO 2019"
+causes: [unit-economics, retention]
+root_cause: >
+  Same category that killed Pets.com, but Chewy turned heavy, repeat purchases
+  into scheduled Autoship deliveries (later ~73% of sales) and competed on
+  service rather than ad spend. Predictable repeat orders made the shipping
+  costs work; it passed $11B revenue and turned profitable.
+warning_signs: []
+survived_by: []
+lesson: The fix for low-margin heavy goods was recurring orders and loyalty, not a bigger marketing budget.
+sources:
+  - type: news
+    title: "Chewy's Co-Founder explains how the startup went from zero to a public company (Inc.)"
+    url: https://www.inc.com/guadalupe-gonzalez/co-founder-ryan-cohen-what-makes-chewy-successful.html
+  - type: news
+    title: "Chewy autoship accounts for most sales (Digital Commerce 360)"
+    url: https://www.digitalcommerce360.com/?p=1045227
+  - type: analysis
+    title: "Here's why Chewy succeeded where Pets.com failed (IBKR Campus / Thinknum)"
+    url: https://www.interactivebrokers.com/campus/?p=112059
+notes: Survivor counterpart to pets-com.
+status: verified

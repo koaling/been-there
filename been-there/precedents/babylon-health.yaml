@@ -1,0 +1,30 @@
+name: Babylon Health
+slug: babylon-health
+type: failure
+years: 2013-2023
+region: EU (UK)
+sector: digital-health
+business_model: b2g-capitation-plus-b2c
+funding: "SPAC listing NYSE (2021)"
+causes: [unit-economics, premature-scaling, regulation]
+root_cause: >
+  Its NHS GP at Hand service was paid a fixed fee per patient, and the CEO
+  admitted it lost money on every UK patient in 2022. It expanded into US
+  value-based care, losses doubled to $63M in Q1 2023, a rescue merger failed
+  and the UK business went into administration in August 2023.
+warning_signs:
+  - Fixed per-patient fee below the cost of serving them.
+  - Abandoning contracts and pausing registrations while still expanding abroad.
+survived_by: []
+lesson: Under capitation, cost per patient decides everything; know it before growing the patient list.
+sources:
+  - type: news
+    title: "The rise and fall of Babylon (Sifted)"
+    url: https://sifted.eu/articles/the-rise-and-fall-of-babylon
+  - type: news
+    title: "Babylon looks to sell UK business amid bankruptcy fears (Digital Health, 2023)"
+    url: https://www.digitalhealth.net/2023/08/babylon-looks-to-sell-uk-business-amid-bankruptcy-fears/
+  - type: analysis
+    title: "Babylon Health (Wikipedia)"
+    url: https://en.wikipedia.org/wiki/Babylon_Health
+status: verified

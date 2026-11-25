@@ -34,7 +34,7 @@ Under ~400 words by default. Ask for a `full review` to see the whole reasoning.
 - **Real precedents, both sides.** Failures and survivors, with the similarity spelled out (market, model, timing, mechanism). Weak analogies are dropped, not forced.
 - **Not a pessimist.** When there's real user pull (paying users, renewals, a waitlist), it says so first. Being wrongly negative counts as a failure too.
 - **Ends in action:** a 48-hour test and a dated kill criterion, not a list of "considerations".
-- **Bilingual** (EN/ES) and **open precedent library** anyone can add to.
+- **Bilingual** (EN/ES) and an **open precedent library** (30 sourced cases: 22 failures, 8 survivors, incl. EU and Spain) anyone can add to.
 
 ## Tested, blind
 
@@ -78,7 +78,7 @@ Real, unedited answers: [a hardware fleet rollout](examples/01-scooter-rollout.m
 
 ## Contribute
 
-The precedent library is the heart of the project, and adding one company is a 10-minute first PR. See [CONTRIBUTING.md](CONTRIBUTING.md) or [open a precedent suggestion](https://github.com/koaling/been-there/issues/new?template=new-precedent.yml). Most wanted: survivors, European and Spanish cases, and regulatory failures.
+The precedent library is the heart of the project, and adding one company is a 10-minute first PR. See [CONTRIBUTING.md](CONTRIBUTING.md) or [open a precedent suggestion](https://github.com/koaling/been-there/issues/new?template=new-precedent.yml). Most wanted: more survivors, Spanish and LatAm cases, and regulatory failures.
 
 Got a bad answer? [Report it](https://github.com/koaling/been-there/issues/new?template=bad-answer.yml): it becomes an eval case.
 

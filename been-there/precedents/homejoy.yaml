@@ -1,0 +1,30 @@
+name: Homejoy
+slug: homejoy
+type: failure
+years: 2012-2015
+region: US
+sector: on-demand-home-services
+business_model: marketplace-labor
+funding: "~$40M"
+causes: [retention, labor-model, unit-economics]
+root_cause: >
+  Grew with deep first-cleaning discounts, but most customers never booked
+  again and the best cleaners left to work for clients directly. Losses
+  mounted with a costly international expansion, and worker-classification
+  lawsuits scared off the next funding round.
+warning_signs:
+  - Most discounted customers never returned.
+  - Top cleaners setting up direct arrangements with clients (disintermediation).
+survived_by: []
+lesson: Discount-driven growth only works if customers and workers stay; measure repeat rate before buying more first orders.
+sources:
+  - type: news
+    title: "Cleaning Startup Homejoy Shuts Down, Blames Worker Classification Lawsuits (Entrepreneur, 2015)"
+    url: https://www.entrepreneur.com/article/248579
+  - type: analysis
+    title: "Why Homejoy Failed (Backchannel/Medium, 2015)"
+    url: https://medium.com/backchannel/why-homejoy-failed-bb0ab39d901a
+  - type: analysis
+    title: "Homejoy: a Silicon Valley darling's path to the grave (Harvard Digital Initiative)"
+    url: https://d3.harvard.edu/platform-digit/submission/homejoy-a-silicon-valley-darlings-path-to-the-grave/
+status: verified

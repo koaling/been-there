@@ -1,0 +1,25 @@
+name: Netflix (move to streaming)
+slug: netflix-streaming
+type: survivor
+years: 2007-2013
+region: US
+sector: media-subscription
+business_model: b2c-subscription
+funding: "Public company"
+causes: [pricing, timing, retention]
+root_cause: >
+  Launched streaming in 2007 next to its DVD business. In 2011 it split the
+  plans (effectively a ~60% price rise) and announced Qwikster; it lost about
+  800,000 subscribers and most of its stock value, dropped Qwikster within
+  weeks but kept the new pricing and committed to streaming.
+warning_signs: []
+survived_by: []
+lesson: Cannibalizing your own business can be right, but a sudden price rise plus a confusing split nearly broke it; change one thing at a time.
+sources:
+  - type: founder-postmortem
+    title: "Netflix Form 10-K FY2011 (SEC)"
+    url: https://www.sec.gov/Archives/edgar/data/0001065280/000119312512053009/d260328d10k.htm
+  - type: news
+    title: "As Netflix turns 20, let's revisit its biggest blunder (Quartz)"
+    url: https://qz.com/1245107/as-netflix-turns-20-lets-revisit-its-biggest-blunder/
+status: verified

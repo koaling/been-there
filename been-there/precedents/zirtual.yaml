@@ -1,0 +1,31 @@
+name: Zirtual
+slug: zirtual
+type: failure
+years: 2011-2015
+region: US
+sector: virtual-assistants
+business_model: b2c-subscription-service
+funding: "~$5M"
+causes: [labor-model, unit-economics]
+root_cause: >
+  Converted its assistants from contractors to ~400 full-time employees with
+  benefits, raising labour costs (the founder estimated 20–30% more per
+  person) and pushing burn to ~$400K/month, while burn projections missed
+  extra pay periods. When a funding round fell through it laid off everyone
+  overnight in August 2015.
+warning_signs:
+  - Cost structure changed without changing prices.
+  - Burn model not checked against real payroll calendars.
+survived_by: []
+lesson: When labour becomes employment, reprice or re-model first; flat prices with a 20–30% cost jump eat the runway.
+sources:
+  - type: founder-postmortem
+    title: "Zirtual ex-CEO: 'I cry for all the employees we hurt' (Fortune, 2015)"
+    url: https://fortune.com/2015/08/12/zirtual-maren-kate-donovan/
+  - type: founder-postmortem
+    title: "Why this first-time founder fired her 400-person company overnight (The Hustle)"
+    url: https://thehustle.co/maren-kate-donovan-zirtual
+  - type: news
+    title: "Zirtual's outsourced CFO gives his side of the shutdown story (Fortune, 2015)"
+    url: https://www.fortune.com/2015/08/13/zirtuals-outsourced-cfo-gives-his-side-of-the-shutdown-story
+status: verified

@@ -1,0 +1,30 @@
+name: Shyp
+slug: shyp
+type: failure
+years: 2013-2018
+region: US
+sector: on-demand-shipping
+business_model: b2c-on-demand-service
+funding: "~$62M"
+causes: [unit-economics, premature-scaling]
+root_cause: >
+  Couriers picked up, packed and shipped items on demand for a low fee,
+  which was labour-heavy per order. It expanded to several cities chasing
+  consumers before the economics worked; its CEO later said he should have
+  built profitability in from the start and served business customers sooner.
+warning_signs:
+  - Fast consumer growth without positive margin per pickup.
+  - Missing expansion targets and retreating to one city (2017).
+survived_by: []
+lesson: Loved by customers is not the same as profitable per order; prove contribution margin before city two.
+sources:
+  - type: founder-postmortem
+    title: "Shyp is reducing headcount and suspending operations outside SF, with CEO's reflections (TechCrunch, 2017)"
+    url: https://techcrunch.com/2017/07/20/shyp-is-reducing-headcount-and-suspending-all-operations-outside-of-sf%EF%BB%BF
+  - type: news
+    title: "On-demand shipping startup Shyp is shutting down (TechCrunch, 2018)"
+    url: https://techcrunch.com/2018/03/27/on-demand-shipping-startup-shyp-is-shutting-down/
+  - type: news
+    title: "The startup that wanted to kill the post office is shutting down after raising $62 million (Business Insider, 2018)"
+    url: https://businessinsider.in/the-startup-that-wanted-to-kill-the-post-office-is-shutting-down-after-raising-62-million/amp_articleshow/63494789.cms
+status: verified

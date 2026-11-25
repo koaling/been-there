@@ -1,0 +1,27 @@
+name: Munchery
+slug: munchery
+type: failure
+years: 2010-2019
+region: US
+sector: food-delivery
+business_model: b2c-delivery-own-kitchens
+funding: "~$125M"
+causes: [unit-economics, premature-scaling]
+root_cause: >
+  Cooked chef-made meals in its own kitchens and delivered them itself, so it
+  carried food waste, kitchen and delivery costs on every order. It expanded
+  to several cities, then pivoted repeatedly (meal kits, subscriptions, a
+  store) before shutting down abruptly in January 2019.
+warning_signs:
+  - Repeated pivots instead of fixing per-order economics.
+  - Layoffs of ~30% and closing NYC, LA and Seattle months before the end.
+survived_by: [doordash]
+lesson: Owning kitchens and delivery stacks costs on every order; prove one city's per-order margin before adding kitchens.
+sources:
+  - type: news
+    title: "After raising $125M, Munchery fails to deliver (TechCrunch, 2019)"
+    url: https://techcrunch.com/2019/01/21/munchery-shuts-down
+  - type: news
+    title: "Munchery closes on-demand meal-delivery business (San Francisco Chronicle, 2019)"
+    url: https://preview-prod.w.sfchronicle.com/business/article/Munchery-closes-on-demand-food-business-13550652.php
+status: verified

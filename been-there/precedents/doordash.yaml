@@ -1,0 +1,26 @@
+name: DoorDash
+slug: doordash
+type: survivor
+years: 2013-present
+region: US
+sector: food-delivery
+business_model: marketplace-labor
+funding: "VC; IPO December 2020"
+causes: [unit-economics, distribution]
+root_cause: >
+  Unlike Munchery, it didn't cook: it delivered from existing restaurants and
+  focused on growing restaurants' sales, starting in suburbs and with founders
+  doing deliveries themselves. It lost money for years ($667M in 2019) but
+  reached positive cash flow by 2020.
+warning_signs: []
+survived_by: []
+lesson: Asset-light marketplaces can survive long losses because each order doesn't carry kitchen and food-waste cost.
+sources:
+  - type: news
+    title: "After a blockbuster IPO, DoorDash's challenge now is to deliver profits (Fortune, 2020)"
+    url: https://fortune.com/2020/12/14/doordash-ipo-delivery-profits-uber-east-grubhub
+  - type: news
+    title: "DoorDash was just another struggling startup until wooing restaurants paid off (Bloomberg Businessweek)"
+    url: https://www.bloombergquint.com/businessweek/doordash-was-left-for-dead-until-wooed-restaurateurs-began-to-pay
+notes: Survivor counterpart to munchery. Labour-classification risk still applies (see deliveroo-spain).
+status: verified

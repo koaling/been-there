@@ -1,0 +1,30 @@
+name: Zume
+slug: zume
+type: failure
+years: 2015-2023
+region: US
+sector: food-tech
+business_model: automated-food-production
+funding: "~$400–450M (incl. SoftBank Vision Fund)"
+causes: [overengineering, unit-economics]
+root_cause: >
+  Built robot-assisted pizza production and trucks with dozens of ovens that
+  baked en route, adding heavy capital and technical complexity (e.g. cheese
+  sliding off in moving trucks) to a product with tiny margins. It sold the
+  pizza business in 2020, pivoted to packaging and shut down in 2023.
+warning_signs:
+  - Complex technology solving a problem customers didn't pay extra for.
+  - Low-margin product carrying high-capex operations.
+survived_by: []
+lesson: Expensive technology must earn more per unit than it costs; in commodity, low-margin products it rarely does.
+sources:
+  - type: news
+    title: "Fallen Pizza Startup Zume Shuts Down After Raising Millions (Bloomberg, 2023)"
+    url: https://www.bloomberg.com/news/articles/2023-06-03/fallen-pizza-startup-zume-shuts-down-after-raising-millions
+  - type: analysis
+    title: "Robot-cooked pizza delivered to your door: here's what Zume's failure tells us (Physics World)"
+    url: https://physicsworld.com/a/robot-cooked-pizza-delivered-to-your-door-heres-what-zumes-failure-tells-us/
+  - type: news
+    title: "$400+ million ex-pizza robot company Zume shuts down (Nation's Restaurant News)"
+    url: https://www.nrn.com/restaurant-segments/-400-million-ex-pizza-robot-company-zume-shuts-down
+status: verified

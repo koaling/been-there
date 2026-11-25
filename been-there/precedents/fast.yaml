@@ -1,0 +1,27 @@
+name: Fast
+slug: fast
+type: failure
+years: 2019-2022
+region: US
+sector: fintech-checkout
+business_model: b2b-payments
+funding: "~$120M (Series B led by Stripe)"
+causes: [premature-scaling, competition, distribution]
+root_cause: >
+  Hired hundreds of people and burned a reported ~$10M a month while the
+  one-click checkout generated about $600K in 2021 revenue. Merchants and
+  shoppers already had Apple Pay, PayPal and Shop Pay; when it couldn't raise
+  again it shut down in April 2022.
+warning_signs:
+  - Burn a large multiple of revenue, not of gross profit.
+  - Headcount growing faster than merchant adoption.
+survived_by: []
+lesson: Scale the team to revenue, not to the round; in a market with entrenched wallets, adoption is the hard part.
+sources:
+  - type: news
+    title: "Fast shuts doors after slow growth, high burn precluded fundraising options (TechCrunch, 2022)"
+    url: https://techcrunch.com/2022/04/05/fast-shuts-doors-after-slow-growth-high-burn-precluded-fundraising-options
+  - type: news
+    title: "Fast, the easy checkout startup, shuts down after burning through investors' money (NPR, 2022)"
+    url: https://www.npr.org/2022/04/05/1091077398/checkout-startup-fast-is-shutting-down-after-burning-through-investors-money
+status: verified

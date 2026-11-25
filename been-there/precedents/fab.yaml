@@ -1,0 +1,31 @@
+name: Fab.com
+slug: fab
+type: failure
+years: 2011-2015
+region: US
+sector: e-commerce-design
+business_model: flash-sales-then-inventory-retail
+funding: "~$336M"
+causes: [premature-scaling, unit-economics]
+root_cause: >
+  Grew fast on asset-light flash sales, then in 2013 switched to holding its
+  own inventory while expanding into Europe through acquisitions and a
+  ~100-person team. Inventory risk and European costs burned cash before the
+  new model worked; it laid off most staff and sold for a fraction of its
+  peak valuation.
+warning_signs:
+  - Two big shifts at once (business model and multi-country expansion).
+  - Buying inventory without solid demand data.
+survived_by: []
+lesson: Change one big thing at a time; switching to inventory and expanding abroad simultaneously multiplies burn.
+sources:
+  - type: founder-postmortem
+    title: "Sh*t, I'm F*cked: Jason Goldberg, Founder of Fab (The Hustle)"
+    url: https://thehustle.co/sht-im-fcked-jason-goldberg-founder-fab
+  - type: news
+    title: "Fab's billion-dollar valuation fall (Fortune, 2015)"
+    url: https://fortune.com/2015/01/22/fab-billion-dollar-valuation/
+  - type: analysis
+    title: "Fab.com case (Harvard Digital Initiative)"
+    url: https://d3.harvard.edu/platform-rctom/?p=3944
+status: verified

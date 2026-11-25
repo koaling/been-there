@@ -1,0 +1,30 @@
+name: Cazoo
+slug: cazoo
+type: failure
+years: 2018-2024
+region: EU (UK)
+sector: online-used-cars
+business_model: b2c-e-commerce-own-inventory
+funding: "~$7B SPAC valuation (2021)"
+causes: [premature-scaling, unit-economics, competition]
+root_cause: >
+  Bought, reconditioned and delivered cars itself, then expanded into France,
+  Germany, Italy and Spain and bought rivals while losing over £500M a year.
+  A used-car shortage cut volumes; it left Europe in 2022, tried a marketplace
+  pivot in 2024 and entered administration in May 2024.
+warning_signs:
+  - Multi-country expansion before UK profitability.
+  - High customer acquisition costs and heavy sponsorship spend.
+survived_by: []
+lesson: Owning inventory makes every market a capital bet; prove one country's margins before opening four more.
+sources:
+  - type: news
+    title: "Cazoo racked up debts of over £260m as it collapsed into administration (City AM)"
+    url: https://www.cityam.com/?p=2238412
+  - type: news
+    title: "What happened to Cazoo? (Honest John)"
+    url: https://honestjohn.co.uk/advice/car-buying-advice/what-is-cazoo
+  - type: news
+    title: "British used car startup Cazoo was once worth $7 billion (Fortune, 2024)"
+    url: https://fortune.com/europe/2024/05/10/british-used-car-cazoo-unicorn-7-billion-spac-administration-bankruptcy/
+status: verified

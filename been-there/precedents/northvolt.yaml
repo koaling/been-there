@@ -1,0 +1,30 @@
+name: Northvolt
+slug: northvolt
+type: failure
+years: 2016-2025
+region: EU (Sweden)
+sector: battery-manufacturing
+business_model: b2b-manufacturing
+funding: "~$15B raised (equity + debt)"
+causes: [premature-scaling, competition, overengineering]
+root_cause: >
+  Planned several gigafactories at once before its first one worked: the
+  Skellefteå plant aimed for 16 GWh but produced around 1 GWh. BMW cancelled a
+  ~$2B contract in 2024, Chinese prices fell sharply, and with ~$6B of debt it
+  filed for bankruptcy in Sweden in March 2025.
+warning_signs:
+  - Repeated production delays and low yields at the first factory.
+  - Expansion plans announced while the anchor customer's orders went unmet.
+survived_by: []
+lesson: In manufacturing, yield at plant one is the whole bet; don't fund plants two and three before it works.
+sources:
+  - type: founder-postmortem
+    title: "Northvolt files for bankruptcy in Sweden (Northvolt press release, 2025)"
+    url: https://northvolt.com/articles/northvolt-files-for-bankruptcy-in-sweden/
+  - type: news
+    title: "Northvolt's bankruptcy: how does it impact Europe's battery industry? (Barchart, 2025)"
+    url: https://www.barchart.com/story/news/31465689/northvolts-bankruptcy-how-does-it-impact-europes-battery-industry
+  - type: news
+    title: "Northvolt bankruptcy dents European battery industry ambitions (Chemistry World)"
+    url: https://chemistryworld.com/news/northvolt-bankruptcy-dents-european-battery-industry-ambitions/4020603.article
+status: verified

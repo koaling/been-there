@@ -1,0 +1,26 @@
+name: Twitch
+slug: twitch
+type: survivor
+years: 2011-present
+region: US
+sector: live-streaming
+business_model: ad-and-subscription-platform
+funding: "VC; acquired by Amazon for $970M (2014)"
+causes: [no-market-need, distribution]
+root_cause: >
+  Justin.tv started as a general lifestreaming site; gaming became the most
+  popular category, so in 2011 the team spun it out as Twitch and focused on
+  it, later shutting Justin.tv down. Twitch reached 55M monthly visitors by
+  2014 and creators could earn through it.
+warning_signs: []
+survived_by: []
+lesson: Follow the segment that's already pulling, and let creators earn on it.
+sources:
+  - type: news
+    title: "Amazon to Buy Twitch for $970 Million (TIME, 2014)"
+    url: https://time.com/3176912/amazon-twitch-970-million/
+  - type: news
+    title: "What you need to know about Twitch (Engadget, 2014)"
+    url: https://www.engadget.com/2014/09/01/twitch-explainer/
+notes: Contrast with vine on creator monetization.
+status: verified

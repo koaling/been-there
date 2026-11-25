@@ -1,0 +1,25 @@
+name: Slack
+slug: slack
+type: survivor
+years: 2013-present
+region: US / Canada
+sector: workplace-software
+business_model: b2b-saas-freemium
+funding: "~$17M raised for the game; later VC; acquired by Salesforce (2021)"
+causes: [no-market-need, competition]
+root_cause: >
+  Tiny Speck raised money for the online game Glitch, which failed. The team
+  noticed the internal chat tool it had built for itself was what worked, killed
+  the game in late 2012 and turned the tool into Slack, despite a crowded field
+  (email, HipChat).
+warning_signs: []
+survived_by: []
+lesson: The thing your own team uses every day can be the real product; be willing to kill the original plan.
+sources:
+  - type: news
+    title: "The Slack origin story (TechCrunch, 2019)"
+    url: https://techcrunch.com/2019/05/30/the-slack-origin-story
+  - type: founder-postmortem
+    title: "Q&A: Stewart Butterfield (Inc.)"
+    url: https://www.inc.com/eric-markowitz/qanda-stewart-butterfield-slack-flickr-cofounder.html
+status: verified
