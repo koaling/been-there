@@ -110,7 +110,7 @@ For a one-way door with confidence < 6/10, the default verdict is "First find ou
 
 ## Step 7 · Follow-ups (offer in one line each, don't do unasked)
 
-- **Visual report**: follow `templates/report.md` (copy its HTML, replace only the `REPORT_DATA` JSON, set `lang` to the user's language and `role` per member) and deliver it as a file or artifact.
+- **Visual report**: follow `templates/report.md` (copy its HTML, replace only the `REPORT_DATA` JSON, set `lang` to the user's language and `role` per member; fill `context`, `facts`, `sources`, `status` and `review_date` so it stands on its own when shared) and deliver it as a file or artifact.
 - **Decision log**: append a block to `decisions/` with date, decision, choice, key assumptions, kill criterion and review date.
 
 ## Rules

@@ -12,6 +12,13 @@ Keys:
   `role` picks the mascot: `devil` (Nix), `first` (Root), `expansion` (Nova), `outsider` (Pip), `executor` (Tack), `finance` (Penny), `risk` (Lex), `customer` (Mo), `technical` (Bolt), `investor` (Cap), `people` (Kin). The chair is Vera.
 - `premortem[]`.
 
+Context, so the report makes sense to someone who wasn't in the conversation:
+- `context`: `prompt` (the user's plan, close to their own words), `prepared_by`, `for` (meeting, person or purpose). Ask for `prepared_by`/`for` only if the user wants to share it; otherwise omit them.
+- `facts[]`: `kind` given (the user said it) | assumed (you assumed it; say so) | external (checked against a source), `text`.
+- `status`: `draft` | `decided` | `dropped` (default `draft`). `review_date`: the date in the kill criterion.
+- `sources[]`: `title`, `url` for every external fact and precedent. Precedents may also carry their own `url`.
+Never put a figure under `given` that the user didn't give.
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -106,6 +113,29 @@ Keys:
   .a.test{background:var(--violet-soft)} .a.test .k{color:var(--violet)}
   .a.next{background:var(--go-soft)} .a.next .k{color:var(--go)}
   .a.kill{background:var(--stop-soft)} .a.kill .k{color:var(--stop)}
+
+  /* context */
+  .stamp{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;border-radius:8px;padding:4px 10px;border:2px solid currentColor;transform:rotate(-2deg)}
+  .stamp.draft{color:#8A7FA8}.stamp.decided{color:var(--go)}.stamp.dropped{color:var(--stop)}
+  .meta{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;margin-top:12px;font-size:13.5px;color:var(--muted)}
+  .meta b{color:var(--ink);font-weight:700}
+  .ask{margin:0;font-size:17px;line-height:1.5;padding-left:16px;border-left:4px solid var(--violet);color:var(--ink)}
+  .facts{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+  .facts li{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:baseline}
+  .kind{font-size:11px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;border-radius:999px;padding:2px 9px;white-space:nowrap}
+  .kind.given{background:var(--go-soft);color:var(--go)}.kind.assumed{background:var(--test-soft);color:#B67A00}.kind.external{background:var(--violet-soft);color:var(--violet)}
+  .p a.src,.srcs a{color:var(--violet);font-weight:600;font-size:13px;text-decoration:none}
+  .p a.src:hover,.srcs a:hover{text-decoration:underline}
+  .srcs{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px;font-size:14.5px}
+  .srcs a{font-size:14.5px;overflow-wrap:anywhere}
+  details.how summary{cursor:pointer;font-weight:800;font-size:17px;list-style:none;display:flex;align-items:center;gap:10px;font-family:ui-rounded,"SF Pro Rounded","Nunito",sans-serif}
+  details.how summary::-webkit-details-marker{display:none}
+  details.how summary::after{content:"+";margin-left:auto;font-size:22px;color:var(--violet)}
+  details.how[open] summary::after{content:"–"}
+  .how-body{margin-top:14px;font-size:14.5px;display:flex;flex-direction:column;gap:12px}
+  .legend{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px}
+  .legend div{display:flex;align-items:center;gap:8px;font-size:13.5px}
+  .legend .mascot{flex:none}
   footer{display:flex;justify-content:center;align-items:center;gap:8px;color:var(--muted);font-size:13px;text-align:center;margin-top:6px;flex-wrap:wrap}
   @media print{body{background:#fff;padding:0}body::before,body::after{display:none}.card{box-shadow:none;break-inside:avoid}}
 </style>
@@ -116,34 +146,124 @@ Keys:
 <!-- Replace only this JSON when generating a report. -->
 <script id="REPORT_DATA" type="application/json">
 {
-  "lang": "en",
-  "title": "Launch same-day grocery delivery in 8 cities at once?",
-  "date": "2026-11-25",
-  "tone": "test",
-  "verdict": "Prove one city first, then expand",
-  "confidence": 8,
-  "agreement": "Volume won't fix negative per-order margins; it multiplies them.",
-  "disagreement": "Nova says speed matters against competitors; the rest say speed without economics is exactly how Webvan died.",
-  "key_assumption": "Per-order loss turns positive with route density → test with 4 weeks of route data in city 1.",
-  "precedents": [
-    {"type":"failure","name":"Webvan","years":"1996–2001","note":"Built warehouses in many cities before one was profitable.","match":["market","mechanism"],"miss":["timing"]},
-    {"type":"survivor","name":"Instacart","years":"2012–","note":"Same market, asset-light: shoppers picked from existing stores.","match":["market","model"],"miss":[]}
-  ],
-  "advisors": [
-    {"role":"devil","name":"Devil's advocate","position":"against","line":"You're Webvan with better branding: losses scale with cities.","opinion":false},
-    {"role":"first","name":"First principles","position":"depends","line":"The goal is density per route, not the number of cities.","opinion":false},
-    {"role":"expansion","name":"Expansionist","position":"for","line":"First mover in 8 cities could lock in store partnerships.","opinion":true},
-    {"role":"outsider","name":"Outsider","position":"depends","line":"Why would I switch from the delivery app I already use?","opinion":true},
-    {"role":"executor","name":"Executor","position":"against","line":"Tomorrow: measure cost per order by route, not the average.","opinion":false},
-    {"role":"finance","name":"Finance","position":"against","line":"Eight warehouses lock up the cash before demand is proven.","opinion":false}
-  ],
-  "premortem": [
-    "Per-order losses grew with each new city (signal: contribution margin by city).",
-    "Warehouse capex locked cash before demand was proven (signal: utilisation under 40%).",
-    "A competitor with no warehouses undercut prices (signal: Instacart-style partner model in your market)."
-  ],
-  "next_step": "Pull 4 weeks of order data in city 1 and compute margin by route density.",
-  "kill_criterion": "If margin per order isn't positive on the densest routes by 31 Jan, drop the expansion plan."
+ "lang": "en",
+ "title": "Launch same-day grocery delivery in 8 cities at once?",
+ "date": "2026-11-25",
+ "status": "draft",
+ "review_date": "2027-01-31",
+ "context": {
+  "prompt": "Been there? We run same-day grocery delivery in one city and want to launch in 8 more at once next quarter, with our own warehouses, to get there before competitors.",
+  "prepared_by": "Ops team",
+  "for": "Leadership meeting"
+ },
+ "tone": "test",
+ "verdict": "Prove one city first, then expand",
+ "confidence": 8,
+ "agreement": "Volume won't fix negative per-order margins; it multiplies them.",
+ "disagreement": "Nova says speed matters against competitors; the rest say speed without economics is exactly how Webvan died.",
+ "key_assumption": "Per-order loss turns positive with route density → test with 4 weeks of route data in city 1.",
+ "precedents": [
+  {
+   "type": "failure",
+   "name": "Webvan",
+   "years": "1996–2001",
+   "note": "Built warehouses in many cities before one was profitable.",
+   "match": [
+    "market",
+    "mechanism"
+   ],
+   "miss": [
+    "timing"
+   ],
+   "url": "https://en.wikipedia.org/wiki/Webvan"
+  },
+  {
+   "type": "survivor",
+   "name": "Instacart",
+   "years": "2012–",
+   "note": "Same market, asset-light: shoppers picked from existing stores.",
+   "match": [
+    "market",
+    "model"
+   ],
+   "miss": []
+  }
+ ],
+ "advisors": [
+  {
+   "role": "devil",
+   "name": "Devil's advocate",
+   "position": "against",
+   "line": "You're Webvan with better branding: losses scale with cities.",
+   "opinion": false
+  },
+  {
+   "role": "first",
+   "name": "First principles",
+   "position": "depends",
+   "line": "The goal is density per route, not the number of cities.",
+   "opinion": false
+  },
+  {
+   "role": "expansion",
+   "name": "Expansionist",
+   "position": "for",
+   "line": "First mover in 8 cities could lock in store partnerships.",
+   "opinion": true
+  },
+  {
+   "role": "outsider",
+   "name": "Outsider",
+   "position": "depends",
+   "line": "Why would I switch from the delivery app I already use?",
+   "opinion": true
+  },
+  {
+   "role": "executor",
+   "name": "Executor",
+   "position": "against",
+   "line": "Tomorrow: measure cost per order by route, not the average.",
+   "opinion": false
+  },
+  {
+   "role": "finance",
+   "name": "Finance",
+   "position": "against",
+   "line": "Eight warehouses lock up the cash before demand is proven.",
+   "opinion": false
+  }
+ ],
+ "premortem": [
+  "Per-order losses grew with each new city (signal: contribution margin by city).",
+  "Warehouse capex locked cash before demand was proven (signal: utilisation under 40%).",
+  "A competitor with no warehouses undercut prices (signal: Instacart-style partner model in your market)."
+ ],
+ "next_step": "Pull 4 weeks of order data in city 1 and compute margin by route density.",
+ "kill_criterion": "If margin per order isn't positive on the densest routes by 31 Jan, drop the expansion plan.",
+ "facts": [
+  {
+   "kind": "given",
+   "text": "8 new cities, launched together next quarter."
+  },
+  {
+   "kind": "given",
+   "text": "Own warehouses in each city."
+  },
+  {
+   "kind": "assumed",
+   "text": "Per-order margin in city 1 is still negative (not stated)."
+  },
+  {
+   "kind": "external",
+   "text": "Webvan built warehouses city by city before one was profitable."
+  }
+ ],
+ "sources": [
+  {
+   "title": "Webvan (Wikipedia)",
+   "url": "https://en.wikipedia.org/wiki/Webvan"
+  }
+ ]
 }
 </script>
 
@@ -255,19 +375,28 @@ function mascot(key, size=120){
         for:'For',against:'Against',depends:'Depends',op:'opinion',chairs:'chairs the crew',
         roles:{devil:"Devil's advocate",first:'First principles',expansion:'Expansionist',outsider:'Outsider',executor:'Executor',chair:'Chair',finance:'Finance',risk:'Risk & compliance',customer:'Customer',technical:'Technical',investor:'Investor / partner',people:'People'},
         tone:{go:'Go',stop:"Don't",test:'Test first'},
-        persona:{devil:'Looks for how it dies',first:'Asks what problem you really solve',expansion:'Sees the upside others miss',outsider:'Asks what a newcomer would ask',executor:'What happens tomorrow at 9:00',chair:'Weighs arguments, not votes',finance:'Follows the money',risk:'Reads the small print',customer:'Speaks for the buyer',technical:'Checks it can be built',investor:'Thinks like whoever funds it',people:'Thinks about the team'},foot:'Precedents are evidence, not predictions'},
+        persona:{devil:'Looks for how it dies',first:'Asks what problem you really solve',expansion:'Sees the upside others miss',outsider:'Asks what a newcomer would ask',executor:'What happens tomorrow at 9:00',chair:'Weighs arguments, not votes',finance:'Follows the money',risk:'Reads the small print',customer:'Speaks for the buyer',technical:'Checks it can be built',investor:'Thinks like whoever funds it',people:'Thinks about the team'},foot:'Precedents are evidence, not predictions',
+        ctx:'The question',by:'Prepared by',forr:'For',review:'Review on',status:{draft:'Draft',decided:'Decided',dropped:'Dropped'},
+        facts:'Starting facts',kinds:{given:'Given',assumed:'Assumed',external:'Checked'},src:'Source',srcs:'Sources',
+        how:'How to read this report',
+        howText:['Been There checks a plan against companies that already tried something similar. <b>Fell</b> marks those that failed the same way; <b>Survived</b> marks those that faced the same trap and made it. Purple tags show what matches this plan; crossed-out tags show what doesn\'t.','The Crew answers independently before seeing each other. Points without evidence are tagged <b>opinion</b>. Vera, the chair, weighs arguments, not votes. Confidence is how sure the verdict is, not the odds of success.','Starting facts separate what was given, what was assumed and what was checked against outside sources.']},
     es:{crew:'La Pandilla',agree:'En qué coinciden',dis:'Desacuerdo real',prec:'Quién ya pasó por aquí',fell:'Cayó',surv:'Sobrevivió',
         none:'Ningún precedente se parece lo suficiente. Mejor ninguno que uno forzado.',pm:'Pre-mortem · han pasado 12 meses y fracasó porque…',
         todo:'Qué hacer ahora',test:'Supuesto a comprobar',next:'Próximas 48 h',kill:'Criterio de abandono',conf:'confianza',verdict:'Veredicto',
         for:'A favor',against:'En contra',depends:'Depende',op:'opinión',chairs:'preside la pandilla',
         roles:{devil:'Abogado del diablo',first:'Primeros principios',expansion:'Expansionista',outsider:'Forastero',executor:'Ejecutor',chair:'Presidencia',finance:'Finanzas',risk:'Riesgo y cumplimiento',customer:'Cliente',technical:'Técnico',investor:'Inversor / socio',people:'Personas'},
         tone:{go:'Adelante',stop:'No lo hagas',test:'Primero, prueba'},
-        persona:{devil:'Busca cómo puede morir el plan',first:'Pregunta qué problema resuelves de verdad',expansion:'Ve el potencial que otros no ven',outsider:'Pregunta lo que preguntaría alguien de fuera',executor:'Qué pasa mañana a las 9:00',chair:'Pesa argumentos, no votos',finance:'Sigue el dinero',risk:'Lee la letra pequeña',customer:'Habla por el cliente',technical:'Comprueba que se puede construir',investor:'Piensa como quien pone el dinero',people:'Piensa en el equipo'},foot:'Los precedentes son evidencias, no predicciones'}
+        persona:{devil:'Busca cómo puede morir el plan',first:'Pregunta qué problema resuelves de verdad',expansion:'Ve el potencial que otros no ven',outsider:'Pregunta lo que preguntaría alguien de fuera',executor:'Qué pasa mañana a las 9:00',chair:'Pesa argumentos, no votos',finance:'Sigue el dinero',risk:'Lee la letra pequeña',customer:'Habla por el cliente',technical:'Comprueba que se puede construir',investor:'Piensa como quien pone el dinero',people:'Piensa en el equipo'},foot:'Los precedentes son evidencias, no predicciones',
+        ctx:'El planteamiento',by:'Preparado por',forr:'Para',review:'Revisar el',status:{draft:'Borrador',decided:'Decidido',dropped:'Descartado'},
+        facts:'Datos de partida',kinds:{given:'Dato',assumed:'Supuesto',external:'Verificado'},src:'Fuente',srcs:'Fuentes',
+        how:'Cómo leer este informe',
+        howText:['Been There compara un plan con empresas que ya intentaron algo parecido. <b>Cayó</b> marca las que fracasaron por el mismo motivo; <b>Sobrevivió</b>, las que se enfrentaron a la misma trampa y salieron adelante. Las etiquetas moradas indican en qué se parecen a este plan; las tachadas, en qué no.','La Pandilla opina por separado, sin ver lo que dicen los demás. Lo que no se apoya en datos lleva la etiqueta <b>opinión</b>. Vera, que preside, pesa argumentos, no votos. La confianza mide lo seguro que es el veredicto, no la probabilidad de éxito.','Los datos de partida distinguen lo que se dio, lo que se supuso y lo que se comprobó con fuentes externas.']}
   };
   const t = T[d.lang] || T.en;
   const tones = {go:['var(--go)','var(--go-soft)','🚀'],stop:['var(--stop)','var(--stop-soft)','✋'],test:['var(--test)','var(--test-soft)','🧪']};
   const tone = tones[d.tone] || tones.test;
   const conf = Math.max(0,Math.min(10,+d.confidence||0)), C = 2*Math.PI*48;
+  const cx = d.context || {}; const st = d.status ? (t.status[d.status]||d.status) : '';
   const adv = (d.advisors||[]).map(a => ({...a, key: (a.role && CREW[a.role]) ? a.role : crewKey(a.name)}));
   const cnt = {for:0,against:0,depends:0}; adv.forEach(a => cnt[a.position] = (cnt[a.position]||0)+1);
   const tot = adv.length || 1;
@@ -278,7 +407,10 @@ function mascot(key, size=120){
     <header>
       <div class="brand"><span class="dot"></span>Been There<small>${esc(d.date)}</small></div>
       <h1>${esc(d.title)}</h1>
+      ${(st||cx.prepared_by||cx.for||d.review_date)?`<div class="meta">${st?`<span class="stamp ${esc(d.status)}">${esc(st)}</span>`:''}${cx.prepared_by?`<span>${esc(t.by)}: <b>${esc(cx.prepared_by)}</b></span>`:''}${cx.for?`<span>${esc(t.forr)}: <b>${esc(cx.for)}</b></span>`:''}${d.review_date?`<span>${esc(t.review)}: <b>${esc(d.review_date)}</b></span>`:''}</div>`:''}
     </header>
+
+    ${cx.prompt?`<section class="card"><h2>${esc(t.ctx)}</h2><p class="ask">${esc(cx.prompt)}</p></section>`:''}
 
     <section class="card hero" style="--tone:${tone[0]};--tone-soft:${tone[1]}">
       <div class="who">${mascot('chair',96)}Vera · ${esc(t.chairs)}</div>
@@ -298,13 +430,15 @@ function mascot(key, size=120){
       <section class="card note"><div class="ic" style="background:var(--test-soft)">⚡</div><div><h3>${esc(t.dis)}</h3>${esc(d.disagreement)}</div></section>
     </div>
 
+    ${(d.facts||[]).length?`<section class="card"><h2>${esc(t.facts)}</h2><ul class="facts">${d.facts.map(f=>`<li><span class="kind ${esc(f.kind)}">${esc(t.kinds[f.kind]||f.kind)}</span><span>${esc(f.text)}</span></li>`).join('')}</ul></section>`:''}
+
     <section class="card"><h2>${esc(t.prec)} <span class="count">${(d.precedents||[]).length}</span></h2>
       ${(d.precedents||[]).length ? `<div class="prec">${d.precedents.map(p => {const s = p.type==='survivor'; return `
         <article class="p ${s?'survivor':'failure'}">
           <span class="tag">${s?'✓ '+esc(t.surv):'✕ '+esc(t.fell)}</span>
           <h3>${esc(p.name)}</h3><div class="yrs">${esc(p.years)}</div>
           <p>${esc(p.note)}</p>
-          <div class="chips">${(p.match||[]).map(m=>`<span>${esc(m)}</span>`).join('')}${(p.miss||[]).map(m=>`<span class="miss">${esc(m)}</span>`).join('')}</div>
+          ${p.url?`<div style="margin:-4px 0 8px"><a class="src" href="${esc(p.url)}" target="_blank" rel="noopener">${esc(t.src)} ↗</a></div>`:''}<div class="chips">${(p.match||[]).map(m=>`<span>${esc(m)}</span>`).join('')}${(p.miss||[]).map(m=>`<span class="miss">${esc(m)}</span>`).join('')}</div>
         </article>`}).join('')}</div>` : `<p class="muted">${esc(t.none)}</p>`}
     </section>
 
@@ -328,6 +462,13 @@ function mascot(key, size=120){
       <div class="a next"><div class="k"><i>⏱️</i>${esc(t.next)}</div>${esc(d.next_step)}</div>
       <div class="a kill"><div class="k"><i>🛑</i>${esc(t.kill)}</div>${esc(d.kill_criterion)}</div>
     </div></section>
+
+    ${(d.sources||[]).length?`<section class="card"><h2>${esc(t.srcs)}</h2><ol class="srcs">${d.sources.map(s=>`<li>${s.url?`<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title||s.url)}</a>`:esc(s.title)}</li>`).join('')}</ol></section>`:''}
+
+    <section class="card"><details class="how"><summary>${esc(t.how)}</summary><div class="how-body">
+      ${t.howText.map(x=>`<p style="margin:0">${x}</p>`).join('')}
+      <div class="legend">${Object.keys(CREW).map(k=>`<div>${mascot(k,40)}<span><b>${esc(CREW[k].nick)}</b> · ${esc(t.roles[k])}</span></div>`).join('')}</div>
+    </div></details></section>
 
     <footer><span class="brand" style="font-size:13px"><span class="dot"></span>Been There</span> · ${esc(t.foot)}</footer>`;
 </script>
