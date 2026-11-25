@@ -63,14 +63,6 @@ Also: `has anyone tried this?`, `pressure-test this`, `pre-mortem this`, `where 
 
 The precedent library is the heart of the project. Add a company in one YAML file: see [`precedents/SCHEMA.md`](precedents/SCHEMA.md). Rules: factual, short, at least one source, founder post-mortems preferred. Survivors are as welcome as failures. EU and Spanish cases especially wanted.
 
-## Roadmap
-
-- [x] v0.1: precedent schema, first evals, HTML report
-- [x] v0.2: short default output, hunts unstated assumptions, hard and fictional eval sets
-- [ ] 30+ verified precedents (failures and survivors)
-- [ ] Regulatory pack (GDPR, health, fintech, AI Act)
-- [ ] Decision log with review reminders
-
 ---
 
 ## Español
