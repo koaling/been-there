@@ -1,0 +1,31 @@
+name: Blue Apron
+slug: blue-apron
+type: failure
+years: 2012-2023
+region: US
+sector: meal-kits
+business_model: b2c-subscription-delivery
+funding: "IPO 2017 at ~$1.9B valuation"
+causes: [retention, unit-economics]
+root_cause: >
+  Pioneered meal kits by subscription, but many subscribers cancelled after
+  trying it, so growth depended on constantly buying new customers. Cold-chain
+  logistics for individually packed portions kept costs high. It was sold to
+  Wonder in 2023 for about $103M, roughly 95% below its IPO valuation.
+warning_signs:
+  - High churn after the first boxes.
+  - Revenue falling while acquisition spend stayed high.
+survived_by: []
+lesson: A subscription only works if people stay; measure churn after the trial before paying to acquire more.
+sources:
+  - type: news
+    title: "Blue Apron is sold for $103 million. It was once valued at $1.9 billion (Fortune, 2023)"
+    url: https://fortune.com/2023/09/29/blue-apron-is-sold-for-103-million-it-was-once-valued-at-1-9-billion/
+  - type: news
+    title: "Blue Apron to be acquired by Wonder (RetailWire, 2023)"
+    url: https://retailwire.com/?p=205619
+  - type: founder-postmortem
+    title: "Blue Apron announces agreement to be acquired by Wonder Group (SEC 8-K, 2023)"
+    url: https://www.sec.gov/Archives/edgar/data/1701114/000110465923105017/tm2327190d1_ex99-1.htm
+notes: Acquired rather than shut down; counted as a failure of the standalone model.
+status: verified

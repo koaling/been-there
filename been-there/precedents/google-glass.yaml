@@ -1,0 +1,30 @@
+name: Google Glass (Explorer Edition)
+slug: google-glass
+type: failure
+years: 2013-2015
+region: US
+sector: smart-glasses-consumer
+business_model: consumer-hardware
+funding: "Google"
+causes: [trust-privacy, pricing, no-market-need]
+root_cause: >
+  Sold a $1,500 beta to early adopters while a consumer launch kept slipping.
+  Privacy concerns about the camera led some bars and restaurants to ban it,
+  and wearers were mocked as "Glassholes". Google ended consumer sales of the
+  Explorer Edition in January 2015 and refocused on business uses.
+warning_signs:
+  - People around the user, not just the user, objecting to the product.
+  - A high price for an unfinished product with unclear everyday use.
+survived_by: []
+lesson: For wearables in public, other people's comfort is part of the product; test social acceptance, not just the tech.
+sources:
+  - type: news
+    title: "Google Glass Killed: For Now (InformationWeek, 2015)"
+    url: https://www.informationweek.com/mobile-devices/google-glass-killed-for-now
+  - type: news
+    title: "Google Glass makes a quick exit (Retail Gazette, 2015)"
+    url: https://www.retailgazette.co.uk/blog/2015/01/30003-google-glass-makes-a-quick-exit
+  - type: news
+    title: "Google halts consumer sales of Glass (Phys.org / AFP, 2015)"
+    url: https://phys.org/news/2015-01-google-consumer-sales-glass-redesign.pdf
+status: verified

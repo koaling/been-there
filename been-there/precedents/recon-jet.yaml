@@ -1,0 +1,29 @@
+name: Recon Jet (Recon Instruments)
+slug: recon-jet
+type: failure
+years: 2008-2017
+region: Canada
+sector: smart-glasses-sports
+business_model: consumer-hardware
+funding: "VC, then acquired by Intel (2015)"
+causes: [no-market-need, overengineering]
+root_cause: >
+  Built heads-up-display smart sunglasses for cyclists and runners, launched in
+  2013. Intel bought the company in 2015, then discontinued the Jet and closed
+  the Recon division in 2017 as it retreated from wearables.
+warning_signs:
+  - Niche sport audience paying a premium for a device that competes with a phone and a bike computer.
+  - Parent company's commitment to wearables wavering.
+survived_by: []
+lesson: Sports wearables need a reason to exist beyond the phone and the bike computer; check that riders will pay for the display itself.
+sources:
+  - type: news
+    title: "Intel quietly discontinues Recon Jet smart sunglasses (Bicycle Retailer, 2017)"
+    url: https://bicycleretailer.com/product-tech/2017/07/21/intel-quietly-discontinues-recon-jet-smart-sunglasses
+  - type: news
+    title: "Intel shutters its augmented-reality goggles brand (Bloomberg, 2017)"
+    url: https://www.bloomberg.com/news/articles/2017-10-06/intel-is-said-to-shutter-its-augmented-reality-goggles-brand
+  - type: analysis
+    title: "Recon Instruments (Wikipedia)"
+    url: https://en.wikipedia.org/wiki/Recon_Instruments
+status: verified

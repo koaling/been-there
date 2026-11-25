@@ -245,6 +245,7 @@ const CREW = {
   customer:  {nick:'Mo',    c:['#FFD1EA','#FF8FC7','#E0569D'], eyes:'happy',   mouth:'smile', arms:'hug',   acc:'heart',   tilt:-5},
   technical: {nick:'Bolt',  c:['#FFC9A8','#FF8A4C','#D9602A'], eyes:'focus',   mouth:'grin',  arms:'hold',  acc:'wrench',  tilt:2},
   investor:  {nick:'Cap',   c:['#E8C9A8','#C08457','#8E5A33'], eyes:'monocle', mouth:'smile', arms:'hips',  acc:'tophat',  tilt:0},
+  scout:     {nick:'Scout', c:['#A8DCE6','#1F8A9E','#0F5F6E'], eyes:'focus', mouth:'smile', arms:'hold', acc:'compass', tilt:3},
   people:    {nick:'Kin',   c:['#F5CDF8','#DA7FE3','#A94DB3'], eyes:'happy',   mouth:'grin',  arms:'wave',  acc:'bubbles', tilt:-2},
 };
 
@@ -252,7 +253,7 @@ function crewKey(name){
   const n = String(name||'').toLowerCase();
   const map = [
     [/devil|abogado|diablo/,'devil'],[/first|primer|principi/,'first'],[/expan/,'expansion'],
-    [/outsider|forastero|ajeno|externo/,'outsider'],[/execut|ejecut/,'executor'],[/chair|presid|anfitri/,'chair'],
+    [/scout|explor/,'scout'],[/outsider|forastero|ajeno|externo/,'outsider'],[/execut|ejecut/,'executor'],[/chair|presid|anfitri/,'chair'],
     [/financ|cfo|money/,'finance'],[/risk|riesgo|legal|complian|cumplim/,'risk'],[/customer|cliente|user|usuario/,'customer'],
     [/tech|técn|tecn/,'technical'],[/invest|partner|socio/,'investor'],[/people|personas|rrhh|hr|equipo|talent/,'people'],
   ];
@@ -307,6 +308,7 @@ function mascot(key, size=120){
     heart:`<path d="M61 100 C44 88 44 76 53 74 C57 73 60 76 61 79 C62 76 65 73 69 74 C78 76 78 88 61 100Z" fill="#FF4F7B" stroke="#D93460" stroke-width="1.5"/><path d="M98 22 c-4 -6 -12 -1 -6 6 l6 6 6 -6 c6 -7 -2 -12 -6 -6z" fill="#FF4F7B" opacity=".8"/>`,
     wrench:`<g transform="translate(98 74) rotate(35) scale(1.25)"><rect x="-3" y="-2" width="6" height="26" rx="3" fill="#8A94A6"/><path d="M-9 -8 a9 9 0 1 0 18 0 l-5 0 l0 5 l-8 0 l0 -5z" fill="#A9B2C3"/></g>`,
     tophat:`<rect x="38" y="6" width="46" height="26" rx="4" fill="#2A2140"/><rect x="38" y="24" width="46" height="5" fill="#C9A227"/><rect x="30" y="30" width="62" height="6" rx="3" fill="#2A2140"/>`,
+    compass:`<g transform="translate(96 78)"><circle r="13" fill="#fff" stroke="${D}" stroke-width="2.6"/><circle r="9.5" fill="none" stroke="${L}" stroke-width="1.2"/><path d="M0 -9 L3.2 0 L0 1.5 L-3.2 0Z" fill="#E2475A"/><path d="M0 9 L3.2 0 L0 -1.5 L-3.2 0Z" fill="#8A94A6"/><circle r="1.8" fill="${ink}"/><rect x="-2.5" y="-17" width="5" height="4.5" rx="1.5" fill="${D}"/></g><g fill="${D}" opacity=".55"><circle cx="16" cy="30" r="2"/><circle cx="24" cy="23" r="2"/><circle cx="34" cy="19" r="2"/></g><path d="M8 38 l3 -7 3 7 -3 -2z" fill="#E2475A" opacity=".85"/>`,
     bubbles:`<g transform="translate(92 14)"><rect x="0" y="0" width="22" height="15" rx="6" fill="#fff" stroke="${D}" stroke-width="2"/><path d="M5 15 l-2 6 7 -6z" fill="#fff" stroke="${D}" stroke-width="2" stroke-linejoin="round"/><circle cx="6" cy="7.5" r="1.6" fill="${D}"/><circle cx="11" cy="7.5" r="1.6" fill="${D}"/><circle cx="16" cy="7.5" r="1.6" fill="${D}"/></g><g transform="translate(6 22)"><rect width="16" height="12" rx="5" fill="#fff" stroke="${D}" stroke-width="2"/><path d="M5 7 q3 -4 6 0" stroke="#FF4F7B" stroke-width="2" fill="none"/></g>`,
   };
   const back = (m.acc==='tophat'||m.acc==='hardhat'||m.acc==='gavel') ? '' : `<path d="M54 30 Q50 14 62 10 Q60 20 68 26 Q64 30 54 30Z" fill="url(#${id}b)"/>`;
@@ -367,8 +369,8 @@ const MASCOT_CSS = `
         ctx:'The question',more:'Show more',less:'Show less',by:'Prepared by',forr:'For',review:'Review on',status:{draft:'Draft',decided:'Decided',dropped:'Dropped'},
         facts:'Starting facts',kinds:{given:'Given',assumed:'Assumed',external:'Checked'},srcs:'Sources',
         copy:'Copy summary',copied:'Summary copied',copyFail:'Select the text to copy it',
-        roles:{devil:"Devil's advocate",first:'First principles',expansion:'Expansionist',outsider:'Outsider',executor:'Executor',chair:'Chair',finance:'Finance',risk:'Risk & compliance',customer:'Customer',technical:'Technical',investor:'Investor / partner',people:'People'},
-        persona:{devil:'Looks for how it dies',first:'Asks what problem you really solve',expansion:'Sees the upside others miss',outsider:'Asks what a newcomer would ask',executor:'What happens tomorrow at 9:00',chair:'Weighs arguments, not votes',finance:'Follows the money',risk:'Reads the small print',customer:'Speaks for the buyer',technical:'Checks it can be built',investor:'Thinks like whoever funds it',people:'Thinks about the team'},
+        roles:{devil:"Devil's advocate",first:'First principles',expansion:'Expansionist',outsider:'Outsider',executor:'Executor',chair:'Chair',finance:'Finance',risk:'Risk & compliance',customer:'Customer',technical:'Technical',investor:'Investor / partner',people:'People',scout:'Idea scout'},
+        persona:{devil:'Looks for how it dies',first:'Asks what problem you really solve',expansion:'Sees the upside others miss',outsider:'Asks what a newcomer would ask',executor:'What happens tomorrow at 9:00',chair:'Weighs arguments, not votes',finance:'Follows the money',risk:'Reads the small print',customer:'Speaks for the buyer',technical:'Checks it can be built',investor:'Thinks like whoever funds it',people:'Thinks about the team',scout:'Turns the idea into testable bets'},
         tone:{go:'Go',stop:"Don't",test:'Test first'},
         how:'How to read this report',
         howText:['Been There checks a plan against companies that already tried something similar. Fell marks those that failed the same way; Survived marks those that faced the same trap and made it.','The Crew answers independently. Points without evidence are tagged opinion. Vera, the chair, weighs arguments, not votes. Confidence is how sure the verdict is, not the odds of success.','Starting facts separate what was given, what was assumed and what was checked against outside sources.'],
@@ -384,8 +386,8 @@ const MASCOT_CSS = `
         ctx:'El planteamiento',more:'Ver más',less:'Ver menos',by:'Preparado por',forr:'Para',review:'Revisar el',status:{draft:'Borrador',decided:'Decidido',dropped:'Descartado'},
         facts:'Datos de partida',kinds:{given:'Dato',assumed:'Supuesto',external:'Verificado'},srcs:'Fuentes',
         copy:'Copiar resumen',copied:'Resumen copiado',copyFail:'Selecciona el texto para copiarlo',
-        roles:{devil:'Abogado del diablo',first:'Primeros principios',expansion:'Expansionista',outsider:'Forastero',executor:'Ejecutor',chair:'Presidencia',finance:'Finanzas',risk:'Riesgo y cumplimiento',customer:'Cliente',technical:'Técnico',investor:'Inversor / socio',people:'Personas'},
-        persona:{devil:'Busca cómo puede morir el plan',first:'Pregunta qué problema resuelves de verdad',expansion:'Ve el potencial que otros no ven',outsider:'Pregunta lo que preguntaría alguien de fuera',executor:'Qué pasa mañana a las 9:00',chair:'Pesa argumentos, no votos',finance:'Sigue el dinero',risk:'Lee la letra pequeña',customer:'Habla por el cliente',technical:'Comprueba que se puede construir',investor:'Piensa como quien pone el dinero',people:'Piensa en el equipo'},
+        roles:{devil:'Abogado del diablo',first:'Primeros principios',expansion:'Expansionista',outsider:'Forastero',executor:'Ejecutor',chair:'Presidencia',finance:'Finanzas',risk:'Riesgo y cumplimiento',customer:'Cliente',technical:'Técnico',investor:'Inversor / socio',people:'Personas',scout:'Exploradora'},
+        persona:{devil:'Busca cómo puede morir el plan',first:'Pregunta qué problema resuelves de verdad',expansion:'Ve el potencial que otros no ven',outsider:'Pregunta lo que preguntaría alguien de fuera',executor:'Qué pasa mañana a las 9:00',chair:'Pesa argumentos, no votos',finance:'Sigue el dinero',risk:'Lee la letra pequeña',customer:'Habla por el cliente',technical:'Comprueba que se puede construir',investor:'Piensa como quien pone el dinero',people:'Piensa en el equipo',scout:'Convierte la idea en apuestas comprobables'},
         tone:{go:'Adelante',stop:'No lo hagas',test:'Primero, prueba'},
         how:'Cómo leer este informe',
         howText:['Been There compara un plan con empresas que ya intentaron algo parecido. Cayó marca las que fracasaron por el mismo motivo; Sobrevivió, las que se enfrentaron a la misma trampa y salieron adelante.','La Pandilla opina por separado. Lo que no se apoya en datos lleva la etiqueta opinión. Vera, que preside, pesa argumentos, no votos. La confianza mide lo seguro que es el veredicto, no la probabilidad de éxito.','Los datos de partida distinguen lo que se dio, lo que se supuso y lo que se comprobó con fuentes externas.'],

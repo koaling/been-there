@@ -1,0 +1,26 @@
+name: Varsity Tutors (Nerdy)
+slug: varsity-tutors
+type: survivor
+years: 2007-present
+region: US
+sector: online-tutoring
+business_model: marketplace-plus-institutional
+funding: "VC; SPAC listing 2021 at ~$1.7B"
+causes: [timing, distribution]
+root_cause: >
+  Started as in-person tutoring matching, moved fully online in the pandemic,
+  and added sales to school districts ("Varsity Tutors for Schools") to reduce
+  dependence on families. Still operating, but its market value fell sharply
+  after the 2021 listing.
+warning_signs: []
+survived_by: []
+lesson: Consumer tutoring demand is seasonal and cyclical; a second, institutional buyer steadies it, but a boom-time valuation is not the same as a durable business.
+sources:
+  - type: news
+    title: "Nerdy, a tutoring marketplace startup, is going public via SPAC (TechCrunch, 2021)"
+    url: https://techcrunch.com/2021/01/29/nerdy-varsity-tutors-spac
+  - type: news
+    title: "Nerdy announces record full-year 2021 results (Business Wire, 2022)"
+    url: https://www.businesswire.com/news/home/20220228005288/en/Nerdy-Announces-Record-Fourth-Quarter-and-Full-Year-2021-Financial-Results
+notes: Survivor as a company; mixed as an investment.
+status: verified

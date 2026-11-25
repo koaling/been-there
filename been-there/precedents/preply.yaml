@@ -1,0 +1,28 @@
+name: Preply
+slug: preply
+type: survivor
+years: 2012-present
+region: EU (Ukraine-founded, Barcelona HQ) / global
+sector: online-tutoring
+business_model: marketplace-commission
+funding: "VC; ~$1.2B valuation (2026)"
+causes: [distribution, labor-model]
+root_cause: >
+  A tutor marketplace that focused on one category (languages, ~95% of
+  revenue) and charged tutors the full first lesson as a lead fee, then a
+  sliding commission. It grew from a $1.3M seed to a unicorn, with the US as
+  its largest market.
+warning_signs: []
+survived_by: []
+lesson: A tutoring marketplace can work if it niches down to one category and makes the first lesson pay for acquiring the student.
+sources:
+  - type: news
+    title: "Preply pulls in $1.3M to expand its tutoring marketplace in Europe (TechCrunch)"
+    url: https://techcrunch.com/?p=1332909
+  - type: news
+    title: "Preply raises a $35 million Series B (TechCrunch, 2021)"
+    url: https://techcrunch.com/2021/03/09/preply-raises-a-35-million-series-b-as-demand-for-language-learning-grows/
+  - type: analysis
+    title: "Preply revenue, valuation and business model (Sacra)"
+    url: https://sacra.com/research/preply
+status: verified

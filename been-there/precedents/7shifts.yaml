@@ -1,0 +1,27 @@
+name: 7shifts
+slug: 7shifts
+type: survivor
+years: 2014-present
+region: Canada / North America
+sector: restaurant-software
+business_model: b2b-saas-freemium
+funding: "VC; ~$130M raised (incl. $80M led by SoftBank)"
+causes: [competition, distribution]
+root_cause: >
+  Generic shift-scheduling tools already existed, but 7shifts built only for
+  restaurants: scheduling, then labor compliance, hiring and payroll. Free plan
+  plus paid tiers; used by 27,000+ restaurants.
+warning_signs: []
+survived_by: []
+lesson: In a crowded SaaS category, owning one vertical's workflow beats being a generic tool.
+sources:
+  - type: news
+    title: "7shifts raises $80M for restaurant labor software (Restaurant Business)"
+    url: https://www.restaurantbusinessonline.com/technology/7shifts-raises-80m-restaurant-labor-software
+  - type: analysis
+    title: "7shifts company profile (CB Insights)"
+    url: https://www.cbinsights.com/research/?p=137511
+  - type: analysis
+    title: "7shifts (Wikipedia)"
+    url: https://en.wikipedia.org/wiki/7shifts
+status: verified

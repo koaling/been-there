@@ -1,0 +1,30 @@
+name: Path
+slug: path
+type: failure
+years: 2010-2018
+region: US
+sector: consumer-social
+business_model: ad-free-social-app
+funding: "VC; once valued at ~$500M"
+causes: [competition, distribution]
+root_cause: >
+  A private, mobile-first social network that limited each user to 50 friends
+  as an intimate alternative to Facebook. The cap held back the network effect,
+  the limit was raised to 150 and then 500, and the service shut down in
+  October 2018 after years of decline outside a few markets.
+warning_signs:
+  - The core differentiator also limits growth.
+  - Usage concentrated in one or two countries.
+survived_by: []
+lesson: A social product lives or dies on network effects; a feature that slows invites needs a strong reason people will pay or stay.
+sources:
+  - type: news
+    title: "RIP Path (TechCrunch, 2018)"
+    url: https://techcrunch.com/2018/09/17/rip-path/
+  - type: news
+    title: "Path is closing its private social network for good (Engadget, 2018)"
+    url: https://www.engadget.com/2018-09-17-path-private-social-network-stickers-dead.html
+  - type: analysis
+    title: "Path, the doomed social network with one great idea (Gizmodo, 2018)"
+    url: https://gizmodo.com/path-the-doomed-social-network-with-one-great-idea-is-1829106338
+status: verified

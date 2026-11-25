@@ -1,0 +1,30 @@
+name: WeWork
+slug: wework
+type: failure
+years: 2010-2023
+region: US / global
+sector: flexible-workspace
+business_model: long-leases-short-memberships
+funding: "~$16B+ from SoftBank; peak valuation ~$47B"
+causes: [premature-scaling, unit-economics, timing]
+root_cause: >
+  Signed long, expensive leases and rented the space out on short, flexible
+  memberships. It grew fast in the 2010s by taking on too many leases at too
+  high a cost; when demand fell after the pandemic, it was left with over $13B
+  in long-term leases and filed for Chapter 11 in November 2023.
+warning_signs:
+  - Lease commitments far longer than customer commitments.
+  - Growth measured in locations opened, not in profit per location.
+survived_by: [iwg]
+lesson: When your costs are locked in for years and your revenue can leave next month, expand only as fast as each site proves profitable.
+sources:
+  - type: news
+    title: "WeWork files for Chapter 11 bankruptcy (Fortune / AP, 2023)"
+    url: https://fortune.com/2023/11/07/wework-files-for-chapter-11-bankruptcy/
+  - type: news
+    title: "WeWork, company credited with popularizing coworking space, files for bankruptcy (CoStar, 2023)"
+    url: https://www.costar.com/article/2075463430
+  - type: news
+    title: "WeWork officially files for bankruptcy (Tech.co, 2023)"
+    url: https://tech.co/news/wework-to-file-for-bankruptcy
+status: verified

@@ -1,0 +1,29 @@
+name: IWG (Regus)
+slug: iwg
+type: survivor
+years: 1989-present
+region: EU (UK) / global
+sector: flexible-workspace
+business_model: long-leases-short-memberships
+funding: "Public company"
+causes: [premature-scaling, timing]
+root_cause: >
+  Same model and same trap as WeWork: it expanded fast at high rents, demand
+  fell after the dot-com bust, and its US business filed for Chapter 11 in 2003.
+  It renegotiated leases, came out within a year, and grew into the largest
+  flexible-workspace operator, with thousands of locations in 120 countries.
+warning_signs: []
+survived_by: []
+lesson: The same lease trap can be survived if you renegotiate early and keep a profitable core funding the rest.
+sources:
+  - type: news
+    title: "Regus US files for Chapter 11 protection (GlobeSt, 2003)"
+    url: https://www.globest.com/2003/01/15/regus-us-files-for-chapter-11-protection
+  - type: news
+    title: "How Mark Dixon's story provides a template for WeWork recovery (CoStar)"
+    url: https://www.costar.com/article/57002171/how-flexible-offices-trailblazer-mark-dixons-story-provides-a-template-for-wework-recovery
+  - type: analysis
+    title: "WeWork and Regus: a tale of diverging fortunes (Propmodo)"
+    url: https://propmodo.com/?p=8236
+notes: Survivor counterpart to wework.
+status: verified
