@@ -110,7 +110,7 @@ Has anyone tried this? Switching all customers from per-seat pricing to a flat â
 
 ## Examples
 
-Real, unedited answers: [a hardware fleet rollout](examples/01-scooter-rollout.md), [a switch to flat pricing](examples/02-flat-pricing.md) [a first sales hire that holds up](examples/03-first-sales-hire.md) and, in Spanish, [a company rename](examples/04-cambio-de-nombre.md) (fictional company, real precedents).
+Real, unedited answers: [a hardware fleet rollout](examples/01-scooter-rollout.md), [a switch to flat pricing](examples/02-flat-pricing.md), [a first sales hire that holds up](examples/03-first-sales-hire.md) and, in Spanish, [a company rename](examples/04-cambio-de-nombre.md) (fictional company, real precedents).
 
 ## Contribute
 
