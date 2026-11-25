@@ -3,7 +3,7 @@
 **Someone has probably tried your plan already. Find out how it ended before you do.**
 
 [![Claude Code plugin](https://img.shields.io/badge/Claude_Code-plugin-D97757)](#install)
-[![Agent Skill](https://img.shields.io/badge/Agent_Skill-SKILL.md-1d1b18)](SKILL.md)
+[![Agent Skill](https://img.shields.io/badge/Agent_Skill-SKILL.md-1d1b18)](been-there/SKILL.md)
 [![Blind-tested](https://img.shields.io/badge/evals-37_cases,_blind-2f8f5b)](evals/results/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 [![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen)](CONTRIBUTING.md)
@@ -62,7 +62,7 @@ claude plugin marketplace add koaling/been-there
 claude plugin install been-there@been-there
 ```
 
-**Any Claude surface with skills:** copy this folder into `~/.claude/skills/been-there/`, or ask Claude: `Install this Claude skill: https://github.com/koaling/been-there`.
+**Any Claude surface with skills:** copy the [`been-there/`](been-there/) folder into `~/.claude/skills/been-there/`, or ask Claude: `Install this Claude skill: https://github.com/koaling/been-there`.
 
 ## Use
 
@@ -101,7 +101,7 @@ Uso: `¿Alguien lo ha intentado? Queremos pasar de precio por usuario a una tari
 
 También: `ponlo a prueba`, `dime dónde me equivoco`, `chequeo rápido:`.
 
-Contribuir: añade una empresa en un YAML siguiendo [`precedents/SCHEMA.md`](precedents/SCHEMA.md). Se buscan especialmente casos europeos y españoles.
+Contribuir: añade una empresa en un YAML siguiendo [`precedents/SCHEMA.md`](been-there/precedents/SCHEMA.md). Se buscan especialmente casos europeos y españoles.
 
 ## License
 

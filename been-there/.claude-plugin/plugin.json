@@ -2,9 +2,23 @@
   "name": "been-there",
   "displayName": "Been There",
   "description": "Checks your plan against companies that already tried it (who failed, who survived), finds the assumption most likely to sink it, and returns a short verdict with a 48-hour test and a kill criterion. EN/ES.",
-  "author": { "name": "Carlos Olite", "url": "https://github.com/koaling" },
+  "author": {
+    "name": "Carlos Olite",
+    "url": "https://github.com/koaling"
+  },
   "homepage": "https://github.com/koaling/been-there",
   "repository": "https://github.com/koaling/been-there",
   "license": "MIT",
-  "keywords": ["decision-making", "pre-mortem", "startup", "strategy", "risk", "product-management", "founders", "post-mortem"]
+  "keywords": [
+    "decision-making",
+    "pre-mortem",
+    "startup",
+    "strategy",
+    "risk",
+    "product-management",
+    "founders",
+    "post-mortem"
+  ],
+  "version": "0.2.0",
+  "icon": "./.claude-plugin/icon.png"
 }

@@ -1,11 +1,14 @@
 {
   "name": "been-there",
   "description": "Been There: pressure-test plans against companies that already tried them.",
-  "owner": { "name": "Carlos Olite", "url": "https://github.com/koaling" },
+  "owner": {
+    "name": "Carlos Olite",
+    "url": "https://github.com/koaling"
+  },
   "plugins": [
     {
       "name": "been-there",
-      "source": "./",
+      "source": "./been-there",
       "description": "Checks your plan against companies that already tried it and returns a verdict, a 48-hour test and a kill criterion."
     }
   ]

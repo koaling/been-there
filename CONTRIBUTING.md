@@ -6,8 +6,8 @@ Thanks for helping. The most valuable contributions are small and factual.
 
 A precedent is one company, in one YAML file, that faced a trap and either died of it or survived it.
 
-1. Copy an existing file in [`precedents/`](precedents/) (e.g. `webvan.yaml`) and rename it `<company-slug>.yaml`.
-2. Fill in the fields described in [`precedents/SCHEMA.md`](precedents/SCHEMA.md). Use 1–3 cause tags from the list.
+1. Copy an existing file in [`been-there/precedents/`](been-there/precedents/) (e.g. `webvan.yaml`) and rename it `<company-slug>.yaml`.
+2. Fill in the fields described in [`precedents/SCHEMA.md`](been-there/precedents/SCHEMA.md). Use 1–3 cause tags from the list.
 3. Add **at least one source** with a URL. Founder post-mortems are best, then reputable news. AI-generated summaries don't count as the only source.
 4. Set `status: verified` only if every fact in the entry is backed by a source.
 5. Open a pull request. The CI check validates the YAML automatically.

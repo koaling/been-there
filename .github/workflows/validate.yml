@@ -15,4 +15,4 @@ jobs:
           python-version: "3.12"
       - run: pip install pyyaml
       - run: python scripts/validate_precedents.py
-      - run: python -c "import json; [json.load(open(f)) for f in ['.claude-plugin/plugin.json', '.claude-plugin/marketplace.json']]"
+      - run: python -c "import json; [json.load(open(f)) for f in ['been-there/.claude-plugin/plugin.json', '.claude-plugin/marketplace.json']]"

@@ -14,7 +14,7 @@ REQUIRED = ["name", "slug", "type", "years", "region", "sector", "causes", "root
 SOURCE_TYPES = {"founder-postmortem", "news", "analysis", "ai-generated"}
 
 errors = []
-for path in sorted(glob.glob("precedents/*.yaml")):
+for path in sorted(glob.glob("been-there/precedents/*.yaml")):
     try:
         d = yaml.safe_load(open(path, encoding="utf-8"))
     except yaml.YAMLError as e:
@@ -51,4 +51,4 @@ for path in sorted(glob.glob("precedents/*.yaml")):
 if errors:
     print("\n".join(errors))
     sys.exit(1)
-print(f"OK: {len(glob.glob('precedents/*.yaml'))} precedents valid")
+print(f"OK: {len(glob.glob('been-there/precedents/*.yaml'))} precedents valid")
