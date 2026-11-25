@@ -34,7 +34,7 @@ Under ~400 words by default. Ask for a `full review` to see the whole reasoning.
 - **Real precedents, both sides.** Failures and survivors, with the similarity spelled out (market, model, timing, mechanism). Weak analogies are dropped, not forced.
 - **Not a pessimist.** When there's real user pull (paying users, renewals, a waitlist), it says so first. Being wrongly negative counts as a failure too.
 - **Ends in action:** a 48-hour test and a dated kill criterion, not a list of "considerations".
-- **Bilingual** (EN/ES) and an **open precedent library** (30 sourced cases: 22 failures, 8 survivors, incl. EU and Spain) anyone can add to.
+- **Bilingual** (EN/ES) and an **open precedent library** (30 sourced cases: 20 failures, 10 survivors, incl. EU and Spain) anyone can add to.
 
 ## Tested, blind
 
