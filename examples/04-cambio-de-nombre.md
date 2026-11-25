@@ -36,6 +36,6 @@
 
 ---
 
-*Informe visual de este caso: [`reports/04-cambio-de-nombre.html`](reports/04-cambio-de-nombre.html) (descárgalo y ábrelo en el navegador).*
+*Informe visual de este caso: [verlo en el navegador](https://koaling.github.io/been-there/examples/reports/04-cambio-de-nombre.html).*
 
 Fuentes: [Looka (Econsultancy)](https://econsultancy.com/how-one-companys-rebrand-and-domain-name-change-led-to-seo-disaster) · [Consignia (Post&Parcel)](https://postandparcel.info/6311/news/change-of-consignia-name-to-royal-mail-could-cost-gbp-1m) · [HomeAdvisor (Domain Name Wire)](https://domainnamewire.com/2014/11/25/homeadvisor-name-change/) · [Dunkin' (NPR)](https://www.npr.org/2018/09/26/651905960/dunkin-deletes-donuts-from-its-name)

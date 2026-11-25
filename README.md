@@ -42,7 +42,7 @@ Five regulars look at every plan, plus 1–2 specialists picked for the topic. V
 
 ![The Crew: Nix (devil's advocate), Root (first principles), Nova (expansionist), Pip (outsider), Tack (executor), Vera (chair), and specialists Penny, Lex, Mo, Bolt, Cap and Kin](docs/crew.png)
 
-Say `yes` to the visual report and you get a one-page HTML report with the verdict, the precedents and the Crew's positions (English or Spanish, works offline):
+Say `yes` to the visual report and you get a one-page HTML report with the verdict, the precedents and the Crew's positions (English or Spanish, works offline). **[See live examples →](https://koaling.github.io/been-there/)**
 
 ![Example visual report](docs/report-preview.png)
 
@@ -110,7 +110,7 @@ Has anyone tried this? Switching all customers from per-seat pricing to a flat �
 
 ## Examples
 
-Real, unedited answers: [a hardware fleet rollout](examples/01-scooter-rollout.md), [a switch to flat pricing](examples/02-flat-pricing.md), [a first sales hire that holds up](examples/03-first-sales-hire.md) and, in Spanish, [a company rename](examples/04-cambio-de-nombre.md) (fictional company, real precedents).
+Real, unedited answers: [a hardware fleet rollout](examples/01-scooter-rollout.md), [a switch to flat pricing](examples/02-flat-pricing.md), [a first sales hire that holds up](examples/03-first-sales-hire.md) and, in Spanish, [a company rename](examples/04-cambio-de-nombre.md) (fictional company, real precedents; [see its visual report](https://koaling.github.io/been-there/examples/reports/04-cambio-de-nombre.html)).
 
 ## Contribute
 
